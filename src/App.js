@@ -5,20 +5,9 @@ import {
   IconButton,
   HStack,
   Button,
-  Input,
-  InputGroup,
-  InputLeftElement,
   useColorModeValue,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverBody,
-  PopoverArrow,
-  InputRightElement,
   Stack,
   Image,
-  Text,
-  Divider,
 } from '@chakra-ui/react';
 
 import { AddIcon, SearchIcon, ChevronDownIcon } from '@chakra-ui/icons';
@@ -26,7 +15,7 @@ import { BsPrinterFill } from 'react-icons/bs';
 import ReactToPrint from 'react-to-print';
 import Diagram from './components/Diagram';
 import { BarrierContext } from './context/BarrierContext';
-import DiagramList from './components/DiagramList';
+import DiagramList from './components/ConfigList';
 import { RiEdit2Fill } from 'react-icons/ri';
 import { nanoid } from 'nanoid';
 import _ from 'lodash';
@@ -36,7 +25,7 @@ import { PiTextTFill } from 'react-icons/pi';
 import { MdEdit } from 'react-icons/md';
 import DesignPanel from './components/DesignPanel';
 import Popup from 'reactjs-popup';
-import DiagramItem from './components/DiagramItem';
+import DiagramItem from './components/ConfigItem';
 import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 import ConfigHistory from './components/ConfigHistory';
 import SelectStringDropdown from './components/SelectStringDropdown';
@@ -197,7 +186,7 @@ function App() {
           <SelectStringDropdown />
 
           <div className='overflow-y-auto w-full scrollbar-hide mt-3 mb-3'>
-            <DiagramItem />
+            <DiagramList />
             <Stack mt={6}>
               <Button size='sm' onClick={() => setShowConfigHistory(true)}>
                 Configuration history

@@ -27,6 +27,7 @@ import _ from 'lodash';
 import { useMouse } from '@uidotdev/usehooks';
 import { defaultElements } from '../data/defaultElements';
 import Xmas from './schematic/Xmas';
+import TestDiagram from './schematic/TestDiagram';
 
 const Diagram = forwardRef((props, printRef) => {
   // const [mouse, containerRef] = useMouse();
@@ -151,9 +152,10 @@ const Diagram = forwardRef((props, printRef) => {
           >
             <div
               // ref={containerRef}
-              className='relative p-0 border col-span-6 m-4 snapContainer flex justify-center'
+              className='relative border col-span-6 m-4 snapContainer flex'
             >
-              {true ? <Xmas /> : 'current'}
+              {/* {true ? <Xmas /> : 'current'} */}
+              {true ? <TestDiagram /> : 'current'}
             </div>
             <div className='col-span-6 m-4 border'>
               <div className='grid grid-cols-12 border-b h-5'>
@@ -324,106 +326,3 @@ const Diagram = forwardRef((props, printRef) => {
 });
 
 export default Diagram;
-
-{
-  /* <Popup
-ref={popupRef}
-position='bottom center'
-trigger={
-  item.barrier === 'primary' ? (
-    <div
-      style={{
-        fontSize: '8px',
-      }}
-      className='flex w-full h-full justify-center items-center col-span-3 border-r text-xs cursor-pointer border-l-4 border-l-[#2C5282]'
-    >
-      {_.upperFirst(item.barrier)}
-    </div>
-  ) : item.barrier === 'secondary' ? (
-    <div
-      style={{
-        fontSize: '8px',
-      }}
-      className='flex w-full h-full justify-center items-center col-span-3 border-r text-xs cursor-pointer border-l-4 border-l-[#C53030]'
-    >
-      {_.upperFirst(item.barrier)}
-    </div>
-  ) : item.barrier === 'none' ? (
-    <div
-      style={{
-        fontSize: '8px',
-      }}
-      className='flex w-full h-full justify-center items-center col-span-3 border-r text-xs cursor-pointer '
-    >
-      {_.upperFirst(item.barrier)}
-    </div>
-  ) : (
-    'none'
-  )
-}
->
-<div className='bg-slate-100 w-[86px] text-[10px] p-1 -ml-[1px] -mt-[7px]'>
-  <RadioGroup onChange={closePopup}>
-    <Stack direction='column' spacing='0'>
-      <Radio
-        value='primary'
-        colorScheme='blue'
-        size='sm'
-        {...register(`elements.${index}.barrier`)}
-        onChange={(e) => {
-          if (e.target.value === 'primary') {
-            setValue(`elements.${index}.quantity`, 1);
-            setValue(
-              `elements.${index}.barrier`,
-              'primary'
-            );
-          }
-          if (e.target.value === 'none') {
-            setValue(`elements.${index}.quantity`, 0);
-            setValue(`elements.${index}.barrier`, 'none');
-          }
-        }}
-      >
-        <Text fontSize='10px'>Primary</Text>
-      </Radio>
-
-      <Radio
-        value='secondary'
-        colorScheme='red'
-        size='sm'
-        {...register(`elements.${index}.barrier`)}
-        onChange={(e) => {
-          if (e.target.value === 'secondary') {
-            setValue(`elements.${index}.quantity`, 1);
-            setValue(
-              `elements.${index}.barrier`,
-              'secondary'
-            );
-          }
-          if (e.target.value === 'none') {
-            setValue(`elements.${index}.quantity`, 0);
-            setValue(`elements.${index}.barrier`, 'none');
-          }
-        }}
-      >
-        <Text fontSize='10px'>Secondary</Text>
-      </Radio>
-      <Radio
-        value='none'
-        colorScheme='gray'
-        size='sm'
-        {...register(`elements.${index}.barrier`)}
-        onChange={(e) => {
-          if (e.target.value === 'none') {
-            setValue(`elements.${index}.quantity`, 0);
-            setValue(`elements.${index}.barrier`, 'none');
-          }
-        }}
-      >
-        <Text fontSize='10px'>None</Text>
-      </Radio>
-    </Stack>
-  </RadioGroup>
-</div>
-</Popup> */
-}

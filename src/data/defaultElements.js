@@ -133,13 +133,13 @@ export const defaultElements = [
   {
     id: nanoid(),
     name: 'downhole safety valve',
-    barrier: 'none',
+    barrier: 'primary',
     quantity: 0,
   },
   {
     id: nanoid(),
     name: 'downhole safety valve control line',
-    barrier: 'none',
+    barrier: 'primary',
     quantity: 0,
   },
   {
@@ -163,8 +163,8 @@ export const defaultElements = [
   {
     id: nanoid(),
     name: 'production packer',
-    barrier: 'none',
-    quantity: 0,
+    barrier: 'primary',
+    quantity: 1,
   },
 
   {
