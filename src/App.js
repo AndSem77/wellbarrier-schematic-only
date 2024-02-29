@@ -16,19 +16,16 @@ import ReactToPrint from 'react-to-print';
 import Diagram from './components/Diagram';
 import { BarrierContext } from './context/BarrierContext';
 import DiagramList from './components/ConfigList';
-import { RiEdit2Fill } from 'react-icons/ri';
 import { nanoid } from 'nanoid';
 import _ from 'lodash';
-import { defaultElements } from './data/defaultElements';
 import { PiFilePngFill } from 'react-icons/pi';
 import { PiTextTFill } from 'react-icons/pi';
 import { MdEdit } from 'react-icons/md';
 import DesignPanel from './components/DesignPanel';
 import Popup from 'reactjs-popup';
-import DiagramItem from './components/ConfigItem';
-import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
+// import ConfigHistory from './components/ConfigHistory';
+import SelectWellDropdown from './components/SelectWellDropdown';
 import ConfigHistory from './components/ConfigHistory';
-import SelectStringDropdown from './components/SelectStringDropdown';
 
 function App() {
   const {
@@ -36,14 +33,13 @@ function App() {
     setShowDiagram,
     currentData,
     setCurrentData,
-    handleSaveString,
-    strings,
-    isNewAnno,
     setIsNewAnno,
     configs,
     setConfigs,
+    showConfigHistory,
     setShowConfigHistory,
     resetBarriers,
+    setIsCurrent,
   } = useContext(BarrierContext);
 
   const annotationMenu = [
@@ -79,7 +75,7 @@ function App() {
   const buttonsBg = useColorModeValue('white', 'gray.800');
   return (
     <Flex w='100vw' h='100vh'>
-      <ConfigHistory configs={configs} />
+      {/* <ConfigHistory configs={configs} /> */}
       <Navbar />
       {/* buttons start */}
       <Flex
@@ -107,6 +103,7 @@ function App() {
                   onClick={() => {
                     setCurrentData({ id: nanoid(), ...currentData });
                     setShowDiagram(true);
+                    setIsCurrent(false);
                   }}
                 />
 
@@ -183,7 +180,9 @@ function App() {
           p={2}
           flexDir='column'
         >
-          <SelectStringDropdown />
+          <div className='mt-[100px]'>
+            <SelectWellDropdown />
+          </div>
 
           <div className='overflow-y-auto w-full scrollbar-hide mt-3 mb-3'>
             <DiagramList />
@@ -203,6 +202,7 @@ function App() {
         <Flex w='640px' h='100vh' overflowY>
           <div className='overflow-y-auto w-full scrollbar-hide mt-[108px] mb-3'>
             {showDiagram ? <Diagram ref={componentRef} /> : null}
+            {showConfigHistory ? <ConfigHistory /> : null}
           </div>
         </Flex>
 

@@ -7,7 +7,7 @@ export const BarrierContext = createContext();
 export const BarrierProvider = ({ children }) => {
   const timestamp = Date.now();
   const configsURL = 'http://localhost:4000/configs';
-  // const stringsURL = 'http://localhost:3001/strings';
+  const wellsURL = 'http://localhost:4000/wells';
 
   // const templatesURL = 'https://mock-server-ytzw.onrender.com/templates';
   // const stringsURL = 'https://mock-server-ytzw.onrender.com/strings';
@@ -18,11 +18,7 @@ export const BarrierProvider = ({ children }) => {
   const [showConfigHistory, setShowConfigHistory] = useState(false);
   const [currentData, setCurrentData] = useState(null);
   const [update, setUpdate] = useState(false);
-
-  const [selectedString, setSelectedString] = useState('');
-  // const [resetBarriers, setResetBarriers] = useState(false);
-
-  const [strings, setStrings] = useState([
+  const [wells, setWells] = useState([
     {
       id: 1,
       name: 'Resak A1U',
@@ -36,12 +32,14 @@ export const BarrierProvider = ({ children }) => {
       name: 'Resak A3U',
     },
   ]);
-  const [isCrosshair, setIsCrosshair] = useState(false);
+  const [selectedWell, setSelectedWell] = useState('');
+  const [searchWell, setSearchWell] = useState('');
   const [isNewAnno, setIsNewAnno] = useState({});
   const [isCurrentAnno, setIsCurrentAnno] = useState(null);
   const [bgColor, setBgColor] = useState('#000000');
   const [strokeColor, setStrokeColor] = useState('#000000');
-  const [searchString, setSearchString] = useState('');
+  const [currentConfigHistory, setCurrentConfigHistory] = useState(null);
+
   const [annotations, setAnnotations] = useState([
     {
       id: nanoid(),
@@ -146,6 +144,40 @@ export const BarrierProvider = ({ children }) => {
     }
   };
 
+  const handleUpdate = async () => {
+    if (currentData && selectedWell) {
+      try {
+        await fetch(`${wellsURL}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            id: nanoid(),
+            wellName: selectedWell,
+            updatedAt: timestamp,
+          }),
+        })
+          .then((res) => {
+            if (res.ok) {
+              toast({
+                title: `${selectedWell} updated`,
+                status: 'success',
+                position: 'top-right',
+                duration: 1500,
+                isClosable: true,
+                variant: 'subtle',
+              });
+            }
+            return res.json();
+          })
+          .then(() => setUpdate(true));
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  };
+
   useEffect(() => {
     let subscribed = true;
     if (subscribed) {
@@ -170,13 +202,12 @@ export const BarrierProvider = ({ children }) => {
     );
   }, [isCurrentAnno]);
 
-  const filteredStrings = useMemo(() => {
-    if (!searchString) return strings;
-
-    return strings.filter((item) => {
-      return item.name.toLowerCase().includes(searchString.toLowerCase());
+  const filteredWells = useMemo(() => {
+    if (!searchWell) return wells;
+    return wells?.filter((item) => {
+      return item.name.toLowerCase().includes(searchWell.toLowerCase());
     });
-  }, [strings, searchString]);
+  }, [wells, searchWell]);
 
   const setBarrierColor = (name) => {
     let current = currentData?.barrierElements?.find(
@@ -195,7 +226,7 @@ export const BarrierProvider = ({ children }) => {
       }
     }
   };
-  const setElementStatusColor = (name) => {
+  const setStatusColor = (name) => {
     let current = currentData?.barrierElements?.find(
       (item) => item?.name === name
     );
@@ -225,6 +256,82 @@ export const BarrierProvider = ({ children }) => {
     }
   };
 
+  const handleSearchConfigHistory = async () => {
+    try {
+      const res = await fetch(
+        `http://localhost:4000/wells?wellName_like=${searchWell}`
+      )
+        .then((res) => res.json())
+        .then((res) => setCurrentConfigHistory(res[0]));
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const handleSave = async (formData) => {
+    const isExisting = configs?.some((item) => item.id === currentData?.id);
+    const newId = nanoid();
+    const timestamp = Date.now();
+
+    if (!isExisting) {
+      try {
+        await fetch(`${configsURL}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            configId: newId,
+            updatedAt: timestamp,
+            ...formData,
+            id: newId,
+          }),
+        })
+          .then(() => setUpdate())
+          .then(() => {
+            toast({
+              title: 'Saved',
+              status: 'success',
+              position: 'top-right',
+              duration: 1500,
+              isClosable: true,
+              variant: 'subtle',
+            });
+          });
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
+    if (isExisting) {
+      try {
+        await fetch(`${configsURL}/${currentData?.id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            updatedAt: timestamp,
+            ...formData,
+          }),
+        })
+          .then(() => setUpdate())
+          .then(() => {
+            toast({
+              title: 'Updated',
+              status: 'success',
+              position: 'top-right',
+              duration: 1500,
+              isClosable: true,
+              variant: 'subtle',
+            });
+          });
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  };
+
   return (
     <BarrierContext.Provider
       value={{
@@ -236,11 +343,9 @@ export const BarrierProvider = ({ children }) => {
         setShowDiagram,
         isCurrent,
         setIsCurrent,
-        selectedString,
-        setSelectedString,
-        strings,
-        isCrosshair,
-        setIsCrosshair,
+        selectedWell,
+        setSelectedWell,
+        wells,
         isNewAnno,
         setIsNewAnno,
         annotations,
@@ -253,15 +358,20 @@ export const BarrierProvider = ({ children }) => {
         setStrokeColor,
         showConfigHistory,
         setShowConfigHistory,
-        searchString,
-        setSearchString,
-        filteredStrings,
+        searchWell,
+        setSearchWell,
+        filteredWells,
         setBarrierColor,
         resetBarriers,
         updateBarriers,
         setUpdateBarriers,
         handleDuplicate,
         handleDelete,
+        handleUpdate,
+        handleSave,
+        handleSearchConfigHistory,
+        currentConfigHistory,
+        setCurrentConfigHistory,
       }}
     >
       {children}

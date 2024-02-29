@@ -1,37 +1,25 @@
 import { useContext, useRef, useState, useEffect } from 'react';
-
 import {
   Flex,
-  IconButton,
-  HStack,
   Button,
   Input,
   InputGroup,
-  useColorModeValue,
   InputRightElement,
-  Stack,
-  Image,
 } from '@chakra-ui/react';
 import Popup from 'reactjs-popup';
 import { useForm } from 'react-hook-form';
-import {
-  AddIcon,
-  SearchIcon,
-  ChevronDownIcon,
-  SmallCloseIcon,
-} from '@chakra-ui/icons';
+import { ChevronDownIcon, SmallCloseIcon } from '@chakra-ui/icons';
 import { BarrierContext } from '../context/BarrierContext';
 
-export default function SelectStringDropdown() {
+export default function SelectWellDropdown() {
   const {
-    handleSaveString,
-    searchString,
-    setSearchString,
-    filteredStrings,
-    selectedString,
-    setSelectedString,
+    handleUpdate,
+    searchWell,
+    setSearchWell,
+    filteredWells,
+    selectedWell,
+    setSelectedWell,
   } = useContext(BarrierContext);
-
   const [showDropdown, setShowDropdown] = useState(true);
 
   const {
@@ -43,31 +31,31 @@ export default function SelectStringDropdown() {
   } = useForm();
 
   useEffect(() => {
-    setValue('searchString', selectedString);
-  }, [selectedString]);
+    setValue('searchWell', selectedWell);
+  }, [selectedWell]);
 
   return (
     <form>
       <Popup
         trigger={
-          <Flex mt='100px' w='full'>
+          <Flex w='full'>
             <InputGroup
               size='sm'
               borderRadius='5px'
               onClick={() => setShowDropdown(true)}
             >
               <Input
-                placeholder='Select string'
+                placeholder='Select well'
                 borderRadius='5px'
-                {...register('searchString', {
-                  onChange: (e) => setSearchString(e.target.value),
+                {...register('searchWell', {
+                  onChange: (e) => setSearchWell(e.target.value),
                 })}
               />
               <InputRightElement w='3rem'>
                 <SmallCloseIcon
                   onClick={() => {
-                    setSearchString('');
-                    setSelectedString('');
+                    setSearchWell('');
+                    setSelectedWell('');
                   }}
                 />
                 <ChevronDownIcon ml={2} />
@@ -78,12 +66,12 @@ export default function SelectStringDropdown() {
       >
         {showDropdown ? (
           <div className='flex flex-col bg-white border w-[203px] h-[160px] overflow-y-auto scrollbar-hide rounded-md '>
-            {filteredStrings?.map((item) => (
+            {filteredWells?.map((item) => (
               <div
                 key={item.id}
                 className='hover:bg-[#EDF2F7] px-3 py-1 cursor-pointer'
                 onClick={() => {
-                  setSelectedString(item?.name);
+                  setSelectedWell(item?.name);
                   setShowDropdown(false);
                 }}
               >
@@ -99,7 +87,7 @@ export default function SelectStringDropdown() {
           colorScheme='blue'
           size='sm'
           w='70px'
-          onClick={handleSaveString}
+          onClick={handleUpdate}
         >
           Update
         </Button>

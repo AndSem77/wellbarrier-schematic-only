@@ -20,13 +20,13 @@ import {
 import { SmallCloseIcon } from '@chakra-ui/icons';
 import { BarrierContext } from '../context/BarrierContext';
 import { nanoid } from 'nanoid';
-import { useDrop, useDrag } from 'react-dnd';
+
 import AnnotationList from './AnnotationList';
 import { useForm, useFieldArray } from 'react-hook-form';
 import _ from 'lodash';
 import { useMouse } from '@uidotdev/usehooks';
 import { defaultElements } from '../data/defaultElements';
-import Xmas from './schematic/Xmas';
+
 import TestDiagram from './schematic/TestDiagram';
 
 const Diagram = forwardRef((props, printRef) => {
@@ -35,28 +35,19 @@ const Diagram = forwardRef((props, printRef) => {
   const {
     currentData,
     setCurrentData,
-    handleCreateTemplate,
+    handleSave,
     setShowDiagram,
     isCurrent,
     setIsCurrent,
     updateBarriers,
   } = useContext(BarrierContext);
 
-  // const [mouseCoords, setMouseCoords] = useState({ x: 0, y: 0 });
-
-  // console.log('mouse coords', mouseCoords);
-
-  // const handleMouseMove = (event) => {
-  //   setMouseCoords({
-  //     x: event.clientX - event.target.offsetLeft,
-  //     y: event.clientY - event.target.offsetTop,
-  //   });
-  // };
-
   const { register, handleSubmit, control, watch, setValue } = useForm({
     defaultValues: {
-      name: isCurrent ? currentData?.name : '',
-      elements: isCurrent ? currentData?.barrierElements : defaultElements,
+      configName: isCurrent ? currentData?.configName : '',
+      barrierElements: isCurrent
+        ? currentData?.barrierElements
+        : defaultElements,
     },
   });
 
@@ -65,7 +56,7 @@ const Diagram = forwardRef((props, printRef) => {
 
   const { fields, append, remove } = useFieldArray({
     control,
-    name: 'elements',
+    name: 'barrierElements',
   });
 
   const capitalizeFirst = (str) => {
@@ -80,7 +71,7 @@ const Diagram = forwardRef((props, printRef) => {
     return capWords;
   };
 
-  const barrierElements = watch('elements');
+  const barrierElements = watch('barrierElements');
 
   useEffect(() => {
     setCurrentData((prev) => ({ ...prev, barrierElements }));
@@ -88,22 +79,25 @@ const Diagram = forwardRef((props, printRef) => {
 
   // useEffect(() => {
   //   if (isCurrent) {
-  //     setValue('name', currentData?.name);
-  //     setValue('elements', currentData?.barrierElements);
+  //     setValue('configName', currentData?.configName);
+  //     setValue('barrierElements', currentData?.barrierElements);
   //   }
-  // }, [isCurrent, currentData]);
+  // }, [currentData]);
 
-  useEffect(() => {
-    if (updateBarriers) {
-      setValue('elements', currentData?.barrierElements);
-    }
-  }, [updateBarriers]);
+  // useEffect(() => {
+  //   if (updateBarriers) {
+  //     setValue('barrierElements', currentData?.barrierElements);
+  //   }
+  // }, [updateBarriers]);
 
-  const onSubmit = (data) => console.log('form', data);
+  // const onSubmit = (data) => console.log('form', data);
 
   return (
-    // handleCreateTemplate
-    <form id='diagramForm' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
+    <form
+      id='diagramForm'
+      onSubmit={handleSubmit(handleSave)}
+      autoComplete='off'
+    >
       <Flex w='640px' flexDir='column'>
         <Flex w='640px' justify='space-between' overflowY zIndex={40} mb={3}>
           <Button
@@ -139,7 +133,7 @@ const Diagram = forwardRef((props, printRef) => {
               variant='unstyled'
               textAlign='center'
               className='font-bold'
-              {...register('name', {
+              {...register('configName', {
                 required: true,
               })}
             />
@@ -152,13 +146,13 @@ const Diagram = forwardRef((props, printRef) => {
           >
             <div
               // ref={containerRef}
-              className='relative border col-span-6 m-4 snapContainer flex'
+              className='relative col-span-6 m-4 snapContainer flex justify-center '
             >
               {/* {true ? <Xmas /> : 'current'} */}
               {true ? <TestDiagram /> : 'current'}
             </div>
-            <div className='col-span-6 m-4 border'>
-              <div className='grid grid-cols-12 border-b h-5'>
+            <div className='col-span-6 m-4'>
+              <div className='grid grid-cols-12 border h-5'>
                 <div className='flex items-center justify-center col-span-1 border-r text-xs font-bold'>
                   No.
                 </div>
@@ -175,7 +169,7 @@ const Diagram = forwardRef((props, printRef) => {
               {barrierElements?.map((item, index) => (
                 <div
                   key={item.id}
-                  className='grid grid-cols-12 border-b h-5 hover:bg-slate-100'
+                  className='grid grid-cols-12 border-b border-l border-r h-5 hover:bg-slate-100'
                 >
                   <div className='flex items-center justify-center col-span-1 border-r text-[8px]'>
                     {index + 1}
@@ -227,20 +221,29 @@ const Diagram = forwardRef((props, printRef) => {
                             value='primary'
                             colorScheme='blue'
                             size='sm'
-                            {...register(`elements.${index}.barrier`)}
-                            // onChange={(e) => {
-                            //   if (e.target.value === 'primary') {
-                            //     setValue(`elements.${index}.quantity`, 1);
-                            //     setValue(
-                            //       `elements.${index}.barrier`,
-                            //       'primary'
-                            //     );
-                            //   }
-                            //   if (e.target.value === 'none') {
-                            //     setValue(`elements.${index}.quantity`, 0);
-                            //     setValue(`elements.${index}.barrier`, 'none');
-                            //   }
-                            // }}
+                            {...register(`barrierElements.${index}.barrier`)}
+                            onChange={(e) => {
+                              if (e.target.value === 'primary') {
+                                setValue(
+                                  `barrierElements.${index}.quantity`,
+                                  1
+                                );
+                                setValue(
+                                  `barrierElements.${index}.barrier`,
+                                  'primary'
+                                );
+                              }
+                              if (e.target.value === 'none') {
+                                setValue(
+                                  `barrierElements.${index}.quantity`,
+                                  0
+                                );
+                                setValue(
+                                  `barrierElements.${index}.barrier`,
+                                  'none'
+                                );
+                              }
+                            }}
                           >
                             <Text fontSize='10px'>Primary</Text>
                           </Radio>
@@ -249,18 +252,27 @@ const Diagram = forwardRef((props, printRef) => {
                             value='secondary'
                             colorScheme='red'
                             size='sm'
-                            {...register(`elements.${index}.barrier`)}
+                            {...register(`barrierElements.${index}.barrier`)}
                             onChange={(e) => {
                               if (e.target.value === 'secondary') {
-                                setValue(`elements.${index}.quantity`, 1);
                                 setValue(
-                                  `elements.${index}.barrier`,
+                                  `barrierElements.${index}.quantity`,
+                                  1
+                                );
+                                setValue(
+                                  `barrierElements.${index}.barrier`,
                                   'secondary'
                                 );
                               }
                               if (e.target.value === 'none') {
-                                setValue(`elements.${index}.quantity`, 0);
-                                setValue(`elements.${index}.barrier`, 'none');
+                                setValue(
+                                  `barrierElements.${index}.quantity`,
+                                  0
+                                );
+                                setValue(
+                                  `barrierElements.${index}.barrier`,
+                                  'none'
+                                );
                               }
                             }}
                           >
@@ -270,11 +282,17 @@ const Diagram = forwardRef((props, printRef) => {
                             value='none'
                             colorScheme='gray'
                             size='sm'
-                            {...register(`elements.${index}.barrier`)}
+                            {...register(`barrierElements.${index}.barrier`)}
                             onChange={(e) => {
                               if (e.target.value === 'none') {
-                                setValue(`elements.${index}.quantity`, 0);
-                                setValue(`elements.${index}.barrier`, 'none');
+                                setValue(
+                                  `barrierElements.${index}.quantity`,
+                                  0
+                                );
+                                setValue(
+                                  `barrierElements.${index}.barrier`,
+                                  'none'
+                                );
                               }
                             }}
                           >
@@ -291,12 +309,12 @@ const Diagram = forwardRef((props, printRef) => {
                       size='8px'
                       variant='unstyled'
                       type='number'
-                      {...register(`elements.${index}.quantity`, {
+                      {...register(`barrierElements.${index}.quantity`, {
                         valueAsNumber: true,
                       })}
                       onChange={(e) => {
                         if (e.target.value <= 0) {
-                          setValue(`elements.${index}.barrier`, 'none');
+                          setValue(`barrierElements.${index}.barrier`, 'none');
                         }
                         // if (e.target.value > 0) {
                         //   setValue(`elements.${index}.barrier`, 'secondary');
@@ -306,17 +324,6 @@ const Diagram = forwardRef((props, printRef) => {
                   </div>
                 </div>
               ))}
-              {/* <div className='flex justify-end m-3 saveTemplateBtn'>
-                <Button
-                  variant='solid'
-                  colorScheme='blue'
-                  size='sm'
-                  type='submit'
-                  form='diagramForm'
-                >
-                  Save Template
-                </Button>
-              </div> */}
             </div>
           </div>
         </div>
