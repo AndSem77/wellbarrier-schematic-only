@@ -21,11 +21,11 @@ export default function ConfigItem({ item }) {
     <div
       className='relative w-full h-24 border rounded flex justify-between p-1 space-x-1 my-1 hover:border-sky-600'
       onDoubleClick={() => {
-        setIsCurrent(true);
+        setShowDiagram(false);
+        setCurrentData(null);
         setCurrentData((prev) => ({ ...prev, ...item }));
-        setShowDiagram(true);
-
-        console.log('curr', item);
+        setIsCurrent(true);
+        setTimeout(() => setShowDiagram(true), 200);
       }}
     >
       <div className='w-full h-full text-xs'>{item.configName}</div>
@@ -51,9 +51,11 @@ export default function ConfigItem({ item }) {
             <div
               className='flex w-full items-center hover:bg-[#EDF2F7] px-3 py-1'
               onClick={() => {
-                setIsCurrent(true);
+                setShowDiagram(false);
+                setCurrentData(null);
                 setCurrentData((prev) => ({ ...prev, ...item }));
-                setShowDiagram(true);
+                setIsCurrent(true);
+                setTimeout(() => setShowDiagram(true), 100);
               }}
             >
               <EditIcon />

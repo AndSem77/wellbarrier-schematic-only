@@ -202,7 +202,7 @@ function App() {
         <Flex w='640px' h='100vh' overflowY>
           <div className='overflow-y-auto w-full scrollbar-hide mt-[108px] mb-3'>
             {showDiagram ? <Diagram ref={componentRef} /> : null}
-            {showConfigHistory ? <ConfigHistory /> : null}
+            {!showDiagram && showConfigHistory ? <ConfigHistory /> : null}
           </div>
         </Flex>
 
