@@ -25,27 +25,26 @@ import _ from 'lodash';
 import { useMouse } from '@uidotdev/usehooks';
 import { defaultElements } from '../data/defaultElements';
 import moment from 'moment';
-import TestDiagram from './schematic/TestDiagram';
+import DiagramSVG from './schematic/DiagramSVG';
 
 const ConfigHistory = forwardRef((props, printRef) => {
   const {
-    showConfigHistory,
-    setShowConfigHistory,
     searchWell,
     setSearchWell,
     setSelectedWell,
-    handleSearchConfigHistory,
-    currentConfigHistory,
-    setCurrentConfigHistory,
+    handleConfigHistory,
+    configHistory,
+    setConfigHistory,
+    setComponent,
   } = useContext(BarrierContext);
   const { register, handleSubmit, control, watch, setValue } = useForm({
     defaultValues: {},
   });
-  const [showDropdown, setShowDropdown] = useState(true);
+
   const [currentConfig, setCurrentConfig] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const configDate = currentConfigHistory?.configs[currentIndex]?.updatedAt;
+  const configDate = configHistory?.configs[currentIndex]?.updatedAt;
   const formattedDate = moment(configDate).format('DD/MM/YYYY');
 
   const handlePrev = () => {
@@ -56,27 +55,21 @@ const ConfigHistory = forwardRef((props, printRef) => {
   };
 
   useEffect(() => {
-    setCurrentConfig(currentConfigHistory?.configs[currentIndex]);
+    setCurrentConfig(configHistory?.configs[currentIndex]);
   }, [currentIndex]);
-
-  console.log('curr his', currentConfigHistory);
-
-  // if (e.key === 'Enter') {
-  //   console.log('enter');
-  // }
 
   return (
     <>
       <Flex w='640px' flexDir='column'>
         <Flex
           w='640px'
-          justify='space-between'
+          justify='end'
           align='center'
           overflowY
           zIndex={40}
           mb={2}
         >
-          <Flex p={0.5}>
+          {/* <Flex p={0.5}>
             <InputGroup w='300px' size='sm' borderRadius='5px'>
               <Input
                 placeholder='Search'
@@ -87,7 +80,7 @@ const ConfigHistory = forwardRef((props, printRef) => {
                 })}
                 onKeyDown={(e) => {
                   if (searchWell && e.key === 'Enter') {
-                    handleSearchConfigHistory();
+                    handleConfigHistory();
                   }
                 }}
               />
@@ -106,9 +99,9 @@ const ConfigHistory = forwardRef((props, printRef) => {
               size='sm'
               aria-label='Search database'
               icon={<SearchIcon />}
-              onClick={handleSearchConfigHistory}
+              onClick={handleConfigHistory}
             />
-          </Flex>
+          </Flex> */}
 
           <IconButton
             variant='outline'
@@ -116,9 +109,8 @@ const ConfigHistory = forwardRef((props, printRef) => {
             aria-label='Close history'
             icon={<SmallCloseIcon />}
             onClick={() => {
-              setCurrentConfigHistory(null);
-              setShowConfigHistory(false);
-              // setIsCurrent(false);
+              setComponent(null);
+              setConfigHistory(null);
             }}
           />
         </Flex>
@@ -129,9 +121,7 @@ const ConfigHistory = forwardRef((props, printRef) => {
           <Button
             size='xs'
             onClick={handleNext}
-            isDisabled={
-              currentIndex >= currentConfigHistory?.configs?.length - 1
-            }
+            isDisabled={currentIndex >= configHistory?.configs?.length - 1}
           >
             Next
           </Button>
@@ -143,51 +133,21 @@ const ConfigHistory = forwardRef((props, printRef) => {
           className='flex flex-col w-full h-[1040px] border overflow-y-auto scrollbar-hide'
         >
           <div className='p-2 w-full flex justify-center min-h-[86px]'>
-            {/* <div className='w-full flex'>
-              <InputGroup
-                size='sm'
-                borderRadius='5px'
-                onClick={() => setShowDropdown(true)}
-              >
-                <Input
-                  placeholder='Select well'
-                  borderRadius='5px'
-                  {...register('searchWell', {
-                    onChange: (e) => setSearchWell(e.target.value),
-                  })}
-                />
-                <InputRightElement w='3rem'>
-                  <SmallCloseIcon
-                    onClick={() => {
-                      setSearchWell('');
-                      setSelectedWell('');
-                    }}
-                  />
-                  <ChevronDownIcon ml={2} />
-                </InputRightElement>
-              </InputGroup>
-              <IconButton
-                size='sm'
-                aria-label='Search database'
-                icon={<SearchIcon />}
-              />
-            </div> */}
-
-            {currentConfigHistory ? (
+            {configHistory ? (
               <Flex flexDir='column' align='center'>
-                <Text fontWeight='bold'>{currentConfigHistory?.wellName}</Text>
+                <Text fontWeight='bold'>{configHistory?.wellName}</Text>
                 <Text fontSize='xs'>
-                  {currentConfigHistory?.configs[currentIndex]?.configName}
+                  {configHistory?.configs[currentIndex]?.configName}
                 </Text>
                 <Text fontSize='xs'>{formattedDate}</Text>
                 <Text fontSize='xs'>{`Configuration ${currentIndex + 1} of ${
-                  currentConfigHistory?.configs?.length
+                  configHistory?.configs?.length
                 }`}</Text>
               </Flex>
             ) : null}
           </div>
           <div
-            className='grid grid-cols-12 w-full h-full bg-slate-50'
+            className='flex w-full h-full justify-center items-start'
             onContextMenu={(e) => {
               e.preventDefault();
             }}

@@ -24,46 +24,6 @@ export default function AnnotationItem({ item }) {
     }
   };
 
-  // const handleDeleteAnno = () => {
-  //   let updated = currentData?.annotations.filter(
-  //     (anno) => anno.id !== selectedAnno?.id
-  //   );
-  //   setCurrentData((prev) => ({
-  //     ...prev,
-  //     ...currentData,
-  //     annotations: updated,
-  //   }));
-  // };
-
-  // useEffect(() => {
-  //   const onKeyDown = ({ key }) => {
-  //     if (key === 'Backspace') {
-  //       handleDeleteAnno();
-  //       setSelectedAnno(null);
-  //     }
-  //   };
-
-  //   document.addEventListener('keydown', onKeyDown);
-
-  //   return () => {
-  //     document.removeEventListener('keydown', onKeyDown);
-  //   };
-  // }, [selectedAnno]);
-
-  // useEffect(() => {
-  //   let handler = (e) => {
-  //     if (targetRef.current && !targetRef.current.contains(e.target)) {
-  //       setSelectedAnno(null);
-  //     }
-  //   };
-
-  //   document.addEventListener('mousedown', handler);
-
-  //   return () => {
-  //     document.removeEventListener('mousedown', handler);
-  //   };
-  // });
-
   return (
     <div ref={targetRef} onClick={() => setIsCurrentAnno(item)}>
       {renderAnno(item.type)}

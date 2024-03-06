@@ -106,7 +106,7 @@ export const defaultElements = [
   {
     id: nanoid(),
     name: 'conductor casing valves',
-    barrier: 'secondary',
+    barrier: 'none',
     quantity: 0,
   },
 
@@ -120,61 +120,6 @@ export const defaultElements = [
     id: nanoid(),
     name: 'tubing hanger',
     barrier: 'secondary',
-    quantity: 1,
-  },
-  {
-    id: nanoid(),
-    name: 'production tubing',
-    barrier: 'primary',
-    quantity: 1,
-  },
-
-  {
-    id: nanoid(),
-    name: 'downhole safety valve',
-    barrier: 'primary',
-    quantity: 0,
-  },
-  {
-    id: nanoid(),
-    name: 'downhole safety valve control line',
-    barrier: 'primary',
-    quantity: 0,
-  },
-  {
-    id: nanoid(),
-    name: 'safety valve landing nipple',
-    barrier: 'primary',
-    quantity: 1,
-  },
-  {
-    id: nanoid(),
-    name: 'gas lift mandrel',
-    barrier: 'primary',
-    quantity: 5,
-  },
-  {
-    id: nanoid(),
-    name: 'sliding side door',
-    barrier: 'primary',
-    quantity: 2,
-  },
-  {
-    id: nanoid(),
-    name: 'production packer',
-    barrier: 'primary',
-    quantity: 1,
-  },
-  {
-    id: nanoid(),
-    name: 'tubing plug',
-    barrier: 'primary',
-    quantity: 1,
-  },
-  {
-    id: nanoid(),
-    name: 'in-situ formation',
-    barrier: 'primary',
     quantity: 1,
   },
   {
@@ -193,13 +138,68 @@ export const defaultElements = [
   {
     id: nanoid(),
     name: 'VR plug',
-    barrier: 'secondary',
-    quantity: 1,
+    barrier: 'none',
+    quantity: 0,
   },
   {
     id: nanoid(),
     name: 'BPV / TWCV',
-    barrier: 'secondary',
+    barrier: 'none',
     quantity: 0,
+  },
+  {
+    id: nanoid(),
+    name: 'production tubing',
+    barrier: 'primary',
+    quantity: 1,
+  },
+
+  {
+    id: nanoid(),
+    name: 'downhole safety valve',
+    barrier: 'primary',
+    quantity: 1,
+  },
+  {
+    id: nanoid(),
+    name: 'downhole safety valve control line',
+    barrier: 'primary',
+    quantity: 1,
+  },
+  {
+    id: nanoid(),
+    name: 'safety valve landing nipple',
+    barrier: 'primary',
+    quantity: 1,
+  },
+  {
+    id: nanoid(),
+    name: 'gas lift mandrel',
+    barrier: 'primary',
+    quantity: 5,
+  },
+  {
+    id: nanoid(),
+    name: 'sliding side door',
+    barrier: 'none',
+    quantity: 0,
+  },
+  {
+    id: nanoid(),
+    name: 'production packer',
+    barrier: 'primary',
+    quantity: 1,
+  },
+  {
+    id: nanoid(),
+    name: 'tubing plug',
+    barrier: 'none',
+    quantity: 0,
+  },
+  {
+    id: nanoid(),
+    name: 'in-situ formation',
+    barrier: 'primary',
+    quantity: 1,
   },
 ];

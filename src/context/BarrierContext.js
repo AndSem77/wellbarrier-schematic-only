@@ -13,9 +13,6 @@ export const BarrierProvider = ({ children }) => {
   // const stringsURL = 'https://mock-server-ytzw.onrender.com/strings';
   const toast = useToast();
   const [configs, setConfigs] = useState([]);
-  const [isCurrent, setIsCurrent] = useState(false);
-  const [showDiagram, setShowDiagram] = useState(false);
-  const [showConfigHistory, setShowConfigHistory] = useState(false);
   const [currentData, setCurrentData] = useState(null);
   const [update, setUpdate] = useState(false);
   const [wells, setWells] = useState([
@@ -38,7 +35,9 @@ export const BarrierProvider = ({ children }) => {
   const [isCurrentAnno, setIsCurrentAnno] = useState(null);
   const [bgColor, setBgColor] = useState('#000000');
   const [strokeColor, setStrokeColor] = useState('#000000');
-  const [currentConfigHistory, setCurrentConfigHistory] = useState(null);
+  const [configHistory, setConfigHistory] = useState(null);
+  const [component, setComponent] = useState(null);
+  const [previewCDFT, setPreviewCDFT] = useState(false);
 
   const [annotations, setAnnotations] = useState([
     {
@@ -71,6 +70,15 @@ export const BarrierProvider = ({ children }) => {
     },
   ]);
   const [updateBarriers, setUpdateBarriers] = useState(false);
+  const [multipleElements, setMultipleElements] = useState({
+    packerQty: 1,
+    glmQty: 5,
+    ssdQty: 0,
+  });
+
+  // console.log('curr in ctx', currentData);
+
+  // console.log('selected well', selectedWell);
 
   const handleGetConfigs = async () => {
     try {
@@ -79,102 +87,6 @@ export const BarrierProvider = ({ children }) => {
         .then((res) => setConfigs(res));
     } catch (e) {
       console.log(e);
-    }
-  };
-
-  const handleDuplicate = async (item) => {
-    const newId = nanoid();
-    try {
-      await fetch(`${configsURL}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...item,
-          id: newId,
-          configId: newId,
-          configName: `${item?.configName} copy`,
-          updatedAt: timestamp,
-        }),
-      })
-        .then((res) => {
-          if (res.ok) {
-            toast({
-              title: 'Duplicated',
-              status: 'success',
-              position: 'top-right',
-              duration: 1500,
-              isClosable: true,
-              variant: 'subtle',
-            });
-          }
-          return res.json();
-        })
-        .then(() => setUpdate(true));
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const handleDelete = async (id) => {
-    try {
-      await fetch(`${configsURL}/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-        .then((res) => {
-          if (res.ok) {
-            toast({
-              title: 'Deleted',
-              status: 'success',
-              position: 'top-right',
-              duration: 1500,
-              isClosable: true,
-              variant: 'subtle',
-            });
-          }
-          return res.json();
-        })
-        .then(() => setUpdate(true));
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const handleUpdate = async () => {
-    if (currentData && selectedWell) {
-      try {
-        await fetch(`${wellsURL}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            id: nanoid(),
-            wellName: selectedWell,
-            updatedAt: timestamp,
-          }),
-        })
-          .then((res) => {
-            if (res.ok) {
-              toast({
-                title: `${selectedWell} updated`,
-                status: 'success',
-                position: 'top-right',
-                duration: 1500,
-                isClosable: true,
-                variant: 'subtle',
-              });
-            }
-            return res.json();
-          })
-          .then(() => setUpdate(true));
-      } catch (e) {
-        console.log(e);
-      }
     }
   };
 
@@ -210,34 +122,35 @@ export const BarrierProvider = ({ children }) => {
   }, [wells, searchWell]);
 
   const setBarrierColor = (name) => {
-    let current = currentData?.barrierElements?.find(
+    let element = currentData?.barrierElements?.find(
       (item) => item?.name === name
     );
 
-    if (current) {
-      if (current.barrier === 'primary') {
+    if (element) {
+      if (element.quantity === 0) {
+        return 'none';
+      } else if (element.barrier === 'primary') {
         return 'blue';
-      } else if (current.barrier === 'secondary') {
+      } else if (element.barrier === 'secondary') {
         return 'red';
-      } else if (current.barrier === 'none') {
-        return 'black';
       } else {
         return 'none';
       }
     }
   };
+
   const setStatusColor = (name) => {
-    let current = currentData?.barrierElements?.find(
+    let element = currentData?.barrierElements?.find(
       (item) => item?.name === name
     );
 
-    if (current) {
-      if (current.barrier === 'primary') {
-        return 'blue';
-      } else if (current.barrier === 'secondary') {
+    if (element) {
+      if (element.status === 'pass') {
+        return 'green';
+      } else if (element.barrier === 'fail') {
         return 'red';
-      } else if (current.barrier === 'none') {
-        return 'black';
+      } else if (element.barrier === 'degraded') {
+        return 'yellow';
       } else {
         return 'none';
       }
@@ -252,26 +165,12 @@ export const BarrierProvider = ({ children }) => {
       }));
       setCurrentData({ ...currentData, barrierElements: updated });
       setUpdateBarriers(true);
-      setTimeout(() => setUpdateBarriers(false), 1000);
-    }
-  };
-
-  const handleSearchConfigHistory = async () => {
-    try {
-      const res = await fetch(
-        `http://localhost:4000/wells?wellName_like=${searchWell}`
-      )
-        .then((res) => res.json())
-        .then((res) => setCurrentConfigHistory(res[0]));
-    } catch (e) {
-      console.log(e);
+      setTimeout(() => setUpdateBarriers(false), 500);
     }
   };
 
   const handleSave = async (formData) => {
     const isExisting = configs?.some((item) => item.id === currentData?.id);
-    const newId = nanoid();
-    const timestamp = Date.now();
 
     if (!isExisting) {
       try {
@@ -281,10 +180,10 @@ export const BarrierProvider = ({ children }) => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            configId: newId,
+            id: timestamp,
+            configId: timestamp,
             updatedAt: timestamp,
             ...formData,
-            id: newId,
           }),
         })
           .then(() => setUpdate())
@@ -332,6 +231,129 @@ export const BarrierProvider = ({ children }) => {
     }
   };
 
+  const handleDelete = async (id) => {
+    try {
+      await fetch(`${configsURL}/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((res) => {
+          if (res.ok) {
+            toast({
+              title: 'Deleted',
+              status: 'success',
+              position: 'top-right',
+              duration: 1500,
+              isClosable: true,
+              variant: 'subtle',
+            });
+          }
+        })
+        .then(() => setUpdate(true));
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const handleDuplicate = async (item) => {
+    try {
+      await fetch(`${configsURL}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...item,
+          id: timestamp,
+          configId: timestamp,
+          configName: `${item?.configName} copy`,
+          updatedAt: timestamp,
+        }),
+      })
+        .then(() => setUpdate())
+        .then(() => {
+          toast({
+            title: 'Duplicated',
+            status: 'success',
+            position: 'top-right',
+            duration: 1500,
+            isClosable: true,
+            variant: 'subtle',
+          });
+        });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const handleUpdate = async () => {
+    if (currentData && selectedWell) {
+      try {
+        await fetch(`${wellsURL}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            id: timestamp,
+            wellName: selectedWell,
+            updatedAt: timestamp,
+            configs: [],
+            cdft: [
+              {
+                cdftDate: '01-01-2000',
+                preventiveMaintenenanceId: 777,
+                configId: 1709718224354,
+                configName: '1',
+                equipmentStatus: [
+                  {
+                    id: 'iq_krYL97dZD6WtscUi3S',
+                    name: 'crown valve',
+                    barrier: 'secondary',
+                    quantity: 1,
+                    status: 'pass',
+                  },
+                ],
+              },
+            ],
+          }),
+        })
+          .then((res) => {
+            if (res.ok) {
+              toast({
+                title: `${selectedWell} updated`,
+                status: 'success',
+                position: 'top-right',
+                duration: 1500,
+                isClosable: true,
+                variant: 'subtle',
+              });
+            }
+          })
+          .then(() => setUpdate(true));
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  };
+
+  const handleConfigHistory = async () => {
+    try {
+      if (selectedWell) {
+        await fetch(`http://localhost:4000/wells?wellName_like=${selectedWell}`)
+          .then((res) => res.json())
+          .then((res) => setConfigHistory(res[0]))
+          .then(() => setComponent('config history'));
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  console.log('his', configHistory);
+
   return (
     <BarrierContext.Provider
       value={{
@@ -339,10 +361,6 @@ export const BarrierProvider = ({ children }) => {
         setConfigs,
         currentData,
         setCurrentData,
-        showDiagram,
-        setShowDiagram,
-        isCurrent,
-        setIsCurrent,
         selectedWell,
         setSelectedWell,
         wells,
@@ -356,12 +374,11 @@ export const BarrierProvider = ({ children }) => {
         setBgColor,
         strokeColor,
         setStrokeColor,
-        showConfigHistory,
-        setShowConfigHistory,
         searchWell,
         setSearchWell,
         filteredWells,
         setBarrierColor,
+        setStatusColor,
         resetBarriers,
         updateBarriers,
         setUpdateBarriers,
@@ -369,9 +386,15 @@ export const BarrierProvider = ({ children }) => {
         handleDelete,
         handleUpdate,
         handleSave,
-        handleSearchConfigHistory,
-        currentConfigHistory,
-        setCurrentConfigHistory,
+        handleConfigHistory,
+        component,
+        setComponent,
+        previewCDFT,
+        setPreviewCDFT,
+        multipleElements,
+        setMultipleElements,
+        configHistory,
+        setConfigHistory,
       }}
     >
       {children}

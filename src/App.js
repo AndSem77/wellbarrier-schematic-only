@@ -13,7 +13,7 @@ import {
 import { AddIcon, SearchIcon, ChevronDownIcon } from '@chakra-ui/icons';
 import { BsPrinterFill } from 'react-icons/bs';
 import ReactToPrint from 'react-to-print';
-import Diagram from './components/Diagram';
+import NewDiagram from './components/NewDiagram';
 import { BarrierContext } from './context/BarrierContext';
 import DiagramList from './components/ConfigList';
 import { nanoid } from 'nanoid';
@@ -23,23 +23,20 @@ import { PiTextTFill } from 'react-icons/pi';
 import { MdEdit } from 'react-icons/md';
 import DesignPanel from './components/DesignPanel';
 import Popup from 'reactjs-popup';
-// import ConfigHistory from './components/ConfigHistory';
 import SelectWellDropdown from './components/SelectWellDropdown';
 import ConfigHistory from './components/ConfigHistory';
+import PreviewCDFT from './components/PreviewCDFT';
+import CurrentDiagram from './components/CurrentDiagram';
 
 function App() {
   const {
-    showDiagram,
-    setShowDiagram,
     currentData,
     setCurrentData,
     setIsNewAnno,
-    configs,
-    setConfigs,
-    showConfigHistory,
-    setShowConfigHistory,
     resetBarriers,
-    setIsCurrent,
+    component,
+    setComponent,
+    handleConfigHistory,
   } = useContext(BarrierContext);
 
   const annotationMenu = [
@@ -73,9 +70,28 @@ function App() {
 
   const componentRef = useRef();
   const buttonsBg = useColorModeValue('white', 'gray.800');
+
+  const renderComponent = (component) => {
+    switch (component) {
+      case 'new diagram':
+        return <NewDiagram ref={componentRef} />;
+        break;
+      case 'current diagram':
+        return <CurrentDiagram ref={componentRef} />;
+        break;
+      case 'config history':
+        return <ConfigHistory ref={componentRef} />;
+        break;
+      case 'preview cdft':
+        return <PreviewCDFT ref={componentRef} />;
+        break;
+      default:
+        return null;
+    }
+  };
+
   return (
     <Flex w='100vw' h='100vh'>
-      {/* <ConfigHistory configs={configs} /> */}
       <Navbar />
       {/* buttons start */}
       <Flex
@@ -102,8 +118,7 @@ function App() {
                   icon={<AddIcon />}
                   onClick={() => {
                     setCurrentData({ id: nanoid(), ...currentData });
-                    setShowDiagram(true);
-                    setIsCurrent(false);
+                    setComponent('new diagram');
                   }}
                 />
 
@@ -187,13 +202,21 @@ function App() {
           <div className='overflow-y-auto w-full scrollbar-hide mt-3 mb-3'>
             <DiagramList />
             <Stack mt={6}>
-              <Button size='sm' onClick={() => setShowConfigHistory(true)}>
+              <Button
+                size='sm'
+                onClick={
+                  handleConfigHistory
+                  // setComponent('config history');
+                }
+              >
                 Configuration history
               </Button>
               <Button size='sm' onClick={resetBarriers}>
                 Reset barriers
               </Button>
-              <Button size='sm'>Preview CDFT</Button>
+              <Button size='sm' onClick={() => setComponent('preview cdft')}>
+                Preview CDFT
+              </Button>
             </Stack>
           </div>
         </Flex>
@@ -201,8 +224,7 @@ function App() {
 
         <Flex w='640px' h='100vh' overflowY>
           <div className='overflow-y-auto w-full scrollbar-hide mt-[108px] mb-3'>
-            {showDiagram ? <Diagram ref={componentRef} /> : null}
-            {!showDiagram && showConfigHistory ? <ConfigHistory /> : null}
+            {renderComponent(component)}
           </div>
         </Flex>
 

@@ -27,19 +27,17 @@ import _ from 'lodash';
 import { useMouse } from '@uidotdev/usehooks';
 import { defaultElements } from '../data/defaultElements';
 
-import TestDiagram from './schematic/TestDiagram';
+import DiagramSVG from './schematic/DiagramSVG';
 
-const Diagram = forwardRef((props, printRef) => {
-  // const [mouse, containerRef] = useMouse();
-
+const PreviewCDFT = forwardRef((props, printRef) => {
   const {
     currentData,
     setCurrentData,
     handleSave,
-    setShowDiagram,
     isCurrent,
-    setIsCurrent,
-    updateBarriers,
+    setComponent,
+    previewCDFT,
+    setPreviewCDFT,
   } = useContext(BarrierContext);
 
   const { register, handleSubmit, control, watch, setValue } = useForm({
@@ -77,21 +75,6 @@ const Diagram = forwardRef((props, printRef) => {
     setCurrentData((prev) => ({ ...prev, barrierElements }));
   }, [barrierElements]);
 
-  // useEffect(() => {
-  //   if (isCurrent) {
-  //     setValue('configName', currentData?.configName);
-  //     setValue('barrierElements', currentData?.barrierElements);
-  //   }
-  // }, [currentData]);
-
-  // useEffect(() => {
-  //   if (updateBarriers) {
-  //     setValue('barrierElements', currentData?.barrierElements);
-  //   }
-  // }, [updateBarriers]);
-
-  // const onSubmit = (data) => console.log('form', data);
-
   return (
     <form
       id='diagramForm'
@@ -104,10 +87,9 @@ const Diagram = forwardRef((props, printRef) => {
             variant='solid'
             colorScheme='blue'
             size='sm'
-            type='submit'
-            form='diagramForm'
+            onClick={() => setPreviewCDFT(true)}
           >
-            Save Diagram
+            Preview CDFT
           </Button>
           <IconButton
             variant='outline'
@@ -116,8 +98,7 @@ const Diagram = forwardRef((props, printRef) => {
             icon={<SmallCloseIcon />}
             onClick={() => {
               setCurrentData(null);
-              setShowDiagram(false);
-              setIsCurrent(false);
+              setComponent(null);
             }}
           />
         </Flex>
@@ -148,8 +129,7 @@ const Diagram = forwardRef((props, printRef) => {
               // ref={containerRef}
               className='relative col-span-6 m-4 snapContainer flex justify-center '
             >
-              {/* {true ? <Xmas /> : 'current'} */}
-              {true ? <TestDiagram /> : 'current'}
+              <DiagramSVG />
             </div>
             <div className='col-span-6 m-4'>
               <div className='grid grid-cols-12 border h-5'>
@@ -332,4 +312,4 @@ const Diagram = forwardRef((props, printRef) => {
   );
 });
 
-export default Diagram;
+export default PreviewCDFT;
