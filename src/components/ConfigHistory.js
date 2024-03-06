@@ -25,23 +25,21 @@ import _ from 'lodash';
 import { useMouse } from '@uidotdev/usehooks';
 import { defaultElements } from '../data/defaultElements';
 import moment from 'moment';
+
 import DiagramSVG from './schematic/DiagramSVG';
 
 const ConfigHistory = forwardRef((props, printRef) => {
   const {
-    searchWell,
-    setSearchWell,
-    setSelectedWell,
-    handleConfigHistory,
     configHistory,
     setConfigHistory,
     setComponent,
+    currentConfig,
+    setCurrentConfig,
   } = useContext(BarrierContext);
   const { register, handleSubmit, control, watch, setValue } = useForm({
     defaultValues: {},
   });
 
-  const [currentConfig, setCurrentConfig] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const configDate = configHistory?.configs[currentIndex]?.updatedAt;
@@ -110,6 +108,7 @@ const ConfigHistory = forwardRef((props, printRef) => {
             icon={<SmallCloseIcon />}
             onClick={() => {
               setComponent(null);
+              setCurrentConfig(null);
               setConfigHistory(null);
             }}
           />
@@ -132,7 +131,7 @@ const ConfigHistory = forwardRef((props, printRef) => {
           // ref={drop}
           className='flex flex-col w-full h-[1040px] border overflow-y-auto scrollbar-hide'
         >
-          <div className='p-2 w-full flex justify-center min-h-[86px]'>
+          <div className='p-2 w-full flex justify-center min-h-[86px] mb-6'>
             {configHistory ? (
               <Flex flexDir='column' align='center'>
                 <Text fontWeight='bold'>{configHistory?.wellName}</Text>
@@ -152,7 +151,7 @@ const ConfigHistory = forwardRef((props, printRef) => {
               e.preventDefault();
             }}
           >
-            svg here
+            <DiagramSVG />
           </div>
         </div>
       </div>

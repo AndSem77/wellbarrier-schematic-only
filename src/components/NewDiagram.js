@@ -26,7 +26,7 @@ import { useForm, useFieldArray } from 'react-hook-form';
 import _ from 'lodash';
 import { useMouse } from '@uidotdev/usehooks';
 import { defaultElements } from '../data/defaultElements';
-import DiagramSVG from './schematic/DiagramSVG';
+import NewDiagramSVG from './schematic/DiagramSVG';
 
 const NewDiagram = forwardRef((props, printRef) => {
   const {
@@ -147,7 +147,7 @@ const NewDiagram = forwardRef((props, printRef) => {
               // ref={containerRef}
               className='relative col-span-6 m-4 snapContainer flex justify-center '
             >
-              <DiagramSVG />
+              <NewDiagramSVG />
             </div>
             <div className='col-span-6 m-4'>
               <div className='grid grid-cols-12 border h-5'>

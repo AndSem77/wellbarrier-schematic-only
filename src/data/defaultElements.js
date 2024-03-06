@@ -39,8 +39,14 @@ export const defaultElements = [
   },
   {
     id: nanoid(),
-    name: 'production casing',
+    name: 'production casing ( above packer )',
     barrier: 'secondary',
+    quantity: 1,
+  },
+  {
+    id: nanoid(),
+    name: 'production casing ( below packer )',
+    barrier: 'primary',
     quantity: 1,
   },
   {
@@ -52,7 +58,7 @@ export const defaultElements = [
   {
     id: nanoid(),
     name: 'cement ( production casing )',
-    barrier: 'secondary',
+    barrier: 'primary',
     quantity: 1,
   },
   {
@@ -149,7 +155,13 @@ export const defaultElements = [
   },
   {
     id: nanoid(),
-    name: 'production tubing',
+    name: 'production tubing ( above DHSV )',
+    barrier: 'secondary',
+    quantity: 1,
+  },
+  {
+    id: nanoid(),
+    name: 'production tubing ( below DHSV )',
     barrier: 'primary',
     quantity: 1,
   },

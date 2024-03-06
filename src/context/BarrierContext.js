@@ -75,6 +75,7 @@ export const BarrierProvider = ({ children }) => {
     glmQty: 5,
     ssdQty: 0,
   });
+  const [currentConfig, setCurrentConfig] = useState(null);
 
   // console.log('curr in ctx', currentData);
 
@@ -352,7 +353,46 @@ export const BarrierProvider = ({ children }) => {
     }
   };
 
-  console.log('his', configHistory);
+  // console.log('his', configHistory);
+
+  const setColor = (name) => {
+    if (currentData) {
+      let element = currentData?.barrierElements?.find(
+        (item) => item?.name === name
+      );
+      if (element) {
+        if (element.quantity === 0) {
+          return 'none';
+        } else if (element.barrier === 'primary') {
+          return 'blue';
+        } else if (element.barrier === 'secondary') {
+          return 'red';
+        } else {
+          return 'none';
+        }
+      }
+    }
+
+    if (currentConfig) {
+      let element = currentConfig?.barrierElements?.find(
+        (item) => item?.name === name
+      );
+      if (element) {
+        if (element.quantity === 0) {
+          return 'none';
+        } else if (element.barrier === 'primary') {
+          return 'blue';
+        } else if (element.barrier === 'secondary') {
+          return 'red';
+        } else {
+          return 'none';
+        }
+      }
+    }
+  };
+
+  console.log('curr data', currentData);
+  console.log('curr config', currentConfig);
 
   return (
     <BarrierContext.Provider
@@ -395,6 +435,9 @@ export const BarrierProvider = ({ children }) => {
         setMultipleElements,
         configHistory,
         setConfigHistory,
+        currentConfig,
+        setCurrentConfig,
+        setColor,
       }}
     >
       {children}

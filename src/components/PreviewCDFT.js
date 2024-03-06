@@ -26,7 +26,6 @@ import { useForm, useFieldArray } from 'react-hook-form';
 import _ from 'lodash';
 import { useMouse } from '@uidotdev/usehooks';
 import { defaultElements } from '../data/defaultElements';
-
 import DiagramSVG from './schematic/DiagramSVG';
 
 const PreviewCDFT = forwardRef((props, printRef) => {
