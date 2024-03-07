@@ -22,8 +22,7 @@ import { nanoid } from 'nanoid';
 import AnnotationList from './AnnotationList';
 import { useForm, useFieldArray } from 'react-hook-form';
 import _ from 'lodash';
-import { useMouse } from '@uidotdev/usehooks';
-import { defaultElements } from '../data/defaultElements';
+
 import moment from 'moment';
 
 import DiagramSVG from './schematic/DiagramSVG';

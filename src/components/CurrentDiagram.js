@@ -29,13 +29,8 @@ import { defaultElements } from '../data/defaultElements';
 import DiagramSVG from './schematic/DiagramSVG';
 
 const CurrentDiagram = forwardRef((props, printRef) => {
-  const {
-    currentData,
-    setCurrentData,
-    handleSave,
-    setIsCurrent,
-    setComponent,
-  } = useContext(BarrierContext);
+  const { currentData, setCurrentData, handleSave, setComponent } =
+    useContext(BarrierContext);
 
   const { register, handleSubmit, control, watch, setValue } = useForm({
     defaultValues: {

@@ -8,22 +8,17 @@ import { BarrierContext } from '../context/BarrierContext';
 import DiagramSVGSmall from './schematic/DiagramSVGSmall';
 
 export default function ConfigItem({ item }) {
-  const {
-    currentData,
-    setCurrentData,
-    handleDelete,
-    handleDuplicate,
-    setComponent,
-  } = useContext(BarrierContext);
+  const { data, setData, handleDelete, handleDuplicate, setComponent } =
+    useContext(BarrierContext);
 
   return (
     <div
       className='relative w-full h-24 border rounded flex justify-between p-1 space-x-1 my-1 hover:border-sky-600'
       onDoubleClick={() => {
         setComponent(null);
-        setCurrentData(null);
-        setCurrentData((prev) => ({ ...prev, ...item }));
-        setTimeout(() => setComponent('current diagram'), 200);
+        setData(null);
+        setData((prev) => ({ ...prev, ...item }));
+        setTimeout(() => setComponent('diagram'), 200);
       }}
     >
       <div className='w-full h-full text-xs'>{item.configName}</div>
@@ -31,7 +26,7 @@ export default function ConfigItem({ item }) {
         <DiagramSVGSmall />
       </div>
 
-      {item?.id === currentData?.id ? (
+      {item?.id === data?.id ? (
         <div className='absolute bottom-1 right-2'>
           <IoMdCheckmark />
         </div>
@@ -52,9 +47,9 @@ export default function ConfigItem({ item }) {
               className='flex w-full items-center hover:bg-[#EDF2F7] px-3 py-1'
               onClick={() => {
                 setComponent(null);
-                setCurrentData(null);
-                setCurrentData((prev) => ({ ...prev, ...item }));
-                setTimeout(() => setComponent('current diagram'), 200);
+                setData(null);
+                setData((prev) => ({ ...prev, ...item }));
+                setTimeout(() => setComponent('diagram'), 200);
               }}
             >
               <EditIcon />

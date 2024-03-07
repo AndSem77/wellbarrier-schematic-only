@@ -19,28 +19,28 @@ import {
 } from '@chakra-ui/react';
 import { ChevronLeftIcon, SmallCloseIcon } from '@chakra-ui/icons';
 import { BarrierContext } from '../context/BarrierContext';
-import { nanoid } from 'nanoid';
+import { initialData } from '../data/initialData';
 
 import AnnotationList from './AnnotationList';
 import { useForm, useFieldArray } from 'react-hook-form';
 import _ from 'lodash';
-import { useMouse } from '@uidotdev/usehooks';
-import { defaultElements } from '../data/defaultElements';
-import NewDiagramSVG from './schematic/DiagramSVG';
+import DiagramSVG from './schematic/DiagramSVG';
 
-const NewDiagram = forwardRef((props, printRef) => {
+const DiagramForm = forwardRef((props, printRef) => {
   const {
-    currentData,
-    setCurrentData,
+    data,
+    setData,
     handleSave,
     setComponent,
     setMultipleElements,
+    update,
+    setUpdate,
   } = useContext(BarrierContext);
 
   const { register, handleSubmit, control, watch, setValue } = useForm({
     defaultValues: {
-      configName: '',
-      barrierElements: defaultElements,
+      configName: data?.configName,
+      barrierElements: data?.barrierElements,
     },
   });
 
@@ -67,8 +67,13 @@ const NewDiagram = forwardRef((props, printRef) => {
   const barrierElements = watch('barrierElements');
 
   useEffect(() => {
-    setCurrentData((prev) => ({ ...prev, barrierElements }));
+    setData((prev) => ({ ...prev, barrierElements }));
   }, [barrierElements]);
+
+  useEffect(() => {
+    setValue('barrierElements', data?.barrierElements);
+    setUpdate(false);
+  }, [update]);
 
   useEffect(() => {
     const subscription = watch(({ barrierElements }) => {
@@ -91,6 +96,8 @@ const NewDiagram = forwardRef((props, printRef) => {
     });
     return () => subscription.unsubscribe();
   }, [watch]);
+
+  // console.log('curr in form', data);
 
   return (
     <form
@@ -115,7 +122,7 @@ const NewDiagram = forwardRef((props, printRef) => {
             aria-label='Close diagram'
             icon={<SmallCloseIcon />}
             onClick={() => {
-              setCurrentData(null);
+              setData(initialData);
               setComponent(null);
             }}
           />
@@ -147,7 +154,7 @@ const NewDiagram = forwardRef((props, printRef) => {
               // ref={containerRef}
               className='relative col-span-6 m-4 snapContainer flex justify-center '
             >
-              <NewDiagramSVG />
+              <DiagramSVG />
             </div>
             <div className='col-span-6 m-4'>
               <div className='grid grid-cols-12 border h-5'>
@@ -278,4 +285,4 @@ const NewDiagram = forwardRef((props, printRef) => {
   );
 });
 
-export default NewDiagram;
+export default DiagramForm;

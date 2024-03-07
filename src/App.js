@@ -13,7 +13,6 @@ import {
 import { AddIcon, SearchIcon, ChevronDownIcon } from '@chakra-ui/icons';
 import { BsPrinterFill } from 'react-icons/bs';
 import ReactToPrint from 'react-to-print';
-import NewDiagram from './components/NewDiagram';
 import { BarrierContext } from './context/BarrierContext';
 import DiagramList from './components/ConfigList';
 import { nanoid } from 'nanoid';
@@ -25,13 +24,12 @@ import DesignPanel from './components/DesignPanel';
 import Popup from 'reactjs-popup';
 import SelectWellDropdown from './components/SelectWellDropdown';
 import ConfigHistory from './components/ConfigHistory';
-import PreviewCDFT from './components/PreviewCDFT';
-import CurrentDiagram from './components/CurrentDiagram';
+import DiagramForm from './components/DiagramForm';
 
 function App() {
   const {
-    currentData,
-    setCurrentData,
+    data,
+    setData,
     setIsNewAnno,
     resetBarriers,
     component,
@@ -73,17 +71,14 @@ function App() {
 
   const renderComponent = (component) => {
     switch (component) {
-      case 'new diagram':
-        return <NewDiagram ref={componentRef} />;
-        break;
-      case 'current diagram':
-        return <CurrentDiagram ref={componentRef} />;
+      case 'diagram':
+        return <DiagramForm ref={componentRef} />;
         break;
       case 'config history':
         return <ConfigHistory ref={componentRef} />;
         break;
       case 'preview cdft':
-        return <PreviewCDFT ref={componentRef} />;
+        return 'cdft';
         break;
       default:
         return null;
@@ -117,8 +112,8 @@ function App() {
                   size='sm'
                   icon={<AddIcon />}
                   onClick={() => {
-                    setCurrentData({ id: nanoid(), ...currentData });
-                    setComponent('new diagram');
+                    setData({ id: nanoid(), ...data });
+                    setComponent('diagram');
                   }}
                 />
 
