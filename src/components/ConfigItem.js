@@ -8,16 +8,21 @@ import { BarrierContext } from '../context/BarrierContext';
 import DiagramSVGSmall from './schematic/DiagramSVGSmall';
 
 export default function ConfigItem({ item }) {
-  const { data, setData, handleDelete, handleDuplicate, setComponent } =
-    useContext(BarrierContext);
+  const {
+    configData,
+    setConfigData,
+    handleDelete,
+    handleDuplicate,
+    setComponent,
+  } = useContext(BarrierContext);
 
   return (
     <div
       className='relative w-full h-24 border rounded flex justify-between p-1 space-x-1 my-1 hover:border-sky-600'
       onDoubleClick={() => {
         setComponent(null);
-        setData(null);
-        setData((prev) => ({ ...prev, ...item }));
+        setConfigData(null);
+        setConfigData((prev) => ({ ...prev, ...item }));
         setTimeout(() => setComponent('diagram'), 200);
       }}
     >
@@ -26,7 +31,7 @@ export default function ConfigItem({ item }) {
         <DiagramSVGSmall />
       </div>
 
-      {item?.id === data?.id ? (
+      {item?.id === configData?.id ? (
         <div className='absolute bottom-1 right-2'>
           <IoMdCheckmark />
         </div>
@@ -47,8 +52,8 @@ export default function ConfigItem({ item }) {
               className='flex w-full items-center hover:bg-[#EDF2F7] px-3 py-1'
               onClick={() => {
                 setComponent(null);
-                setData(null);
-                setData((prev) => ({ ...prev, ...item }));
+                setConfigData(null);
+                setConfigData((prev) => ({ ...prev, ...item }));
                 setTimeout(() => setComponent('diagram'), 200);
               }}
             >

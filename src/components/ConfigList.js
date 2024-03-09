@@ -3,11 +3,11 @@ import { BarrierContext } from '../context/BarrierContext';
 import ConfigItem from './ConfigItem';
 
 export default function ConfigList() {
-  const { configs } = useContext(BarrierContext);
+  const { allConfigs } = useContext(BarrierContext);
 
   return (
     <>
-      {configs?.map((item) => (
+      {allConfigs?.map((item) => (
         <ConfigItem item={item} key={item?.id} />
       ))}
     </>

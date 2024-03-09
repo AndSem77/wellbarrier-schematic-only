@@ -1,6 +1,38 @@
 import { createContext, useState, useEffect, useMemo, useContext } from 'react';
 import { useToast } from '@chakra-ui/react';
 
+// const setBarrierColor = (name) => {
+//   let element = data?.barrierElements?.find((item) => item?.name === name);
+
+//   if (element) {
+//     if (element.quantity === 0) {
+//       return 'none';
+//     } else if (element.barrier === 'primary') {
+//       return 'blue';
+//     } else if (element.barrier === 'secondary') {
+//       return 'red';
+//     } else {
+//       return 'none';
+//     }
+//   }
+// };
+
+// const setStatusColor = (name) => {
+//   let element = data?.barrierElements?.find((item) => item?.name === name);
+
+//   if (element) {
+//     if (element.status === 'pass') {
+//       return 'green';
+//     } else if (element.barrier === 'fail') {
+//       return 'red';
+//     } else if (element.barrier === 'degraded') {
+//       return 'yellow';
+//     } else {
+//       return 'none';
+//     }
+//   }
+// };
+
 const handleSave = async () => {
   try {
     const current = await fetch(`${baseURL}`)

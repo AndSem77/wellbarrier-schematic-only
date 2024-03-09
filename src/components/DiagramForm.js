@@ -28,19 +28,20 @@ import DiagramSVG from './schematic/DiagramSVG';
 
 const DiagramForm = forwardRef((props, printRef) => {
   const {
-    data,
-    setData,
+    configData,
+    setConfigData,
     handleSave,
     setComponent,
     setMultipleElements,
     update,
     setUpdate,
+    setShowCdft,
   } = useContext(BarrierContext);
 
   const { register, handleSubmit, control, watch, setValue } = useForm({
     defaultValues: {
-      configName: data?.configName,
-      barrierElements: data?.barrierElements,
+      configName: configData?.configName,
+      barrierElements: configData?.barrierElements,
     },
   });
 
@@ -67,11 +68,11 @@ const DiagramForm = forwardRef((props, printRef) => {
   const barrierElements = watch('barrierElements');
 
   useEffect(() => {
-    setData((prev) => ({ ...prev, barrierElements }));
+    setConfigData((prev) => ({ ...prev, barrierElements }));
   }, [barrierElements]);
 
   useEffect(() => {
-    setValue('barrierElements', data?.barrierElements);
+    setValue('barrierElements', configData?.barrierElements);
     setUpdate(false);
   }, [update]);
 
@@ -122,7 +123,8 @@ const DiagramForm = forwardRef((props, printRef) => {
             aria-label='Close diagram'
             icon={<SmallCloseIcon />}
             onClick={() => {
-              setData(initialData);
+              setConfigData(initialData);
+              setShowCdft(false);
               setComponent(null);
             }}
           />

@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { BarrierContext } from '../../context/BarrierContext';
 
 export default function DiagramSVGSmall() {
-  const { setBarrierColor, setStatusColor, previewCDFT, multipleElements } =
+  const { setColor, setStatusColor, previewCDFT, multipleElements } =
     useContext(BarrierContext);
 
   const { packerQty, glmQty, ssdQty } = multipleElements;
@@ -42,18 +42,18 @@ export default function DiagramSVGSmall() {
               rx='13.9798'
               ry='13.901'
               transform='matrix(0.714257 -0.699883 0.714257 0.699883 120.109 31.4146)'
-              stroke={previewCDFT ? 'black' : setBarrierColor('crown valve')}
+              stroke={previewCDFT ? 'black' : setColor('crown valve')}
               fill={previewCDFT ? setStatusColor('crown valve') : 'none'}
             />
             <path
               id='Vector 6'
               d='M130.254 21.7872L150.064 41.1988'
-              stroke={previewCDFT ? 'black' : setBarrierColor('crown valve')}
+              stroke={previewCDFT ? 'black' : setColor('crown valve')}
             />
             <path
               id='Vector 7'
               d='M130.198 41.3005L150.007 21.8899'
-              stroke={previewCDFT ? 'black' : setBarrierColor('crown valve')}
+              stroke={previewCDFT ? 'black' : setColor('crown valve')}
             />
           </g>
           <g id='ssv'>
@@ -106,17 +106,17 @@ export default function DiagramSVGSmall() {
               cy='13.9798'
               r='13.9798'
               transform='matrix(-0.714257 -0.699883 -0.714257 0.699883 131.244 60.8539)'
-              stroke={setBarrierColor('wing valve')}
+              stroke={setColor('wing valve')}
             />
             <path
               id='Vector 6_4'
               d='M121.097 51.2274L101.484 70.4464'
-              stroke={setBarrierColor('wing valve')}
+              stroke={setColor('wing valve')}
             />
             <path
               id='Vector 7_4'
               d='M121.097 70.7959L101.288 51.3852'
-              stroke={setBarrierColor('wing valve')}
+              stroke={setColor('wing valve')}
             />
           </g>
           <g id='kwv'>
@@ -126,17 +126,17 @@ export default function DiagramSVGSmall() {
               cy='13.9798'
               r='13.9798'
               transform='matrix(-0.714257 -0.699883 -0.714257 0.699883 188.077 60.8539)'
-              stroke={setBarrierColor('kill wing valve')}
+              stroke={setColor('kill wing valve')}
             />
             <path
               id='Vector 6_5'
               d='M177.93 51.2274L158.316 70.4464'
-              stroke={setBarrierColor('kill wing valve')}
+              stroke={setColor('kill wing valve')}
             />
             <path
               id='Vector 7_5'
               d='M177.93 70.7959L158.121 51.3852'
-              stroke={setBarrierColor('kill wing valve')}
+              stroke={setColor('kill wing valve')}
             />
           </g>
           <g id='wv-arrows'>
@@ -1395,7 +1395,7 @@ export default function DiagramSVGSmall() {
             <path
               id='glm-1'
               d='M158.98 342.032L158.98 353.248L158.98 363.858L154.309 366.89L154.309 339L158.98 342.032Z'
-              fill={setBarrierColor('gas lift mandrel')}
+              fill={setColor('gas lift mandrel')}
             />
           ) : null}
 
@@ -1403,7 +1403,7 @@ export default function DiagramSVGSmall() {
             <path
               id='glm-2'
               d='M158.98 382.317L158.98 393.534L158.98 404.144L154.309 407.175L154.309 379.285L158.98 382.317Z'
-              fill={setBarrierColor('gas lift mandrel')}
+              fill={setColor('gas lift mandrel')}
             />
           ) : null}
 
@@ -1411,7 +1411,7 @@ export default function DiagramSVGSmall() {
             <path
               id='glm-3'
               d='M158.98 422.602L158.98 433.819L158.98 444.429L154.309 447.461L154.309 419.571L158.98 422.602Z'
-              fill={setBarrierColor('gas lift mandrel')}
+              fill={setColor('gas lift mandrel')}
             />
           ) : null}
 
@@ -1419,7 +1419,7 @@ export default function DiagramSVGSmall() {
             <path
               id='glm-4'
               d='M158.98 462.888L158.98 474.104L158.98 484.715L154.309 487.746L154.309 459.856L158.98 462.888Z'
-              fill={setBarrierColor('gas lift mandrel')}
+              fill={setColor('gas lift mandrel')}
             />
           ) : null}
 
@@ -1427,7 +1427,7 @@ export default function DiagramSVGSmall() {
             <path
               id='glm-5'
               d='M158.98 503.173L158.98 514.39L158.98 525L154.309 528.032L154.309 500.142L158.98 503.173Z'
-              fill={setBarrierColor('gas lift mandrel')}
+              fill={setColor('gas lift mandrel')}
             />
           ) : null}
         </g>
@@ -1440,7 +1440,7 @@ export default function DiagramSVGSmall() {
                 y='344.5'
                 width='34.027'
                 height='18'
-                stroke={setBarrierColor('sliding side door')}
+                stroke={setColor('sliding side door')}
               />
               <rect
                 id='Rectangle 37_2'
@@ -1448,7 +1448,7 @@ export default function DiagramSVGSmall() {
                 y='344'
                 width='3.69231'
                 height='19'
-                fill={setBarrierColor('sliding side door')}
+                fill={setColor('sliding side door')}
               />
               <rect
                 id='Rectangle 38_2'
@@ -1456,7 +1456,7 @@ export default function DiagramSVGSmall() {
                 y='344'
                 width='3.89189'
                 height='19'
-                fill={setBarrierColor('sliding side door')}
+                fill={setColor('sliding side door')}
               />
             </g>
           ) : null}
@@ -1469,7 +1469,7 @@ export default function DiagramSVGSmall() {
                 y='424.5'
                 width='34.027'
                 height='18'
-                stroke={setBarrierColor('sliding side door')}
+                stroke={setColor('sliding side door')}
               />
               <rect
                 id='Rectangle 37_3'
@@ -1477,7 +1477,7 @@ export default function DiagramSVGSmall() {
                 y='424'
                 width='3.69231'
                 height='19'
-                fill={setBarrierColor('sliding side door')}
+                fill={setColor('sliding side door')}
               />
               <rect
                 id='Rectangle 38_3'
@@ -1485,7 +1485,7 @@ export default function DiagramSVGSmall() {
                 y='424'
                 width='3.89189'
                 height='19'
-                fill={setBarrierColor('sliding side door')}
+                fill={setColor('sliding side door')}
               />
             </g>
           ) : null}
@@ -1498,7 +1498,7 @@ export default function DiagramSVGSmall() {
                 y='502.5'
                 width='34.027'
                 height='18'
-                stroke={setBarrierColor('sliding side door')}
+                stroke={setColor('sliding side door')}
               />
               <rect
                 id='Rectangle 37'
@@ -1506,7 +1506,7 @@ export default function DiagramSVGSmall() {
                 y='502'
                 width='3.69231'
                 height='19'
-                fill={setBarrierColor('sliding side door')}
+                fill={setColor('sliding side door')}
               />
               <rect
                 id='Rectangle 38'
@@ -1514,7 +1514,7 @@ export default function DiagramSVGSmall() {
                 y='502'
                 width='3.89189'
                 height='19'
-                fill={setBarrierColor('sliding side door')}
+                fill={setColor('sliding side door')}
               />
             </g>
           ) : null}
@@ -1529,12 +1529,12 @@ export default function DiagramSVGSmall() {
                 y='565'
                 width='15'
                 height='15.4944'
-                stroke={setBarrierColor('production packer')}
+                stroke={setColor('production packer')}
               />
               <path
                 id='Line 139_3'
                 d='M154.489 565.501L168.808 580.292'
-                stroke={setBarrierColor('production packer')}
+                stroke={setColor('production packer')}
               />
               <line
                 id='Line 140_3'
@@ -1542,7 +1542,7 @@ export default function DiagramSVGSmall() {
                 x2='20.5864'
                 y2='-0.5'
                 transform='matrix(-0.695551 0.718476 0.695551 0.718476 169.224 565.775)'
-                stroke={setBarrierColor('production packer')}
+                stroke={setColor('production packer')}
               />
             </g>
             <g id='Group 22_2'>
@@ -1552,12 +1552,12 @@ export default function DiagramSVGSmall() {
                 y='565'
                 width='15'
                 height='15.4944'
-                stroke={setBarrierColor('production packer')}
+                stroke={setColor('production packer')}
               />
               <path
                 id='Line 139_4'
                 d='M110.265 565.501L124.584 580.292'
-                stroke={setBarrierColor('production packer')}
+                stroke={setColor('production packer')}
               />
               <line
                 id='Line 140_4'
@@ -1565,7 +1565,7 @@ export default function DiagramSVGSmall() {
                 x2='20.5864'
                 y2='-0.5'
                 transform='matrix(-0.695551 0.718476 0.695551 0.718476 125 565.775)'
-                stroke={setBarrierColor('production packer')}
+                stroke={setColor('production packer')}
               />
             </g>
           </g>
@@ -1580,12 +1580,12 @@ export default function DiagramSVGSmall() {
                 y='606'
                 width='15'
                 height='15.4944'
-                stroke={setBarrierColor('production packer')}
+                stroke={setColor('production packer')}
               />
               <path
                 id='Line 139_5'
                 d='M154.489 606.501L168.808 621.292'
-                stroke={setBarrierColor('production packer')}
+                stroke={setColor('production packer')}
               />
               <line
                 id='Line 140_5'
@@ -1593,7 +1593,7 @@ export default function DiagramSVGSmall() {
                 x2='20.5864'
                 y2='-0.5'
                 transform='matrix(-0.695551 0.718476 0.695551 0.718476 169.224 606.775)'
-                stroke={setBarrierColor('production packer')}
+                stroke={setColor('production packer')}
               />
             </g>
             <g id='Group 22_4'>
@@ -1603,12 +1603,12 @@ export default function DiagramSVGSmall() {
                 y='606'
                 width='15'
                 height='15.4944'
-                stroke={setBarrierColor('production packer')}
+                stroke={setColor('production packer')}
               />
               <path
                 id='Line 139_6'
                 d='M110.265 606.501L124.584 621.292'
-                stroke={setBarrierColor('production packer')}
+                stroke={setColor('production packer')}
               />
               <line
                 id='Line 140_6'
@@ -1616,7 +1616,7 @@ export default function DiagramSVGSmall() {
                 x2='20.5864'
                 y2='-0.5'
                 transform='matrix(-0.695551 0.718476 0.695551 0.718476 125 606.775)'
-                stroke={setBarrierColor('production packer')}
+                stroke={setColor('production packer')}
               />
             </g>
           </g>
@@ -1629,7 +1629,7 @@ export default function DiagramSVGSmall() {
             y='529'
             width='24'
             height='40'
-            fill={setBarrierColor('tubing plug')}
+            fill={setColor('tubing plug')}
           />
           <rect
             id='Rectangle 40'
@@ -1637,7 +1637,7 @@ export default function DiagramSVGSmall() {
             y='543'
             width='29'
             height='12'
-            fill={setBarrierColor('tubing plug')}
+            fill={setColor('tubing plug')}
           />
         </g>
         <g id='perforations'>

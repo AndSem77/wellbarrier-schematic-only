@@ -28,13 +28,15 @@ import DiagramForm from './components/DiagramForm';
 
 function App() {
   const {
-    data,
-    setData,
+    configData,
+    setConfigData,
     setIsNewAnno,
     resetBarriers,
     component,
     setComponent,
-    handleConfigHistory,
+    getConfigHistory,
+    updateCdft,
+    setShowCdft,
   } = useContext(BarrierContext);
 
   const annotationMenu = [
@@ -77,9 +79,6 @@ function App() {
       case 'config history':
         return <ConfigHistory ref={componentRef} />;
         break;
-      case 'preview cdft':
-        return 'cdft';
-        break;
       default:
         return null;
     }
@@ -112,7 +111,7 @@ function App() {
                   size='sm'
                   icon={<AddIcon />}
                   onClick={() => {
-                    setData({ id: nanoid(), ...data });
+                    setConfigData({ id: nanoid(), ...configData });
                     setComponent('diagram');
                   }}
                 />
@@ -200,7 +199,7 @@ function App() {
               <Button
                 size='sm'
                 onClick={
-                  handleConfigHistory
+                  getConfigHistory
                   // setComponent('config history');
                 }
               >
@@ -209,7 +208,13 @@ function App() {
               <Button size='sm' onClick={resetBarriers}>
                 Reset barriers
               </Button>
-              <Button size='sm' onClick={() => setComponent('preview cdft')}>
+              <Button
+                size='sm'
+                onClick={() => {
+                  updateCdft();
+                  setShowCdft(true);
+                }}
+              >
                 Preview CDFT
               </Button>
             </Stack>

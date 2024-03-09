@@ -67,7 +67,7 @@ export const BarrierProvider = ({ children }) => {
       },
     },
   ]);
-  const [showCdft, setShowCdft] = useState(true);
+  const [showCdft, setShowCdft] = useState(false);
 
   const [multipleElements, setMultipleElements] = useState({
     packerQty: 1,
@@ -245,6 +245,27 @@ export const BarrierProvider = ({ children }) => {
     }
   };
 
+  // const setColor = (name) => {
+  //   if (configData) {
+  //     let element = configData?.barrierElements?.find(
+  //       (item) => item?.name === name
+  //     );
+  //     if (element) {
+  //       if (element.quantity === 0) {
+  //         return 'none';
+  //       } else if (element.barrier === 'primary') {
+  //         return 'blue';
+  //       } else if (element.barrier === 'secondary') {
+  //         return 'red';
+  //       } else if (element.barrier === 'none') {
+  //         return 'black';
+  //       } else {
+  //         return 'none';
+  //       }
+  //     }
+  //   }
+  // };
+
   const resetBarriers = () => {
     if (configData) {
       const updated = configData?.barrierElements?.map((item) => ({
@@ -344,6 +365,53 @@ export const BarrierProvider = ({ children }) => {
     }
   };
 
+  const setColor = (option, name) => {
+    const setBarrierColor = (name) => {
+      let element = configData?.barrierElements?.find(
+        (item) => item?.name === name
+      );
+      if (element) {
+        if (element.quantity === 0) {
+          return 'none';
+        } else if (element.barrier === 'primary') {
+          return 'blue';
+        } else if (element.barrier === 'secondary') {
+          return 'red';
+        } else if (element.barrier === 'none') {
+          return 'black';
+        } else {
+          return 'none';
+        }
+      }
+    };
+    const setStatusColor = (name) => {
+      let element = configData?.barrierElements?.find(
+        (item) => item?.name === name
+      );
+      if (element) {
+        if (element.status === 'pass') {
+          return 'green';
+        } else if (element.status === 'fail') {
+          return 'red';
+        } else if (element.status === 'degraded') {
+          return 'yellow';
+        } else {
+          return setBarrierColor(name);
+        }
+      }
+    };
+    switch (option) {
+      case 'barrier':
+        return setBarrierColor(name);
+        break;
+      case 'status':
+        return setStatusColor(name);
+        break;
+      default:
+        return null;
+    }
+  };
+
   const updateCdft = () => {
     let updatedElements = [];
 
@@ -374,78 +442,6 @@ export const BarrierProvider = ({ children }) => {
   // console.log('wellData', wellData);
   // console.log('config data', configData);
 
-  const setColor = (name) => {
-    if (configData) {
-      let el = configData?.barrierElements?.find((item) => item?.name === name);
-
-      if (el) {
-        if (el.quantity === 0) {
-          return 'none';
-        } else if (el.barrier === 'primary') {
-          return 'blue';
-        } else if (el.barrier === 'secondary') {
-          return 'red';
-        } else if (el.barrier === 'none') {
-          return 'black';
-        } else {
-          return 'none';
-        }
-      }
-    }
-  };
-
-  const setFill = (name) => {
-    let el = configData?.barrierElements?.find((item) => item?.name === name);
-
-    const setColor = (name) => {
-      if (el?.status) {
-        if (el.status === 'pass') {
-          return 'green';
-        } else if (el.status === 'fail') {
-          return 'red';
-        } else if (el.status === 'degraded') {
-          return 'yellow';
-        } else {
-          return 'none';
-        }
-      }
-    };
-
-    if (!el?.status) {
-      return 'none';
-    }
-
-    if (el?.status) {
-      return setColor(name);
-    }
-  };
-
-  const setStroke = (name) => {
-    let el = configData?.barrierElements?.find((item) => item?.name === name);
-
-    const setColor = (name) => {
-      if (el?.status) {
-        return 'black';
-      }
-    };
-
-    if (!el?.status) {
-      if (el.quantity === 0) {
-        return 'none';
-      } else if (el.barrier === 'primary') {
-        return 'blue';
-      } else if (el.barrier === 'secondary') {
-        return 'red';
-      } else {
-        return 'none';
-      }
-    }
-
-    if (el?.status) {
-      return setColor(name);
-    }
-  };
-
   return (
     <BarrierContext.Provider
       value={{
@@ -475,6 +471,7 @@ export const BarrierProvider = ({ children }) => {
         setComponent,
         multipleElements,
         setMultipleElements,
+        setColor,
         update,
         setUpdate,
         updateCdft,
@@ -482,9 +479,6 @@ export const BarrierProvider = ({ children }) => {
         setWellData,
         showCdft,
         setShowCdft,
-        setFill,
-        setStroke,
-        setColor,
       }}
     >
       {children}
