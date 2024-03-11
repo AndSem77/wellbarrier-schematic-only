@@ -17,27 +17,32 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/react';
-import { SmallCloseIcon } from '@chakra-ui/icons';
+import { ChevronLeftIcon, SmallCloseIcon } from '@chakra-ui/icons';
 import { BarrierContext } from '../context/BarrierContext';
-import { nanoid } from 'nanoid';
-
+import { initialData } from '../data/initialData';
 import AnnotationList from './AnnotationList';
 import { useForm, useFieldArray } from 'react-hook-form';
 import _ from 'lodash';
-import { useMouse } from '@uidotdev/usehooks';
-import { defaultElements } from '../data/defaultElements';
 import DiagramSVG from './schematic/DiagramSVG';
 
-const CurrentDiagram = forwardRef((props, printRef) => {
-  const { currentData, setCurrentData, handleSave, setComponent } =
-    useContext(BarrierContext);
+const DiagramForm = forwardRef((props, printRef) => {
+  const {
+    configData,
+    setConfigData,
+    handleSave,
+    setComponent,
+    setMultipleElements,
+    update,
+    setUpdate,
+    setShowCdft,
+    setColor,
+    setCurrentConfig,
+  } = useContext(BarrierContext);
 
   const { register, handleSubmit, control, watch, setValue } = useForm({
     defaultValues: {
-      configName: currentData ? currentData?.configName : '',
-      barrierElements: currentData
-        ? currentData?.barrierElements
-        : defaultElements,
+      configName: configData?.configName,
+      barrierElements: configData?.barrierElements,
     },
   });
 
@@ -64,8 +69,37 @@ const CurrentDiagram = forwardRef((props, printRef) => {
   const barrierElements = watch('barrierElements');
 
   useEffect(() => {
-    setCurrentData((prev) => ({ ...prev, barrierElements }));
+    setConfigData((prev) => ({ ...prev, barrierElements }));
   }, [barrierElements]);
+
+  useEffect(() => {
+    setValue('barrierElements', configData?.barrierElements);
+    setUpdate(false);
+  }, [update]);
+
+  useEffect(() => {
+    const subscription = watch(({ barrierElements }) => {
+      const packer = barrierElements.find(
+        (item) => item.name === 'production packer'
+      );
+      const glm = barrierElements.find(
+        (item) => item.name === 'gas lift mandrel'
+      );
+      const ssd = barrierElements.find(
+        (item) => item.name === 'sliding side door'
+      );
+
+      setMultipleElements((prev) => ({
+        ...prev,
+        packerQty: packer?.quantity,
+        glmQty: glm?.quantity,
+        ssdQty: ssd?.quantity,
+      }));
+    });
+    return () => subscription.unsubscribe();
+  }, [watch]);
+
+  // console.log('curr in form', data);
 
   return (
     <form
@@ -90,8 +124,10 @@ const CurrentDiagram = forwardRef((props, printRef) => {
             aria-label='Close diagram'
             icon={<SmallCloseIcon />}
             onClick={() => {
-              setCurrentData(null);
+              setConfigData(initialData);
+              setShowCdft(false);
               setComponent(null);
+              setCurrentConfig(null);
             }}
           />
         </Flex>
@@ -122,8 +158,7 @@ const CurrentDiagram = forwardRef((props, printRef) => {
               // ref={containerRef}
               className='relative col-span-6 m-4 snapContainer flex justify-center '
             >
-              {/* {true ? <Xmas /> : 'current'} */}
-              <DiagramSVG />
+              <DiagramSVG setColor={setColor} />
             </div>
             <div className='col-span-6 m-4'>
               <div className='grid grid-cols-12 border h-5'>
@@ -196,28 +231,6 @@ const CurrentDiagram = forwardRef((props, printRef) => {
                             colorScheme='blue'
                             size='sm'
                             {...register(`barrierElements.${index}.barrier`)}
-                            onChange={(e) => {
-                              if (e.target.value === 'primary') {
-                                setValue(
-                                  `barrierElements.${index}.quantity`,
-                                  1
-                                );
-                                setValue(
-                                  `barrierElements.${index}.barrier`,
-                                  'primary'
-                                );
-                              }
-                              if (e.target.value === 'none') {
-                                setValue(
-                                  `barrierElements.${index}.quantity`,
-                                  0
-                                );
-                                setValue(
-                                  `barrierElements.${index}.barrier`,
-                                  'none'
-                                );
-                              }
-                            }}
                           >
                             <Text fontSize='10px'>Primary</Text>
                           </Radio>
@@ -227,28 +240,6 @@ const CurrentDiagram = forwardRef((props, printRef) => {
                             colorScheme='red'
                             size='sm'
                             {...register(`barrierElements.${index}.barrier`)}
-                            onChange={(e) => {
-                              if (e.target.value === 'secondary') {
-                                setValue(
-                                  `barrierElements.${index}.quantity`,
-                                  1
-                                );
-                                setValue(
-                                  `barrierElements.${index}.barrier`,
-                                  'secondary'
-                                );
-                              }
-                              if (e.target.value === 'none') {
-                                setValue(
-                                  `barrierElements.${index}.quantity`,
-                                  0
-                                );
-                                setValue(
-                                  `barrierElements.${index}.barrier`,
-                                  'none'
-                                );
-                              }
-                            }}
                           >
                             <Text fontSize='10px'>Secondary</Text>
                           </Radio>
@@ -286,14 +277,6 @@ const CurrentDiagram = forwardRef((props, printRef) => {
                       {...register(`barrierElements.${index}.quantity`, {
                         valueAsNumber: true,
                       })}
-                      onChange={(e) => {
-                        if (e.target.value <= 0) {
-                          setValue(`barrierElements.${index}.barrier`, 'none');
-                        }
-                        // if (e.target.value > 0) {
-                        //   setValue(`elements.${index}.barrier`, 'secondary');
-                        // }
-                      }}
                     />
                   </div>
                 </div>
@@ -306,4 +289,4 @@ const CurrentDiagram = forwardRef((props, printRef) => {
   );
 });
 
-export default CurrentDiagram;
+export default DiagramForm;

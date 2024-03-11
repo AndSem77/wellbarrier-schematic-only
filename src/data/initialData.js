@@ -10,7 +10,7 @@ export const initialData = {
       name: 'crown valve',
       barrier: 'secondary',
       quantity: 1,
-      status: null,
+      status: 'pass',
     },
     {
       id: nanoid(),
@@ -55,7 +55,6 @@ export const initialData = {
       quantity: 2,
       status: null,
     },
-
     {
       id: nanoid(),
       name: 'intermediate casing',
@@ -210,21 +209,21 @@ export const initialData = {
       name: 'downhole safety valve control line',
       barrier: 'primary',
       quantity: 1,
-      status: 'fail',
+      status: null,
     },
     {
       id: nanoid(),
       name: 'downhole safety valve landing nipple',
       barrier: 'primary',
       quantity: 1,
-      status: 'fail',
+      status: null,
     },
     {
       id: nanoid(),
       name: 'gas lift mandrel',
       barrier: 'none',
       quantity: 0,
-      status: 'fail',
+      status: null,
     },
     {
       id: nanoid(),

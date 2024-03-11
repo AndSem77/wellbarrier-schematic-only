@@ -14,7 +14,7 @@ export const BarrierProvider = ({ children }) => {
   const [allConfigs, setAllConfigs] = useState([]);
   const [configData, setConfigData] = useState(initialData);
   const [allWells, setAllWells] = useState([]);
-  const [wellData, setWellData] = useState({});
+  const [wellData, setWellData] = useState(null);
   const [wellList, setWellList] = useState([
     {
       id: 1,
@@ -29,7 +29,7 @@ export const BarrierProvider = ({ children }) => {
       name: 'Resak A3U',
     },
   ]);
-  const [cdftData, setCdftData] = useState([]);
+
   const [update, setUpdate] = useState(false);
   const [selectedWell, setSelectedWell] = useState('');
   const [searchWell, setSearchWell] = useState('');
@@ -71,15 +71,17 @@ export const BarrierProvider = ({ children }) => {
 
   const [multipleElements, setMultipleElements] = useState({
     packerQty: 1,
-    glmQty: 5,
+    glmQty: 0,
     ssdQty: 0,
   });
+
+  const [currentConfig, setCurrentConfig] = useState(null);
 
   // console.log('curr in ctx', data);
 
   // console.log('selected well', selectedWell);
 
-  const handleGetConfigs = async () => {
+  const handleGetAllConfigs = async () => {
     try {
       await fetch(`${configsURL}`)
         .then((res) => res.json())
@@ -101,7 +103,8 @@ export const BarrierProvider = ({ children }) => {
   useEffect(() => {
     let subscribed = true;
     if (subscribed) {
-      handleGetConfigs();
+      handleGetAllConfigs();
+      handleGetAllWells();
       setUpdate(false);
     }
     return () => {
@@ -250,129 +253,23 @@ export const BarrierProvider = ({ children }) => {
       const updated = configData?.barrierElements?.map((item) => ({
         ...item,
         barrier: 'none',
+        status: null,
       }));
       setConfigData({ ...configData, barrierElements: updated });
       setUpdate(true);
     }
   };
 
-  const handleUpdate = async () => {
-    const isFound = allWells?.some((item) => item.wellName === selectedWell);
-
-    const { barrierElements } = configData;
-
-    const dataObj = {
-      id: timestamp,
-      wellName: selectedWell,
-      updatedAt: timestamp,
-      cdft: [
-        {
-          cdftDate: null,
-          preventiveMaintenanceId: null,
-          configId: 1709718224354,
-          configName: configData?.configName,
-          equipmentStatus: [...barrierElements],
-        },
-      ],
-    };
-
-    if (configData?.configName && selectedWell && !isFound) {
-      try {
-        await fetch(`${wellsURL}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(dataObj),
-        })
-          .then((res) => {
-            if (res.ok) {
-              toast({
-                title: `${selectedWell} updated`,
-                status: 'success',
-                position: 'top-right',
-                duration: 1500,
-                isClosable: true,
-                variant: 'subtle',
-              });
-            }
-          })
-          .then(() => setUpdate(true));
-      } catch (e) {
-        console.log(e);
-      }
-    }
-
-    if (configData?.configName && selectedWell && isFound) {
-      try {
-        await fetch(`${wellsURL}/1709890669913,`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(dataObj),
-        })
-          .then((res) => {
-            if (res.ok) {
-              toast({
-                title: `${selectedWell} updated`,
-                status: 'success',
-                position: 'top-right',
-                duration: 1500,
-                isClosable: true,
-                variant: 'subtle',
-              });
-            }
-          })
-          .then(() => setUpdate(true));
-      } catch (e) {
-        console.log(e);
-      }
-    }
-  };
-
   const getConfigHistory = async () => {
-    try {
-      if (selectedWell) {
-        await fetch(`http://localhost:4000/wells?wellName_like=${selectedWell}`)
-          .then((res) => res.json())
-          .then((res) => setWellData(res[0]))
-          .then(() => setComponent('config history'));
-      }
-    } catch (e) {
-      console.log(e);
+    const isFoundWell = allWells?.find(
+      (item) => item.wellName === selectedWell
+    );
+
+    if (selectedWell && isFoundWell) {
+      setWellData((prev) => ({ ...prev, ...isFoundWell }));
+      setComponent('config history');
     }
   };
-
-  const updateCdft = () => {
-    let updatedElements = [];
-
-    const config = [
-      { name: 'crown valve', status: null },
-      { name: 'wing valve', status: null },
-      { name: 'surface safety valve', status: null },
-    ];
-
-    const cdftResult = [
-      { name: 'crown valve', status: 'pass' },
-      { name: 'wing valve', status: 'pass' },
-      { name: 'surface safety valve', status: 'fail' },
-    ];
-
-    config?.map((item1) => {
-      cdftResult?.map((item2) => {
-        if (item1.name === item2.name) {
-          updatedElements.push({ name: item2.name, status: item2.status });
-        }
-      });
-    });
-
-    setCdftData(updatedElements);
-    console.log('cdft data', cdftData);
-  };
-
-  // console.log('wellData', wellData);
-  // console.log('config data', configData);
 
   const setColor = (name) => {
     if (configData) {
@@ -446,6 +343,132 @@ export const BarrierProvider = ({ children }) => {
     }
   };
 
+  const addCdft = () => {
+    let updatedElements = [];
+
+    const config = [
+      { name: 'crown valve', status: null },
+      { name: 'wing valve', status: null },
+      { name: 'surface safety valve', status: null },
+    ];
+
+    const cdftResult = [
+      { name: 'crown valve', status: 'pass' },
+      { name: 'wing valve', status: 'pass' },
+      { name: 'surface safety valve', status: 'fail' },
+    ];
+
+    config?.map((item1) => {
+      cdftResult?.map((item2) => {
+        if (item1.name === item2.name) {
+          updatedElements.push({ name: item2.name, status: item2.status });
+        }
+      });
+    });
+
+    // setCdftData(updatedElements);
+    // console.log('cdft data', cdftData);
+  };
+
+  useEffect(() => {
+    addCdft();
+  }, [showCdft]);
+
+  const handleUpdate = async () => {
+    const isFoundWell = allWells?.find(
+      (item) => item.wellName === selectedWell
+    );
+
+    // new well
+    if (configData?.configName && selectedWell && !isFoundWell) {
+      const newWell = {
+        id: timestamp,
+        wellName: selectedWell,
+        configs: [
+          {
+            cdftDate: null,
+            preventiveMaintenanceId: null,
+            configId: 1709718224354,
+            configName: configData?.configName,
+            updatedAt: timestamp,
+            barrierElements: configData?.barrierElements,
+          },
+        ],
+      };
+
+      try {
+        await fetch(`${wellsURL}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newWell),
+        })
+          .then((res) => {
+            if (res.ok) {
+              toast({
+                title: `${selectedWell} updated`,
+                status: 'success',
+                position: 'top-right',
+                duration: 1500,
+                isClosable: true,
+                variant: 'subtle',
+              });
+            }
+          })
+          .then(() => setUpdate(true));
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
+    // existing well
+    if (configData?.configName && selectedWell && isFoundWell) {
+      const existingWell = {
+        configs: [
+          ...isFoundWell?.configs,
+          {
+            cdftDate: null,
+            preventiveMaintenanceId: null,
+            updatedAt: timestamp,
+            ...configData,
+          },
+        ],
+      };
+
+      try {
+        await fetch(`${wellsURL}/${isFoundWell?.id}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(existingWell),
+        })
+          .then((res) => {
+            if (res.ok) {
+              toast({
+                title: `${selectedWell} updated`,
+                status: 'success',
+                position: 'top-right',
+                duration: 1500,
+                isClosable: true,
+                variant: 'subtle',
+              });
+            }
+          })
+          .then(() => setUpdate(true));
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  };
+
+  // console.log('allWells', allWells);
+  // console.log('configData', configData);
+  console.log('wellData', wellData);
+
+  // console.log('curr config', currentConfig);
+
   return (
     <BarrierContext.Provider
       value={{
@@ -477,7 +500,7 @@ export const BarrierProvider = ({ children }) => {
         setMultipleElements,
         update,
         setUpdate,
-        updateCdft,
+        addCdft,
         wellData,
         setWellData,
         showCdft,
@@ -485,6 +508,8 @@ export const BarrierProvider = ({ children }) => {
         setFill,
         setStroke,
         setColor,
+        currentConfig,
+        setCurrentConfig,
       }}
     >
       {children}

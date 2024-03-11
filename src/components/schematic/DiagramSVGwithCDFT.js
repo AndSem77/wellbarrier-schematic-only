@@ -1,11 +1,475 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { BarrierContext } from '../../context/BarrierContext';
 
-export default function DiagramSVG() {
-  const { setColor, multipleElements } = useContext(BarrierContext);
+export default function DiagramSVGwithCDFT({ setColor }) {
+  const { showCdft, setFill, setStroke, currentConfig } =
+    useContext(BarrierContext);
+
+  const [multipleElements, setMultipleElements] = useState({
+    packerQty: 1,
+    glmQty: 5,
+    ssdQty: 3,
+  });
   const { packerQty, glmQty, ssdQty } = multipleElements;
 
-  
+  const renderPacker = (packerQty) => {
+    switch (packerQty) {
+      case 1:
+        return (
+          <g id='production-packer-1'>
+            <g id='Group 22_3'>
+              <rect
+                id='Rectangle 27_3'
+                x='154.224'
+                y='564'
+                width='15'
+                height='15.4944'
+                stroke={setColor('production packer')}
+              />
+              <path
+                id='Line 139_5'
+                d='M154.489 564.501L168.808 579.292'
+                stroke={setColor('production packer')}
+              />
+              <line
+                id='Line 140_5'
+                y1='-0.5'
+                x2='20.5864'
+                y2='-0.5'
+                transform='matrix(-0.695551 0.718476 0.695551 0.718476 169.224 564.775)'
+                stroke={setColor('production packer')}
+              />
+            </g>
+            <g id='Group 22_4'>
+              <rect
+                id='Rectangle 27_4'
+                x='110'
+                y='564'
+                width='15'
+                height='15.4944'
+                stroke={setColor('production packer')}
+              />
+              <path
+                id='Line 139_6'
+                d='M110.265 564.501L124.584 579.292'
+                stroke={setColor('production packer')}
+              />
+              <line
+                id='Line 140_6'
+                y1='-0.5'
+                x2='20.5864'
+                y2='-0.5'
+                transform='matrix(-0.695551 0.718476 0.695551 0.718476 125 564.775)'
+                stroke={setColor('production packer')}
+              />
+            </g>
+          </g>
+        );
+        break;
+
+      case 2:
+        return (
+          <>
+            <g id='production-packer-1'>
+              <g id='Group 22_3'>
+                <rect
+                  id='Rectangle 27_3'
+                  x='154.224'
+                  y='564'
+                  width='15'
+                  height='15.4944'
+                  stroke={setColor('production packer')}
+                />
+                <path
+                  id='Line 139_5'
+                  d='M154.489 564.501L168.808 579.292'
+                  stroke={setColor('production packer')}
+                />
+                <line
+                  id='Line 140_5'
+                  y1='-0.5'
+                  x2='20.5864'
+                  y2='-0.5'
+                  transform='matrix(-0.695551 0.718476 0.695551 0.718476 169.224 564.775)'
+                  stroke={setColor('production packer')}
+                />
+              </g>
+              <g id='Group 22_4'>
+                <rect
+                  id='Rectangle 27_4'
+                  x='110'
+                  y='564'
+                  width='15'
+                  height='15.4944'
+                  stroke={setColor('production packer')}
+                />
+                <path
+                  id='Line 139_6'
+                  d='M110.265 564.501L124.584 579.292'
+                  stroke={setColor('production packer')}
+                />
+                <line
+                  id='Line 140_6'
+                  y1='-0.5'
+                  x2='20.5864'
+                  y2='-0.5'
+                  transform='matrix(-0.695551 0.718476 0.695551 0.718476 125 564.775)'
+                  stroke={setColor('production packer')}
+                />
+              </g>
+            </g>
+            <g id='production-packer-2'>
+              <g id='Group 22'>
+                <rect
+                  id='Rectangle 27'
+                  x='154.224'
+                  y='603'
+                  width='15'
+                  height='15.4944'
+                  stroke={setColor('production packer')}
+                />
+                <path
+                  id='Line 139_3'
+                  d='M154.489 603.501L168.808 618.292'
+                  stroke={setColor('production packer')}
+                />
+                <line
+                  id='Line 140_3'
+                  y1='-0.5'
+                  x2='20.5864'
+                  y2='-0.5'
+                  transform='matrix(-0.695551 0.718476 0.695551 0.718476 169.224 603.775)'
+                  stroke={setColor('production packer')}
+                />
+              </g>
+              <g id='Group 22_2'>
+                <rect
+                  id='Rectangle 27_2'
+                  x='110'
+                  y='603'
+                  width='15'
+                  height='15.4944'
+                  stroke={setColor('production packer')}
+                />
+                <path
+                  id='Line 139_4'
+                  d='M110.265 603.501L124.584 618.292'
+                  stroke={setColor('production packer')}
+                />
+                <line
+                  id='Line 140_4'
+                  y1='-0.5'
+                  x2='20.5864'
+                  y2='-0.5'
+                  transform='matrix(-0.695551 0.718476 0.695551 0.718476 125 603.775)'
+                  stroke={setColor('production packer')}
+                />
+              </g>
+            </g>
+          </>
+        );
+        break;
+      default:
+        return null;
+    }
+  };
+
+  const renderGLM = (glmQty) => {
+    switch (glmQty) {
+      case 1:
+        return (
+          <path
+            id='glm-1'
+            d='M158.98 332.032L158.98 343.248L158.98 353.858L154.309 356.89L154.309 329L158.98 332.032Z'
+            fill={setColor('gas lift mandrel')}
+          />
+        );
+        break;
+      case 2:
+        return (
+          <>
+            <path
+              id='glm-1'
+              d='M158.98 332.032L158.98 343.248L158.98 353.858L154.309 356.89L154.309 329L158.98 332.032Z'
+              fill={setColor('gas lift mandrel')}
+            />
+            <path
+              id='glm-2'
+              d='M158.98 372.317L158.98 383.534L158.98 394.144L154.309 397.175L154.309 369.285L158.98 372.317Z'
+              fill={setColor('gas lift mandrel')}
+            />
+          </>
+        );
+        break;
+      case 3:
+        return (
+          <>
+            <path
+              id='glm-1'
+              d='M158.98 332.032L158.98 343.248L158.98 353.858L154.309 356.89L154.309 329L158.98 332.032Z'
+              fill={setColor('gas lift mandrel')}
+            />
+            <path
+              id='glm-2'
+              d='M158.98 372.317L158.98 383.534L158.98 394.144L154.309 397.175L154.309 369.285L158.98 372.317Z'
+              fill={setColor('gas lift mandrel')}
+            />
+            <path
+              id='glm-3'
+              d='M158.98 412.602L158.98 423.819L158.98 434.429L154.309 437.461L154.309 409.571L158.98 412.602Z'
+              fill={setColor('gas lift mandrel')}
+            />
+          </>
+        );
+        break;
+      case 4:
+        return (
+          <>
+            <path
+              id='glm-1'
+              d='M158.98 332.032L158.98 343.248L158.98 353.858L154.309 356.89L154.309 329L158.98 332.032Z'
+              fill={setColor('gas lift mandrel')}
+            />
+            <path
+              id='glm-2'
+              d='M158.98 372.317L158.98 383.534L158.98 394.144L154.309 397.175L154.309 369.285L158.98 372.317Z'
+              fill={setColor('gas lift mandrel')}
+            />
+            <path
+              id='glm-3'
+              d='M158.98 412.602L158.98 423.819L158.98 434.429L154.309 437.461L154.309 409.571L158.98 412.602Z'
+              fill={setColor('gas lift mandrel')}
+            />
+            <path
+              id='glm-4'
+              d='M158.98 452.888L158.98 464.104L158.98 474.715L154.309 477.746L154.309 449.856L158.98 452.888Z'
+              fill={setColor('gas lift mandrel')}
+            />
+          </>
+        );
+        break;
+      case 5:
+        return (
+          <>
+            <path
+              id='glm-1'
+              d='M158.98 332.032L158.98 343.248L158.98 353.858L154.309 356.89L154.309 329L158.98 332.032Z'
+              fill={setColor('gas lift mandrel')}
+            />
+            <path
+              id='glm-2'
+              d='M158.98 372.317L158.98 383.534L158.98 394.144L154.309 397.175L154.309 369.285L158.98 372.317Z'
+              fill={setColor('gas lift mandrel')}
+            />
+            <path
+              id='glm-3'
+              d='M158.98 412.602L158.98 423.819L158.98 434.429L154.309 437.461L154.309 409.571L158.98 412.602Z'
+              fill={setColor('gas lift mandrel')}
+            />
+            <path
+              id='glm-4'
+              d='M158.98 452.888L158.98 464.104L158.98 474.715L154.309 477.746L154.309 449.856L158.98 452.888Z'
+              fill={setColor('gas lift mandrel')}
+            />
+            <path
+              id='glm-5'
+              d='M158.98 493.173L158.98 504.39L158.98 515L154.309 518.032L154.309 490.142L158.98 493.173Z'
+              fill={setColor('gas lift mandrel')}
+            />
+          </>
+        );
+        break;
+
+      default:
+        return null;
+    }
+  };
+
+  const renderSSD = (ssdQty) => {
+    switch (ssdQty) {
+      case 1:
+        return (
+          <>
+            <g id='sliding-side-door-1'>
+              <rect
+                id='Rectangle 36'
+                x='123.473'
+                y='344.5'
+                width='34.027'
+                height='18'
+                stroke={setColor('sliding side door')}
+              />
+              <rect
+                id='Rectangle 37'
+                x='122'
+                y='344'
+                width='3.69231'
+                height='19'
+                fill={setColor('sliding side door')}
+              />
+              <rect
+                id='Rectangle 38'
+                x='154.108'
+                y='344'
+                width='3.89189'
+                height='19'
+                fill={setColor('sliding side door')}
+              />
+            </g>
+          </>
+        );
+        break;
+      case 2:
+        return (
+          <>
+            <g id='sliding-side-door-1'>
+              <rect
+                id='Rectangle 36'
+                x='123.473'
+                y='344.5'
+                width='34.027'
+                height='18'
+                stroke={setColor('sliding side door')}
+              />
+              <rect
+                id='Rectangle 37'
+                x='122'
+                y='344'
+                width='3.69231'
+                height='19'
+                fill={setColor('sliding side door')}
+              />
+              <rect
+                id='Rectangle 38'
+                x='154.108'
+                y='344'
+                width='3.89189'
+                height='19'
+                fill={setColor('sliding side door')}
+              />
+            </g>
+            <g id='sliding-side-door-2'>
+              <rect
+                id='Rectangle 36_2'
+                x='123.473'
+                y='408.5'
+                width='34.027'
+                height='18'
+                stroke={setColor('sliding side door')}
+              />
+              <rect
+                id='Rectangle 37_2'
+                x='122'
+                y='408'
+                width='3.69231'
+                height='19'
+                fill={setColor('sliding side door')}
+              />
+              <rect
+                id='Rectangle 38_2'
+                x='154.108'
+                y='408'
+                width='3.89189'
+                height='19'
+                fill={setColor('sliding side door')}
+              />
+            </g>
+          </>
+        );
+        break;
+      case 3:
+        return (
+          <>
+            <g id='sliding-side-door-1'>
+              <rect
+                id='Rectangle 36'
+                x='123.473'
+                y='344.5'
+                width='34.027'
+                height='18'
+                stroke={setColor('sliding side door')}
+              />
+              <rect
+                id='Rectangle 37'
+                x='122'
+                y='344'
+                width='3.69231'
+                height='19'
+                fill={setColor('sliding side door')}
+              />
+              <rect
+                id='Rectangle 38'
+                x='154.108'
+                y='344'
+                width='3.89189'
+                height='19'
+                fill={setColor('sliding side door')}
+              />
+            </g>
+            <g id='sliding-side-door-2'>
+              <rect
+                id='Rectangle 36_2'
+                x='123.473'
+                y='408.5'
+                width='34.027'
+                height='18'
+                stroke={setColor('sliding side door')}
+              />
+              <rect
+                id='Rectangle 37_2'
+                x='122'
+                y='408'
+                width='3.69231'
+                height='19'
+                fill={setColor('sliding side door')}
+              />
+              <rect
+                id='Rectangle 38_2'
+                x='154.108'
+                y='408'
+                width='3.89189'
+                height='19'
+                fill={setColor('sliding side door')}
+              />
+            </g>
+            <g id='sliding-side-door-3'>
+              <rect
+                id='Rectangle 36_3'
+                x='123.473'
+                y='472.5'
+                width='34.027'
+                height='18'
+                stroke={setColor('sliding side door')}
+              />
+              <rect
+                id='Rectangle 37_3'
+                x='122'
+                y='472'
+                width='3.69231'
+                height='19'
+                fill={setColor('sliding side door')}
+              />
+              <rect
+                id='Rectangle 38_3'
+                x='154.108'
+                y='472'
+                width='3.89189'
+                height='19'
+                fill={setColor('sliding side door')}
+              />
+            </g>
+          </>
+        );
+      default:
+        return null;
+    }
+  };
+
+  useEffect(() => {
+    renderPacker(packerQty);
+    renderGLM(glmQty);
+    renderSSD(ssdQty);
+  }, [currentConfig]);
 
   return (
     <svg
@@ -42,6 +506,7 @@ export default function DiagramSVG() {
               rx='13.9798'
               ry='13.901'
               transform='matrix(0.714257 -0.699883 0.714257 0.699883 120.109 31.4146)'
+              fill='none'
               stroke={setColor('crown valve')}
             />
             <path
@@ -63,6 +528,7 @@ export default function DiagramSVG() {
               rx='13.9798'
               ry='13.9436'
               transform='matrix(0.714257 -0.699883 0.714257 0.699883 120.109 94.1669)'
+              fill='none'
               stroke={setColor('surface safety valve')}
             />
             <path
@@ -84,7 +550,7 @@ export default function DiagramSVG() {
               rx='13.9798'
               ry='13.9798'
               transform='matrix(0.714257 -0.699883 0.714257 0.699883 120.109 132.128)'
-              fill='white'
+              fill='none'
               stroke={setColor('lower master valve')}
             />
             <path
@@ -105,6 +571,7 @@ export default function DiagramSVG() {
               cy='13.9798'
               r='13.9798'
               transform='matrix(-0.714257 -0.699883 -0.714257 0.699883 131.244 60.8539)'
+              fill='none'
               stroke={setColor('wing valve')}
             />
             <path
@@ -125,6 +592,7 @@ export default function DiagramSVG() {
               cy='13.9798'
               r='13.9798'
               transform='matrix(-0.714257 -0.699883 -0.714257 0.699883 188.077 60.8539)'
+              fill='none'
               stroke={setColor('kill wing valve')}
             />
             <path
@@ -249,22 +717,6 @@ export default function DiagramSVG() {
               stroke='black'
             />
           </g>
-          <g id='safety-valve-control-line'>
-            <ellipse
-              id='Ellipse 13'
-              cx='230.336'
-              cy='95.3242'
-              rx='2'
-              ry='2'
-              stroke={setColor('safety valve control line')}
-              fill={setColor('safety valve control line')}
-            />
-            <path
-              id='Vector 72'
-              d='M154 95H230'
-              stroke={setColor('safety valve control line')}
-            />
-          </g>
         </g>
         <g id='tubing-hanger'>
           <g id='tubing-header-left'>
@@ -275,17 +727,30 @@ export default function DiagramSVG() {
               rx='6.98991'
               ry='6.95051'
               transform='matrix(0.714257 -0.699883 0.714257 0.699883 18.8995 151.783)'
-              stroke={setColor('tubing hanger')}
+              fill={showCdft ? setFill('tubing hanger') : 'none'}
+              stroke={
+                showCdft
+                  ? setStroke('tubing hanger')
+                  : setColor('tubing hanger')
+              }
             />
             <path
               id='Vector 6_6'
               d='M23.9722 146.97L33.8773 156.675'
-              stroke={setColor('tubing hanger')}
+              stroke={
+                showCdft
+                  ? setStroke('tubing hanger')
+                  : setColor('tubing hanger')
+              }
             />
             <path
               id='Vector 7_6'
               d='M23.944 156.726L33.8487 147.021'
-              stroke={setColor('tubing hanger')}
+              stroke={
+                showCdft
+                  ? setStroke('tubing hanger')
+                  : setColor('tubing hanger')
+              }
             />
           </g>
           <g id='tubing-header-right'>
@@ -296,42 +761,61 @@ export default function DiagramSVG() {
               rx='6.98991'
               ry='6.95051'
               transform='matrix(0.714257 -0.699883 0.714257 0.699883 242.338 151.783)'
-              stroke={setColor('tubing hanger')}
+              fill={showCdft ? setFill('tubing hanger') : 'none'}
+              stroke={
+                showCdft
+                  ? setStroke('tubing hanger')
+                  : setColor('tubing hanger')
+              }
             />
             <path
               id='Vector 6_7'
               d='M247.411 146.97L257.316 156.675'
-              stroke={setColor('tubing hanger')}
+              stroke={
+                showCdft
+                  ? setStroke('tubing hanger')
+                  : setColor('tubing hanger')
+              }
             />
             <path
               id='Vector 7_7'
               d='M247.383 156.726L257.287 147.021'
-              stroke={setColor('tubing hanger')}
+              stroke={
+                showCdft
+                  ? setStroke('tubing hanger')
+                  : setColor('tubing hanger')
+              }
             />
           </g>
           <path
             id='Vector 41'
             d='M154.364 152.07H245.452'
-            stroke={setColor('tubing hanger')}
+            stroke={
+              showCdft ? setStroke('tubing hanger') : setColor('tubing hanger')
+            }
           />
           <path
             id='Vector 42'
             d='M36.0272 152.07H125.558'
-            stroke={setColor('tubing hanger')}
+            stroke={
+              showCdft ? setStroke('tubing hanger') : setColor('tubing hanger')
+            }
           />
         </g>
+
         <g id='production-tubing'>
           <path
             id='production-tubing-lower'
-            d='M125.309 281H154.309V639.249L125.309 657V281Z'
+            d='M126 246.5H125.5V247V657V657.954L126.284 657.411L154.284 638.055L154.5 637.906V637.644V247V246.5H154H126Z'
             stroke={setColor('production tubing ( below DHSV )')}
           />
           <path
             id='production-tubing-upper'
-            d='M125.558 113.334H154.364V276.025H125.558V113.334Z'
+            d='M126 112.5H125.5V113V245V245.5H126H154H154.5V245V113V112.5H154H126Z'
             stroke={setColor('production tubing ( above DHSV )')}
           />
         </g>
+
         <g id='production-casing'>
           <g id='production-casing-cement-left'>
             <g id='production-casing-cement'>
@@ -341,7 +825,11 @@ export default function DiagramSVG() {
                 x2='24.163'
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 93.6386 540.205)'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <line
                 id='Line 128'
@@ -349,7 +837,11 @@ export default function DiagramSVG() {
                 x2='24.163'
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 93.6386 557.249)'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <line
                 id='Line 129'
@@ -357,7 +849,11 @@ export default function DiagramSVG() {
                 x2='26.3596'
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 92.0815 575.842)'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <line
                 id='Line 130'
@@ -365,7 +861,11 @@ export default function DiagramSVG() {
                 x2='23.0647'
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 94.4171 590.562)'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <line
                 id='Line 131'
@@ -373,7 +873,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 95.3521 606.675)'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <line
                 id='Line 132'
@@ -381,7 +885,11 @@ export default function DiagramSVG() {
                 x2='20.868'
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 95.9742 623.1)'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <line
                 id='Line 133'
@@ -389,7 +897,11 @@ export default function DiagramSVG() {
                 x2='19.7697'
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 96.7527 639.369)'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <line
                 id='Line 134'
@@ -397,43 +909,75 @@ export default function DiagramSVG() {
                 x2='20.868'
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 95.9742 657.188)'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <path
                 id='Line 135'
                 d='M98.8131 670.859L110.491 659.238'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <path
                 id='Line 136'
                 d='M95.6989 692.05L103.095 684.69L110.491 677.33'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <path
                 id='Line 137'
                 d='M98.8131 706.77L110.491 695.149'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <path
                 id='Line 138'
                 d='M100.095 724.862L110.491 714.517'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <path
                 id='Line 139'
                 d='M101.927 740.083L110.491 731.561'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <path
                 id='Line 140'
                 d='M103.484 754.802L110.491 747.83'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
             </g>
             <path
               id='production-casing-cement-curve'
               d='M88.5781 536.331L92.8601 539.818V545.241L90.9137 551.051L92.8601 554.15V559.96V568.87L90.9137 575.067L95.1956 580.878L92.8601 586.688L95.1956 593.273L92.8601 598.696L95.1956 604.507L92.8601 610.317L95.1956 615.74V623.487L98.699 630.072L95.1956 637.045L98.699 643.243V650.602L95.1956 656.025V662.223L98.699 668.421V678.492L95.1956 691.275L98.699 698.635V707.544L101.813 712.58L98.699 722.264L101.813 731.173V735.822V740.47V746.28V752.865L104.538 757.126L107.652 759.451'
-              stroke={setColor('cement ( production casing )')}
+              stroke={
+                showCdft
+                  ? setStroke('cement ( production casing )')
+                  : setColor('cement ( production casing )')
+              }
             />
           </g>
           <g id='production-casing-cement-right'>
@@ -444,7 +988,11 @@ export default function DiagramSVG() {
                 x2='24.163'
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 186.284 540.205)'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <line
                 id='Line 128_2'
@@ -452,7 +1000,11 @@ export default function DiagramSVG() {
                 x2='24.163'
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 186.284 557.249)'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <line
                 id='Line 129_2'
@@ -460,7 +1012,11 @@ export default function DiagramSVG() {
                 x2='26.3596'
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 187.841 575.842)'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <line
                 id='Line 130_2'
@@ -468,7 +1024,11 @@ export default function DiagramSVG() {
                 x2='23.0647'
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 185.506 590.562)'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <line
                 id='Line 131_2'
@@ -476,7 +1036,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 184.571 606.675)'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <line
                 id='Line 132_2'
@@ -484,7 +1048,11 @@ export default function DiagramSVG() {
                 x2='20.868'
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 183.949 623.1)'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <line
                 id='Line 133_2'
@@ -492,7 +1060,11 @@ export default function DiagramSVG() {
                 x2='19.7697'
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 183.17 639.369)'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <line
                 id='Line 134_2'
@@ -500,43 +1072,75 @@ export default function DiagramSVG() {
                 x2='20.868'
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 183.949 657.188)'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <path
                 id='Line 135_2'
                 d='M181.11 670.859L169.432 659.238'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <path
                 id='Line 136_2'
                 d='M184.224 692.05L176.828 684.69L169.432 677.33'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <path
                 id='Line 137_2'
                 d='M181.11 706.77L169.432 695.149'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <path
                 id='Line 138_2'
                 d='M179.828 724.862L169.432 714.517'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <path
                 id='Line 139_2'
                 d='M177.996 740.083L169.432 731.561'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
               <path
                 id='Line 140_2'
                 d='M176.438 754.802L169.432 747.83'
-                stroke={setColor('cement ( production casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( production casing )')
+                    : setColor('cement ( production casing )')
+                }
               />
             </g>
             <path
               id='production-casing-cement-curve_2'
               d='M191.345 536.331L187.063 539.818V545.241L189.009 551.051L187.063 554.15V559.96V568.87L189.009 575.067L184.727 580.878L187.063 586.688L184.727 593.273L187.063 598.696L184.727 604.507L187.063 610.317L184.727 615.74V623.487L181.224 630.072L184.727 637.045L181.224 643.243V650.602L184.727 656.025V662.223L181.224 668.421V678.492L184.727 691.275L181.224 698.635V707.544L178.11 712.58L181.224 722.264L178.11 731.173V735.822V740.47V746.28V752.865L175.385 757.126L172.271 759.451'
-              stroke={setColor('cement ( production casing )')}
+              stroke={
+                showCdft
+                  ? setStroke('cement ( production casing )')
+                  : setColor('cement ( production casing )')
+              }
             />
             <g id='Group 27'>
               <rect
@@ -552,12 +1156,20 @@ export default function DiagramSVG() {
             <path
               id='production-casing-lower-left'
               d='M109.965 580.5L109.965 760'
-              stroke={setColor('production casing ( below packer )')}
+              stroke={
+                showCdft
+                  ? setStroke('production casing ( below packer )')
+                  : setColor('production casing ( below packer )')
+              }
             />
             <path
               id='production-casing-lower-right'
               d='M169 580L169 761'
-              stroke={setColor('production casing ( below packer )')}
+              stroke={
+                showCdft
+                  ? setStroke('production casing ( below packer )')
+                  : setColor('production casing ( below packer )')
+              }
             />
             <g id='production-casing-shoe'>
               <path
@@ -586,7 +1198,11 @@ export default function DiagramSVG() {
                 <path
                   id='production-casing-upper_2'
                   d='M218.593 181.51L169 200V581'
-                  stroke={setColor('production casing ( above packer )')}
+                  stroke={
+                    showCdft
+                      ? setStroke('production casing ( above packer )')
+                      : setColor('production casing ( above packer )')
+                  }
                 />
               </g>
             </g>
@@ -595,12 +1211,20 @@ export default function DiagramSVG() {
                 <path
                   id='production-casing-upper_3'
                   d='M110 580.5L111.5 201.226L62.7192 181.51H30.9668'
-                  stroke={setColor('production casing ( above packer )')}
+                  stroke={
+                    showCdft
+                      ? setStroke('production casing ( above packer )')
+                      : setColor('production casing ( above packer )')
+                  }
                 />
                 <path
                   id='Vector 67'
                   d='M49.2623 166.015H30.5775'
-                  stroke={setColor('production casing ( above packer )')}
+                  stroke={
+                    showCdft
+                      ? setStroke('production casing ( above packer )')
+                      : setColor('production casing ( above packer )')
+                  }
                 />
               </g>
             </g>
@@ -613,18 +1237,30 @@ export default function DiagramSVG() {
               rx='10.8732'
               ry='10.8119'
               transform='matrix(0.714257 -0.699883 0.714257 0.699883 8.00008 173.488)'
-              fill='white'
-              stroke={setColor('production casing valves')}
+              fill={showCdft ? setFill('production casing valves') : 'none'}
+              stroke={
+                showCdft
+                  ? setStroke('production casing valves')
+                  : setColor('production casing valves')
+              }
             />
             <path
               id='Vector 6_8'
               d='M15.8908 166L31.2987 181.098'
-              stroke={setColor('production casing valves')}
+              stroke={
+                showCdft
+                  ? setStroke('production casing valves')
+                  : setColor('production casing valves')
+              }
             />
             <path
               id='Vector 7_8'
               d='M15.847 181.177L31.2543 166.08'
-              stroke={setColor('production casing valves')}
+              stroke={
+                showCdft
+                  ? setStroke('production casing valves')
+                  : setColor('production casing valves')
+              }
             />
           </g>
           <g id='production-casing-seal'>
@@ -636,17 +1272,30 @@ export default function DiagramSVG() {
                   y='152.07'
                   width='13.235'
                   height='13.945'
-                  stroke={setColor('production casing valves')}
+                  fill={showCdft ? setFill('production casing valves') : 'none'}
+                  stroke={
+                    showCdft
+                      ? setStroke('production casing valves')
+                      : setColor('production casing valves')
+                  }
                 />
                 <path
                   id='Line 95'
                   d='M49.7002 165.764L62.546 152.07'
-                  stroke={setColor('production casing valves')}
+                  stroke={
+                    showCdft
+                      ? setStroke('production casing valves')
+                      : setColor('production casing valves')
+                  }
                 />
                 <path
                   id='Line 96'
                   d='M62.1567 165.628L49.5375 152.523'
-                  stroke={setColor('production casing valves')}
+                  stroke={
+                    showCdft
+                      ? setStroke('production casing valves')
+                      : setColor('production casing valves')
+                  }
                 />
               </g>
             </g>
@@ -657,17 +1306,30 @@ export default function DiagramSVG() {
                   width='13.235'
                   height='13.945'
                   transform='matrix(-1 0 0 1 230.612 152.07)'
-                  stroke={setColor('production casing valves')}
+                  fill={showCdft ? setFill('production casing valves') : 'none'}
+                  stroke={
+                    showCdft
+                      ? setStroke('production casing valves')
+                      : setColor('production casing valves')
+                  }
                 />
                 <path
                   id='Line 95_2'
                   d='M230.223 165.764L217.377 152.07'
-                  stroke={setColor('production casing valves')}
+                  stroke={
+                    showCdft
+                      ? setStroke('production casing valves')
+                      : setColor('production casing valves')
+                  }
                 />
                 <path
                   id='Line 96_2'
                   d='M217.766 165.628L230.385 152.523'
-                  stroke={setColor('production casing valves')}
+                  stroke={
+                    showCdft
+                      ? setStroke('production casing valves')
+                      : setColor('production casing valves')
+                  }
                 />
               </g>
             </g>
@@ -682,7 +1344,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 80.4035 416.869)'
-                stroke={setColor('cement ( intermediate casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( intermediate casing )')
+                    : setColor('cement ( intermediate casing )')
+                }
               />
               <line
                 id='Line 128_3'
@@ -690,7 +1356,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 80.4035 433.913)'
-                stroke={setColor('cement ( intermediate casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( intermediate casing )')
+                    : setColor('cement ( intermediate casing )')
+                }
               />
               <line
                 id='Line 129_3'
@@ -698,7 +1368,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 80.4035 450.956)'
-                stroke={setColor('cement ( intermediate casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( intermediate casing )')
+                    : setColor('cement ( intermediate casing )')
+                }
               />
               <line
                 id='Line 130_3'
@@ -706,7 +1380,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 80.4035 468)'
-                stroke={setColor('cement ( intermediate casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( intermediate casing )')
+                    : setColor('cement ( intermediate casing )')
+                }
               />
               <line
                 id='Line 131_3'
@@ -714,7 +1392,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 80.4035 485.044)'
-                stroke={setColor('cement ( intermediate casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( intermediate casing )')
+                    : setColor('cement ( intermediate casing )')
+                }
               />
               <line
                 id='Line 132_3'
@@ -722,7 +1404,11 @@ export default function DiagramSVG() {
                 x2='19.7697'
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 81.8041 500.694)'
-                stroke={setColor('cement ( intermediate casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( intermediate casing )')
+                    : setColor('cement ( intermediate casing )')
+                }
               />
               <line
                 id='Line 133_3'
@@ -730,7 +1416,11 @@ export default function DiagramSVG() {
                 x2='15.3765'
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 84.9183 514.639)'
-                stroke={setColor('cement ( intermediate casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( intermediate casing )')
+                    : setColor('cement ( intermediate casing )')
+                }
               />
               <line
                 id='Line 134_3'
@@ -738,21 +1428,33 @@ export default function DiagramSVG() {
                 x2='11.4325'
                 y2='-0.5'
                 transform='matrix(0.73539 -0.677644 0.681235 0.732065 87.4103 528.584)'
-                stroke={setColor('cement ( intermediate casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( intermediate casing )')
+                    : setColor('cement ( intermediate casing )')
+                }
               />
             </g>
             <g id='intermediate-casing_2'>
               <path
                 id='Vector 53'
                 d='M49.2623 195.455L31.356 195.455'
-                stroke={setColor('cement ( intermediate casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('intermediate casing')
+                    : setColor('intermediate casing')
+                }
               />
               <g id='intermediate-casing_3'>
                 <g id='Group 15'>
                   <path
                     id='Vector 53_2'
                     d='M95.5849 535.557V224.119L62.4114 210.949H30.5775'
-                    stroke={setColor('intermediate casing')}
+                    stroke={
+                      showCdft
+                        ? setStroke('intermediate casing')
+                        : setColor('intermediate casing')
+                    }
                   />
                 </g>
               </g>
@@ -765,7 +1467,11 @@ export default function DiagramSVG() {
             <path
               id='intermediate-casing-cement-curve'
               d='M90.1352 537.881L87.4103 535.557L84.6855 525.873L81.9606 520.45L84.6855 514.639L81.9606 506.117V498.37L78.4572 494.496L80.0143 486.362L77.6787 478.227L82.3499 472.804L77.6787 464.282L80.0143 458.859L79.2358 453.049V450.725L74.9538 447.626'
-              stroke={setColor('cement ( intermediate casing )')}
+              stroke={
+                showCdft
+                  ? setStroke('cement ( intermediate casing )')
+                  : setColor('cement ( intermediate casing )')
+              }
             />
           </g>
           <g id='intermediate-casing-right'>
@@ -776,7 +1482,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 200.141 416.869)'
-                stroke={setColor('cement ( intermediate casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( intermediate casing )')
+                    : setColor('cement ( intermediate casing )')
+                }
               />
               <line
                 id='Line 128_4'
@@ -784,7 +1494,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 200.141 433.913)'
-                stroke={setColor('cement ( intermediate casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( intermediate casing )')
+                    : setColor('cement ( intermediate casing )')
+                }
               />
               <line
                 id='Line 129_4'
@@ -792,7 +1506,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 200.141 450.956)'
-                stroke={setColor('cement ( intermediate casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( intermediate casing )')
+                    : setColor('cement ( intermediate casing )')
+                }
               />
               <line
                 id='Line 130_4'
@@ -800,7 +1518,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 200.141 468)'
-                stroke={setColor('cement ( intermediate casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( intermediate casing )')
+                    : setColor('cement ( intermediate casing )')
+                }
               />
               <line
                 id='Line 131_4'
@@ -808,7 +1530,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 200.141 485.044)'
-                stroke={setColor('cement ( intermediate casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( intermediate casing )')
+                    : setColor('cement ( intermediate casing )')
+                }
               />
               <line
                 id='Line 132_4'
@@ -816,7 +1542,11 @@ export default function DiagramSVG() {
                 x2='19.7697'
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 198.74 500.694)'
-                stroke={setColor('cement ( intermediate casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( intermediate casing )')
+                    : setColor('cement ( intermediate casing )')
+                }
               />
               <line
                 id='Line 133_4'
@@ -824,7 +1554,11 @@ export default function DiagramSVG() {
                 x2='15.3765'
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 195.626 514.639)'
-                stroke={setColor('cement ( intermediate casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( intermediate casing )')
+                    : setColor('cement ( intermediate casing )')
+                }
               />
               <line
                 id='Line 134_4'
@@ -832,7 +1566,11 @@ export default function DiagramSVG() {
                 x2='11.4325'
                 y2='-0.5'
                 transform='matrix(-0.73539 -0.677644 -0.681235 0.732065 193.134 528.584)'
-                stroke={setColor('cement ( intermediate casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( intermediate casing )')
+                    : setColor('cement ( intermediate casing )')
+                }
               />
             </g>
             <g id='intermediate-casing_4'>
@@ -841,7 +1579,11 @@ export default function DiagramSVG() {
                   <path
                     id='Vector 53_3'
                     d='M218.133 210.949L184.96 224.119V535.557'
-                    stroke={setColor('intermediate casing')}
+                    stroke={
+                      showCdft
+                        ? setStroke('intermediate casing')
+                        : setColor('intermediate casing')
+                    }
                   />
                 </g>
               </g>
@@ -854,7 +1596,11 @@ export default function DiagramSVG() {
             <path
               id='intermediate-casing-cement-curve_2'
               d='M190.409 537.881L193.134 535.557L195.859 525.873L198.584 520.45L195.859 514.639L198.584 506.117V498.37L202.087 494.496L200.53 486.362L202.866 478.227L198.195 472.804L202.866 464.282L200.53 458.859L201.309 453.049V450.725L205.591 447.626'
-              stroke={setColor('cement ( intermediate casing )')}
+              stroke={
+                showCdft
+                  ? setStroke('cement ( intermediate casing )')
+                  : setColor('cement ( intermediate casing )')
+              }
             />
             <g id='Group 26'>
               <rect
@@ -868,7 +1614,7 @@ export default function DiagramSVG() {
           </g>
           <g id='intermediate-casing-valve-1'>
             <g id='Group 34'>
-              <g id='production-casing-valve-1_2'>
+              <g id='intermediate-casing-valve-1_2'>
                 <ellipse
                   id='Ellipse 1_9'
                   cx='10.8732'
@@ -876,17 +1622,32 @@ export default function DiagramSVG() {
                   rx='10.8732'
                   ry='10.8119'
                   transform='matrix(0.714257 -0.699883 0.714257 0.699883 8.00008 202.927)'
-                  stroke={setColor('intermediate casing valves')}
+                  fill={
+                    showCdft ? setFill('intermediate casing valves') : 'none'
+                  }
+                  stroke={
+                    showCdft
+                      ? setStroke('intermediate casing valves')
+                      : setColor('intermediate casing valves')
+                  }
                 />
                 <path
                   id='Vector 6_9'
                   d='M15.8908 195.439L31.2987 210.537'
-                  stroke={setColor('intermediate casing valves')}
+                  stroke={
+                    showCdft
+                      ? setStroke('intermediate casing valves')
+                      : setColor('intermediate casing valves')
+                  }
                 />
                 <path
                   id='Vector 7_9'
                   d='M15.847 210.617L31.2543 195.519'
-                  stroke={setColor('intermediate casing valves')}
+                  stroke={
+                    showCdft
+                      ? setStroke('intermediate casing valves')
+                      : setColor('intermediate casing valves')
+                  }
                 />
               </g>
             </g>
@@ -899,17 +1660,32 @@ export default function DiagramSVG() {
                   width='13.235'
                   height='13.945'
                   transform='matrix(-1 0 0 1 231.234 181.51)'
-                  stroke={setColor('intermediate casing valves')}
+                  fill={
+                    showCdft ? setFill('intermediate casing valves') : 'none'
+                  }
+                  stroke={
+                    showCdft
+                      ? setStroke('intermediate casing valves')
+                      : setColor('intermediate casing valves')
+                  }
                 />
                 <path
                   id='Line 95_3'
                   d='M230.844 195.203L217.999 181.51'
-                  stroke={setColor('intermediate casing valves')}
+                  stroke={
+                    showCdft
+                      ? setStroke('intermediate casing valves')
+                      : setColor('intermediate casing valves')
+                  }
                 />
                 <path
                   id='Line 96_3'
                   d='M218.388 195.067L231.007 181.962'
-                  stroke={setColor('intermediate casing valves')}
+                  stroke={
+                    showCdft
+                      ? setStroke('intermediate casing valves')
+                      : setColor('intermediate casing valves')
+                  }
                 />
               </g>
             </g>
@@ -921,17 +1697,32 @@ export default function DiagramSVG() {
                   y='181.51'
                   width='13.235'
                   height='13.945'
-                  stroke={setColor('intermediate casing valves')}
+                  fill={
+                    showCdft ? setFill('intermediate casing valves') : 'none'
+                  }
+                  stroke={
+                    showCdft
+                      ? setStroke('intermediate casing valves')
+                      : setColor('intermediate casing valves')
+                  }
                 />
                 <path
                   id='Line 95_4'
                   d='M49.7002 195.203L62.546 181.51'
-                  stroke={setColor('intermediate casing valves')}
+                  stroke={
+                    showCdft
+                      ? setStroke('intermediate casing valves')
+                      : setColor('intermediate casing valves')
+                  }
                 />
                 <path
                   id='Line 96_4'
                   d='M62.1567 195.067L49.5375 181.962'
-                  stroke={setColor('intermediate casing valves')}
+                  stroke={
+                    showCdft
+                      ? setStroke('intermediate casing valves')
+                      : setColor('intermediate casing valves')
+                  }
                 />
               </g>
             </g>
@@ -943,12 +1734,20 @@ export default function DiagramSVG() {
               <path
                 id='Vector 57'
                 d='M49.2623 224.894H31.356'
-                stroke={setColor('surface casing')}
+                stroke={
+                  showCdft
+                    ? setStroke('surface casing')
+                    : setColor('surface casing')
+                }
               />
               <path
                 id='line'
                 d='M80.0143 442.59L80.0143 240.388H31.356'
-                stroke={setColor('surface casing')}
+                stroke={
+                  showCdft
+                    ? setStroke('surface casing')
+                    : setColor('surface casing')
+                }
               />
             </g>
             <path
@@ -963,7 +1762,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 64.8329 262.699)'
-                stroke={setColor('cement ( surface casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( surface casing )')
+                    : setColor('cement ( surface casing )')
+                }
               />
               <line
                 id='Line 126'
@@ -971,7 +1774,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 64.8329 279.743)'
-                stroke={setColor('cement ( surface casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( surface casing )')
+                    : setColor('cement ( surface casing )')
+                }
               />
               <line
                 id='Line 127_5'
@@ -979,7 +1786,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 64.8329 296.787)'
-                stroke={setColor('cement ( surface casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( surface casing )')
+                    : setColor('cement ( surface casing )')
+                }
               />
               <line
                 id='Line 128_5'
@@ -987,7 +1798,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 64.8329 313.831)'
-                stroke={setColor('cement ( surface casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( surface casing )')
+                    : setColor('cement ( surface casing )')
+                }
               />
               <line
                 id='Line 129_5'
@@ -995,7 +1810,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 64.8329 330.875)'
-                stroke={setColor('cement ( surface casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( surface casing )')
+                    : setColor('cement ( surface casing )')
+                }
               />
               <line
                 id='Line 130_5'
@@ -1003,7 +1822,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 64.8329 347.919)'
-                stroke={setColor('cement ( surface casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( surface casing )')
+                    : setColor('cement ( surface casing )')
+                }
               />
               <line
                 id='Line 131_5'
@@ -1011,7 +1834,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 64.8329 364.962)'
-                stroke={setColor('cement ( surface casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( surface casing )')
+                    : setColor('cement ( surface casing )')
+                }
               />
               <line
                 id='Line 132_5'
@@ -1019,7 +1846,11 @@ export default function DiagramSVG() {
                 x2='19.7697'
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 66.2335 380.613)'
-                stroke={setColor('cement ( surface casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( surface casing )')
+                    : setColor('cement ( surface casing )')
+                }
               />
               <line
                 id='Line 133_5'
@@ -1027,7 +1858,11 @@ export default function DiagramSVG() {
                 x2='15.3765'
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 69.3476 394.558)'
-                stroke={setColor('cement ( surface casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( surface casing )')
+                    : setColor('cement ( surface casing )')
+                }
               />
               <line
                 id='Line 134_5'
@@ -1035,18 +1870,30 @@ export default function DiagramSVG() {
                 x2='15.3765'
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 69.3476 411.601)'
-                stroke={setColor('cement ( surface casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( surface casing )')
+                    : setColor('cement ( surface casing )')
+                }
               />
               <path
                 id='Line 135_3'
                 d='M69.5757 427.87L79.9718 417.525'
-                stroke={setColor('cement ( surface casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( surface casing )')
+                    : setColor('cement ( surface casing )')
+                }
               />
             </g>
             <path
               id='surface-casing-cement-curve'
               d='M64.8329 375.964L66.0006 379.838L67.5577 384.486L67.5577 387.585L68.7255 391.459L68.7255 394.558L68.7255 398.431L67.5577 402.305L68.7255 406.178L68.7255 410.439L67.947 415.088L69.1147 418.186L67.947 420.511L69.1147 425.546L69.8933 427.87L69.1147 430.195L69.8933 433.681L69.1147 436.392L70.2825 439.879L70.2825 442.59L72.6181 444.914L75.343 447.626'
-              stroke={setColor('cement ( surface casing )')}
+              stroke={
+                showCdft
+                  ? setStroke('cement ( surface casing )')
+                  : setColor('cement ( surface casing )')
+              }
             />
           </g>
           <g id='surface-casing-right'>
@@ -1054,7 +1901,11 @@ export default function DiagramSVG() {
               <path
                 id='line_2'
                 d='M200.53 442.59L200.53 240.388L231.5 240.388'
-                stroke={setColor('surface casing')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( surface casing )')
+                    : setColor('cement ( surface casing )')
+                }
               />
             </g>
             <path
@@ -1069,7 +1920,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 215.712 262.7)'
-                stroke={setColor('cement ( surface casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( surface casing )')
+                    : setColor('cement ( surface casing )')
+                }
               />
               <line
                 id='Line 126_2'
@@ -1077,7 +1932,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 215.712 279.743)'
-                stroke={setColor('cement ( surface casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( surface casing )')
+                    : setColor('cement ( surface casing )')
+                }
               />
               <line
                 id='Line 127_6'
@@ -1085,7 +1944,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 215.712 296.787)'
-                stroke={setColor('cement ( surface casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( surface casing )')
+                    : setColor('cement ( surface casing )')
+                }
               />
               <line
                 id='Line 128_6'
@@ -1093,7 +1956,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 215.712 313.831)'
-                stroke={setColor('cement ( surface casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( surface casing )')
+                    : setColor('cement ( surface casing )')
+                }
               />
               <line
                 id='Line 129_6'
@@ -1101,7 +1968,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 215.712 330.875)'
-                stroke={setColor('cement ( surface casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( surface casing )')
+                    : setColor('cement ( surface casing )')
+                }
               />
               <line
                 id='Line 130_6'
@@ -1109,7 +1980,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 215.712 347.919)'
-                stroke={setColor('cement ( surface casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( surface casing )')
+                    : setColor('cement ( surface casing )')
+                }
               />
               <line
                 id='Line 131_6'
@@ -1117,7 +1992,11 @@ export default function DiagramSVG() {
                 x2='21.7456'
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 215.712 364.963)'
-                stroke={setColor('cement ( surface casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( surface casing )')
+                    : setColor('cement ( surface casing )')
+                }
               />
               <line
                 id='Line 132_6'
@@ -1125,7 +2004,11 @@ export default function DiagramSVG() {
                 x2='19.7697'
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 214.311 380.613)'
-                stroke={setColor('cement ( surface casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( surface casing )')
+                    : setColor('cement ( surface casing )')
+                }
               />
               <line
                 id='Line 133_6'
@@ -1133,7 +2016,11 @@ export default function DiagramSVG() {
                 x2='15.3765'
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 211.197 394.558)'
-                stroke={setColor('cement ( surface casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( surface casing )')
+                    : setColor('cement ( surface casing )')
+                }
               />
               <line
                 id='Line 134_6'
@@ -1141,18 +2028,30 @@ export default function DiagramSVG() {
                 x2='15.3765'
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 211.197 411.601)'
-                stroke={setColor('cement ( surface casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( surface casing )')
+                    : setColor('cement ( surface casing )')
+                }
               />
               <path
                 id='Line 135_4'
                 d='M210.969 427.871L200.573 417.525'
-                stroke={setColor('cement ( surface casing )')}
+                stroke={
+                  showCdft
+                    ? setStroke('cement ( surface casing )')
+                    : setColor('cement ( surface casing )')
+                }
               />
             </g>
             <path
               id='surface-casing-cement-curve_2'
               d='M215.712 375.964L214.544 379.838L212.987 384.486L212.987 387.585L211.819 391.459L211.819 394.558L211.819 398.431L212.987 402.305L211.819 406.178L211.819 410.439L212.598 415.088L211.43 418.187L212.598 420.511L211.43 425.546L210.651 427.871L211.43 430.195L210.651 433.681L211.43 436.392L210.262 439.879L210.262 442.59L207.926 444.914L205.201 447.626'
-              stroke={setColor('cement ( surface casing )')}
+              stroke={
+                showCdft
+                  ? setStroke('cement ( surface casing )')
+                  : setColor('cement ( surface casing )')
+              }
             />
             <g id='Group 25'>
               <rect
@@ -1172,17 +2071,30 @@ export default function DiagramSVG() {
               rx='10.8732'
               ry='10.8119'
               transform='matrix(0.714257 -0.699883 0.714257 0.699883 8.00008 232.367)'
-              stroke={setColor('surface casing valves')}
+              fill={showCdft ? setFill('surface casing valves') : 'none'}
+              stroke={
+                showCdft
+                  ? setStroke('surface casing valves')
+                  : setColor('surface casing valves')
+              }
             />
             <path
               id='Vector 6_10'
               d='M15.8907 224.879L31.2987 239.977'
-              stroke={setColor('surface casing valves')}
+              stroke={
+                showCdft
+                  ? setStroke('surface casing valves')
+                  : setColor('surface casing valves')
+              }
             />
             <path
               id='Vector 7_10'
               d='M15.847 240.056L31.2543 224.959'
-              stroke={setColor('surface casing valves')}
+              stroke={
+                showCdft
+                  ? setStroke('surface casing valves')
+                  : setColor('surface casing valves')
+              }
             />
           </g>
           <g id='surface-casing-seal'>
@@ -1194,17 +2106,30 @@ export default function DiagramSVG() {
                   y='210.949'
                   width='13.235'
                   height='13.945'
-                  stroke={setColor('surface casing valves')}
+                  fill={showCdft ? setFill('surface casing valves') : 'none'}
+                  stroke={
+                    showCdft
+                      ? setStroke('surface casing valves')
+                      : setColor('surface casing valves')
+                  }
                 />
                 <path
                   id='Line 95_5'
                   d='M49.7002 224.643L62.546 210.949'
-                  stroke={setColor('surface casing valves')}
+                  stroke={
+                    showCdft
+                      ? setStroke('surface casing valves')
+                      : setColor('surface casing valves')
+                  }
                 />
                 <path
                   id='Line 96_5'
                   d='M62.1567 224.507L49.5375 211.401'
-                  stroke={setColor('surface casing valves')}
+                  stroke={
+                    showCdft
+                      ? setStroke('surface casing valves')
+                      : setColor('surface casing valves')
+                  }
                 />
               </g>
             </g>
@@ -1215,17 +2140,30 @@ export default function DiagramSVG() {
                   width='13.235'
                   height='13.945'
                   transform='matrix(-1 0 0 1 231.234 210.949)'
-                  stroke={setColor('surface casing valves')}
+                  fill={showCdft ? setFill('surface casing valves') : 'none'}
+                  stroke={
+                    showCdft
+                      ? setStroke('surface casing valves')
+                      : setColor('surface casing valves')
+                  }
                 />
                 <path
                   id='Line 95_6'
                   d='M230.844 224.643L217.999 210.949'
-                  stroke={setColor('surface casing valves')}
+                  stroke={
+                    showCdft
+                      ? setStroke('surface casing valves')
+                      : setColor('surface casing valves')
+                  }
                 />
                 <path
                   id='Line 96_6'
                   d='M218.388 224.507L231.007 211.401'
-                  stroke={setColor('surface casing valves')}
+                  stroke={
+                    showCdft
+                      ? setStroke('surface casing valves')
+                      : setColor('surface casing valves')
+                  }
                 />
               </g>
             </g>
@@ -1248,7 +2186,11 @@ export default function DiagramSVG() {
             <path
               id='conductor-casing_2'
               d='M50.0408 255.883H64.0544V376.352'
-              stroke={setColor('conductor casing')}
+              stroke={
+                showCdft
+                  ? setStroke('conductor casing')
+                  : setColor('conductor casing')
+              }
             />
             <path
               id='conductor-casing-shoe'
@@ -1271,7 +2213,11 @@ export default function DiagramSVG() {
             <path
               id='conductor-casing_3'
               d='M231.439 255.883H216.647V375.964'
-              stroke={setColor('conductor casing')}
+              stroke={
+                showCdft
+                  ? setStroke('conductor casing')
+                  : setColor('conductor casing')
+              }
             />
             <path
               id='conductor-casing-shoe_2'
@@ -1280,51 +2226,58 @@ export default function DiagramSVG() {
             />
           </g>
         </g>
-        <g id='downhole-safety-valve-control-line'>
-          <path
-            id='Vector 64'
-            d='M231 139.5H162.309V299.267H154.364'
-            stroke={setColor('downhole safety valve control line')}
-          />
-          <ellipse
-            id='Ellipse 12'
-            cx='230.644'
-            cy='139.324'
-            rx='2.33559'
-            ry='2.32416'
-            fill={setColor('downhole safety valve control line')}
-          />
-        </g>
+
+        {/* dhsv here */}
         <g id='downhole-safety-valve'>
-          <g id='valve'>
+          <g id='dhsv'>
             <ellipse
               id='Ellipse 1_11'
               cx='13.9798'
               cy='13.9798'
               rx='13.9798'
               ry='13.9798'
-              transform='matrix(0.714257 -0.699883 0.714257 0.699883 120.109 298.693)'
+              transform='matrix(0.714257 -0.699883 0.714257 0.699883 120.109 261.693)'
+              fill='none'
               stroke={setColor('downhole safety valve')}
             />
             <path
               id='Vector 6_11'
-              d='M130.255 289.066L149.869 308.285'
+              d='M130.255 252.067L149.869 271.286'
               stroke={setColor('downhole safety valve')}
             />
             <path
               id='Vector 7_11'
-              d='M130.255 308.635L150.064 289.224'
+              d='M130.255 271.635L150.064 252.224'
               stroke={setColor('downhole safety valve')}
             />
           </g>
-          <rect
-            id='downhole-safety-valve-landing-nipple'
-            x='125.558'
-            y='276.025'
-            width='28.8057'
-            height='5.42304'
-            fill={setColor('downhole safety valve landing nipple')}
-          />
+          <g id='downhole-safety-valve-landing-nipple'>
+            <path
+              id='nipple'
+              d='M158.671 250.032L158.671 261.248L158.671 271.858L154 274.89L154 247L158.671 250.032Z'
+              fill={setColor('downhole safety valve landing nipple')}
+            />
+            <path
+              id='nipple'
+              d='M121 250.032L121 261.248L121 271.858L125.671 274.89L125.671 247L121 250.032Z'
+              fill={setColor('downhole safety valve landing nipple')}
+            />
+          </g>
+          <g id='downhole-safety-valve-control-line'>
+            <path
+              id='Vector 64'
+              d='M231 139.5H162.309V262H154'
+              stroke={setColor('downhole safety valve control line')}
+            />
+            <ellipse
+              id='Ellipse 12'
+              cx='230.644'
+              cy='139.324'
+              rx='2.33559'
+              ry='2.32416'
+              fill={setColor('downhole safety valve control line')}
+            />
+          </g>
         </g>
         <g id='sea-level'>
           <g id='waves 3' clipPath='url(#clip0_148_331)'>
@@ -1411,233 +2364,15 @@ export default function DiagramSVG() {
             />
           </g>
         </g>
-        <g id='gas-lift-mandrels'>
-          {glmQty > 0 && glmQty <= 5 ? (
-            <path
-              id='glm-1'
-              d='M158.98 332.032L158.98 343.248L158.98 353.858L154.309 356.89L154.309 329L158.98 332.032Z'
-              fill={setColor('gas lift mandrel')}
-            />
-          ) : null}
-          {glmQty >= 2 && glmQty <= 5 ? (
-            <path
-              id='glm-2'
-              d='M158.98 372.317L158.98 383.534L158.98 394.144L154.309 397.175L154.309 369.285L158.98 372.317Z'
-              fill={setColor('gas lift mandrel')}
-            />
-          ) : null}
-          {glmQty >= 3 && glmQty <= 5 ? (
-            <path
-              id='glm-3'
-              d='M158.98 412.602L158.98 423.819L158.98 434.429L154.309 437.461L154.309 409.571L158.98 412.602Z'
-              fill={setColor('gas lift mandrel')}
-            />
-          ) : null}
-          {glmQty >= 4 && glmQty <= 5 ? (
-            <path
-              id='glm-4'
-              d='M158.98 452.888L158.98 464.104L158.98 474.715L154.309 477.746L154.309 449.856L158.98 452.888Z'
-              fill={setColor('gas lift mandrel')}
-            />
-          ) : null}
-          {glmQty === 5 ? (
-            <path
-              id='glm-5'
-              d='M158.98 493.173L158.98 504.39L158.98 515L154.309 518.032L154.309 490.142L158.98 493.173Z'
-              fill={setColor('gas lift mandrel')}
-            />
-          ) : null}
-        </g>
-        <g id='sliding-side-doors'>
-          {ssdQty > 0 && ssdQty <= 3 ? (
-            <g id='sliding-side-door-1'>
-              <rect
-                id='Rectangle 36'
-                x='123.473'
-                y='344.5'
-                width='34.027'
-                height='18'
-                stroke={setColor('sliding side door')}
-              />
-              <rect
-                id='Rectangle 37'
-                x='122'
-                y='344'
-                width='3.69231'
-                height='19'
-                fill={setColor('sliding side door')}
-              />
-              <rect
-                id='Rectangle 38'
-                x='154.108'
-                y='344'
-                width='3.89189'
-                height='19'
-                fill={setColor('sliding side door')}
-              />
-            </g>
-          ) : null}
 
-          {ssdQty >= 2 && ssdQty <= 3 ? (
-            <g id='sliding-side-door-2'>
-              <rect
-                id='Rectangle 36_2'
-                x='123.473'
-                y='408.5'
-                width='34.027'
-                height='18'
-                stroke={setColor('sliding side door')}
-              />
-              <rect
-                id='Rectangle 37_2'
-                x='122'
-                y='408'
-                width='3.69231'
-                height='19'
-                fill={setColor('sliding side door')}
-              />
-              <rect
-                id='Rectangle 38_2'
-                x='154.108'
-                y='408'
-                width='3.89189'
-                height='19'
-                fill={setColor('sliding side door')}
-              />
-            </g>
-          ) : null}
+        {/* glm here */}
+        <g id='gas-lift-mandrels'>{renderGLM(glmQty)}</g>
 
-          {ssdQty === 3 ? (
-            <g id='sliding-side-door-3'>
-              <rect
-                id='Rectangle 36_3'
-                x='123.473'
-                y='472.5'
-                width='34.027'
-                height='18'
-                stroke={setColor('sliding side door')}
-              />
-              <rect
-                id='Rectangle 37_3'
-                x='122'
-                y='472'
-                width='3.69231'
-                height='19'
-                fill={setColor('sliding side door')}
-              />
-              <rect
-                id='Rectangle 38_3'
-                x='154.108'
-                y='472'
-                width='3.89189'
-                height='19'
-                fill={setColor('sliding side door')}
-              />
-            </g>
-          ) : null}
-        </g>
+        {/* ssd here */}
+        {renderSSD(ssdQty)}
 
-        {packerQty === 1 || 2 ? (
-          <g id='production-packer-1'>
-            <g id='Group 22_3'>
-              <rect
-                id='Rectangle 27_3'
-                x='154.224'
-                y='564'
-                width='15'
-                height='15.4944'
-                stroke={setColor('production packer')}
-              />
-              <path
-                id='Line 139_5'
-                d='M154.489 564.501L168.808 579.292'
-                stroke={setColor('production packer')}
-              />
-              <line
-                id='Line 140_5'
-                y1='-0.5'
-                x2='20.5864'
-                y2='-0.5'
-                transform='matrix(-0.695551 0.718476 0.695551 0.718476 169.224 564.775)'
-                stroke={setColor('production packer')}
-              />
-            </g>
-            <g id='Group 22_4'>
-              <rect
-                id='Rectangle 27_4'
-                x='110'
-                y='564'
-                width='15'
-                height='15.4944'
-                stroke={setColor('production packer')}
-              />
-              <path
-                id='Line 139_6'
-                d='M110.265 564.501L124.584 579.292'
-                stroke={setColor('production packer')}
-              />
-              <line
-                id='Line 140_6'
-                y1='-0.5'
-                x2='20.5864'
-                y2='-0.5'
-                transform='matrix(-0.695551 0.718476 0.695551 0.718476 125 564.775)'
-                stroke={setColor('production packer')}
-              />
-            </g>
-          </g>
-        ) : null}
-
-        {packerQty === 2 ? (
-          <g id='production-packer-2'>
-            <g id='Group 22'>
-              <rect
-                id='Rectangle 27'
-                x='154.224'
-                y='603'
-                width='15'
-                height='15.4944'
-                stroke={setColor('production packer')}
-              />
-              <path
-                id='Line 139_3'
-                d='M154.489 603.501L168.808 618.292'
-                stroke={setColor('production packer')}
-              />
-              <line
-                id='Line 140_3'
-                y1='-0.5'
-                x2='20.5864'
-                y2='-0.5'
-                transform='matrix(-0.695551 0.718476 0.695551 0.718476 169.224 603.775)'
-                stroke={setColor('production packer')}
-              />
-            </g>
-            <g id='Group 22_2'>
-              <rect
-                id='Rectangle 27_2'
-                x='110'
-                y='603'
-                width='15'
-                height='15.4944'
-                stroke={setColor('production packer')}
-              />
-              <path
-                id='Line 139_4'
-                d='M110.265 603.501L124.584 618.292'
-                stroke={setColor('production packer')}
-              />
-              <line
-                id='Line 140_4'
-                y1='-0.5'
-                x2='20.5864'
-                y2='-0.5'
-                transform='matrix(-0.695551 0.718476 0.695551 0.718476 125 603.775)'
-                stroke={setColor('production packer')}
-              />
-            </g>
-          </g>
-        ) : null}
+        {/* packer here */}
+        {renderPacker(packerQty)}
 
         <g id='tubing-plug'>
           <path

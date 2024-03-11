@@ -227,3 +227,41 @@ const color = (name) => {
 };
 
 color('cv');
+
+const { setColor, showCdft, setFill, setStroke, currentConfig } =
+  useContext(BarrierContext);
+
+const [multipleElements, setMultipleElements] = useState({
+  packerQty: 1,
+  glmQty: 0,
+  ssdQty: 0,
+});
+
+console.log('curr config in diag', currentConfig);
+
+const { packerQty, glmQty, ssdQty } = multipleElements;
+
+const findMultiple = () => {
+  const packer = currentConfig?.barrierElements.find(
+    (item) => item.name === 'production packer'
+  );
+  const glm = currentConfig?.barrierElements.find(
+    (item) => item.name === 'gas lift mandrel'
+  );
+  const ssd = currentConfig?.barrierElements.find(
+    (item) => item.name === 'sliding side door'
+  );
+  console.log(packer?.quantity);
+  console.log(glm?.quantity);
+  console.log(ssd?.quantity);
+
+  setMultipleElements({
+    packerQty: packer?.quantity,
+    glmQty: glm?.quantity,
+    ssdQty: ssd?.quantity,
+  });
+};
+
+useEffect(() => {
+  findMultiple();
+}, [currentConfig]);

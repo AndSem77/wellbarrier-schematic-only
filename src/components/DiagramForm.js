@@ -20,7 +20,6 @@ import {
 import { ChevronLeftIcon, SmallCloseIcon } from '@chakra-ui/icons';
 import { BarrierContext } from '../context/BarrierContext';
 import { initialData } from '../data/initialData';
-
 import AnnotationList from './AnnotationList';
 import { useForm, useFieldArray } from 'react-hook-form';
 import _ from 'lodash';
@@ -36,6 +35,8 @@ const DiagramForm = forwardRef((props, printRef) => {
     update,
     setUpdate,
     setShowCdft,
+    setColor,
+    setCurrentConfig,
   } = useContext(BarrierContext);
 
   const { register, handleSubmit, control, watch, setValue } = useForm({
@@ -126,6 +127,7 @@ const DiagramForm = forwardRef((props, printRef) => {
               setConfigData(initialData);
               setShowCdft(false);
               setComponent(null);
+              setCurrentConfig(null);
             }}
           />
         </Flex>
@@ -156,7 +158,7 @@ const DiagramForm = forwardRef((props, printRef) => {
               // ref={containerRef}
               className='relative col-span-6 m-4 snapContainer flex justify-center '
             >
-              <DiagramSVG />
+              <DiagramSVG setColor={setColor} />
             </div>
             <div className='col-span-6 m-4'>
               <div className='grid grid-cols-12 border h-5'>

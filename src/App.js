@@ -196,13 +196,7 @@ function App() {
           <div className='overflow-y-auto w-full scrollbar-hide mt-3 mb-3'>
             <DiagramList />
             <Stack mt={6}>
-              <Button
-                size='sm'
-                onClick={
-                  getConfigHistory
-                  // setComponent('config history');
-                }
-              >
+              <Button size='sm' onClick={getConfigHistory}>
                 Configuration history
               </Button>
               <Button size='sm' onClick={resetBarriers}>
