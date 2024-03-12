@@ -19,7 +19,7 @@ import {
 } from '@chakra-ui/react';
 import { ChevronLeftIcon, SmallCloseIcon } from '@chakra-ui/icons';
 import { BarrierContext } from '../context/BarrierContext';
-import { equipment } from '../data/initialCdft';
+
 import AnnotationList from './AnnotationList';
 import { useForm, useFieldArray } from 'react-hook-form';
 import _ from 'lodash';
@@ -27,9 +27,16 @@ import DiagramSVGwithCDFT from './schematic/DiagramSVGwithCDFT';
 import moment from 'moment';
 
 const ConfigHistory = forwardRef((props, printRef) => {
-  const { setComponent, wellData, setWellData } = useContext(BarrierContext);
+  const {
+    setComponent,
+    wellData,
+    setWellData,
+    currentConfig,
+    setCurrentConfig,
+    handleSaveCdft,
+    setColor,
+  } = useContext(BarrierContext);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [currentConfig, setCurrentConfig] = useState(null);
 
   console.log('config', currentConfig);
 
@@ -51,10 +58,6 @@ const ConfigHistory = forwardRef((props, printRef) => {
 
   const equipmentStatus = watch('equipment');
 
-  // useEffect(() => {
-  //   setValue('configName', currentConfig?.configName);
-  // }, [currentConfig, currentIndex]);
-
   const popupRef = useRef();
   const closePopup = () => popupRef.current.close();
 
@@ -74,29 +77,7 @@ const ConfigHistory = forwardRef((props, printRef) => {
     setCurrentIndex((prev) => prev + 1);
   };
 
-  const handleSaveCdft = (data) => console.log('form', data);
-
-  const setColor = (name) => {
-    if (currentConfig) {
-      let el = currentConfig?.barrierElements?.find(
-        (item) => item?.name === name
-      );
-
-      if (el) {
-        if (el.quantity === 0) {
-          return 'none';
-        } else if (el.barrier === 'primary') {
-          return 'blue';
-        } else if (el.barrier === 'secondary') {
-          return 'red';
-        } else if (el.barrier === 'none') {
-          return 'black';
-        } else {
-          return 'none';
-        }
-      }
-    }
-  };
+  // const handleSaveCdft = (data) => console.log('form', data);
 
   return (
     <form
@@ -155,18 +136,20 @@ const ConfigHistory = forwardRef((props, printRef) => {
             }`}</Text>
           </div>
           <div
-            className='grid grid-cols-12 w-full h-full'
+            className='grid grid-cols-1 w-full h-full'
             onContextMenu={(e) => {
               e.preventDefault();
             }}
           >
             <div
               // ref={containerRef}
-              className='relative col-span-6 m-4 snapContainer flex justify-center '
+              className='relative col-span-6 m-4 snapContainer flex justify-center'
             >
               <DiagramSVGwithCDFT setColor={setColor} />
             </div>
-            <div className='col-span-6 m-4'>
+
+            {/* status table start */}
+            {/* <div className='col-span-6 m-4'>
               <div className='grid grid-cols-12 border h-5'>
                 <div className='flex items-center justify-center col-span-1 border-r text-xs font-bold'>
                   No.
@@ -284,7 +267,7 @@ const ConfigHistory = forwardRef((props, printRef) => {
                   </div>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

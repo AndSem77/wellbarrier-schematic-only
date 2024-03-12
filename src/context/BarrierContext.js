@@ -1,8 +1,8 @@
 import { createContext, useState, useEffect, useMemo } from 'react';
 import { useToast } from '@chakra-ui/react';
 import { nanoid } from 'nanoid';
-import { initialData } from '../data/initialData';
-
+import { initialConfigData } from '../data/initialConfigData';
+import { dummyCdftData } from '../data/dummyCdftData';
 export const BarrierContext = createContext();
 
 export const BarrierProvider = ({ children }) => {
@@ -12,7 +12,7 @@ export const BarrierProvider = ({ children }) => {
 
   const toast = useToast();
   const [allConfigs, setAllConfigs] = useState([]);
-  const [configData, setConfigData] = useState(initialData);
+  const [configData, setConfigData] = useState(initialConfigData);
   const [allWells, setAllWells] = useState([]);
   const [wellData, setWellData] = useState(null);
   const [wellList, setWellList] = useState([
@@ -67,7 +67,7 @@ export const BarrierProvider = ({ children }) => {
       },
     },
   ]);
-  const [showCdft, setShowCdft] = useState(true);
+  const [cdft, setCdft] = useState(false);
 
   const [multipleElements, setMultipleElements] = useState({
     packerQty: 1,
@@ -123,6 +123,20 @@ export const BarrierProvider = ({ children }) => {
       )
     );
   }, [isCurrentAnno]);
+
+  useEffect(() => {
+    setWellData((prev) => ({
+      ...prev,
+      ...wellData,
+      configs: wellData?.configs?.map((item) =>
+        item?.configId === currentConfig?.configId
+          ? {
+              ...currentConfig,
+            }
+          : item
+      ),
+    }));
+  }, [currentConfig]);
 
   const filteredWells = useMemo(() => {
     if (!searchWell) return wellList;
@@ -343,37 +357,6 @@ export const BarrierProvider = ({ children }) => {
     }
   };
 
-  const addCdft = () => {
-    let updatedElements = [];
-
-    const config = [
-      { name: 'crown valve', status: null },
-      { name: 'wing valve', status: null },
-      { name: 'surface safety valve', status: null },
-    ];
-
-    const cdftResult = [
-      { name: 'crown valve', status: 'pass' },
-      { name: 'wing valve', status: 'pass' },
-      { name: 'surface safety valve', status: 'fail' },
-    ];
-
-    config?.map((item1) => {
-      cdftResult?.map((item2) => {
-        if (item1.name === item2.name) {
-          updatedElements.push({ name: item2.name, status: item2.status });
-        }
-      });
-    });
-
-    // setCdftData(updatedElements);
-    // console.log('cdft data', cdftData);
-  };
-
-  useEffect(() => {
-    addCdft();
-  }, [showCdft]);
-
   const handleUpdate = async () => {
     const isFoundWell = allWells?.find(
       (item) => item.wellName === selectedWell
@@ -463,10 +446,53 @@ export const BarrierProvider = ({ children }) => {
     }
   };
 
+  const previewCdft = () => {
+    const barrierElementsWithStatus = currentConfig?.barrierElements?.map(
+      (item1) => {
+        const updatedItem = dummyCdftData.find(
+          (item2) => item2.name === item1.name
+        );
+        return { ...item1, ...updatedItem };
+      }
+    );
+
+    setCurrentConfig((prev) => ({
+      ...prev,
+      barrierElements: barrierElementsWithStatus,
+    }));
+    setCdft(true);
+  };
+
+  const handleSaveCdft = async () => {
+    try {
+      await fetch(`${wellsURL}/${wellData?.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(wellData),
+      })
+        .then((res) => {
+          if (res.ok) {
+            toast({
+              title: `${selectedWell} updated`,
+              status: 'success',
+              position: 'top-right',
+              duration: 1500,
+              isClosable: true,
+              variant: 'subtle',
+            });
+          }
+        })
+        .then(() => setUpdate(true));
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   // console.log('allWells', allWells);
   // console.log('configData', configData);
-  console.log('wellData', wellData);
-
+  // console.log('wellData', wellData);
   // console.log('curr config', currentConfig);
 
   return (
@@ -500,16 +526,17 @@ export const BarrierProvider = ({ children }) => {
         setMultipleElements,
         update,
         setUpdate,
-        addCdft,
+        previewCdft,
         wellData,
         setWellData,
-        showCdft,
-        setShowCdft,
+        cdft,
+        setCdft,
         setFill,
         setStroke,
         setColor,
         currentConfig,
         setCurrentConfig,
+        handleSaveCdft,
       }}
     >
       {children}

@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 const timestamp = Date.now();
 
-export const initialData = {
+export const initialConfigData = {
   configId: timestamp,
   configName: '',
   barrierElements: [
@@ -10,7 +10,7 @@ export const initialData = {
       name: 'crown valve',
       barrier: 'secondary',
       quantity: 1,
-      status: 'pass',
+      status: null,
     },
     {
       id: nanoid(),

@@ -16,7 +16,7 @@ import ReactToPrint from 'react-to-print';
 import { BarrierContext } from './context/BarrierContext';
 import DiagramList from './components/ConfigList';
 import { nanoid } from 'nanoid';
-import _ from 'lodash';
+import _, { update } from 'lodash';
 import { PiFilePngFill } from 'react-icons/pi';
 import { PiTextTFill } from 'react-icons/pi';
 import { MdEdit } from 'react-icons/md';
@@ -35,8 +35,8 @@ function App() {
     component,
     setComponent,
     getConfigHistory,
-    updateCdft,
-    setShowCdft,
+    previewCdft,
+    setCdft,
   } = useContext(BarrierContext);
 
   const annotationMenu = [
@@ -205,11 +205,14 @@ function App() {
               <Button
                 size='sm'
                 onClick={() => {
-                  updateCdft();
-                  setShowCdft(true);
+                  previewCdft();
+                  setCdft(true);
                 }}
               >
                 Preview CDFT
+              </Button>
+              <Button size='sm' onClick={() => setCdft(false)}>
+                Reset CDFT
               </Button>
             </Stack>
           </div>

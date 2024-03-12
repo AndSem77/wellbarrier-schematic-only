@@ -19,7 +19,7 @@ import {
 } from '@chakra-ui/react';
 import { ChevronLeftIcon, SmallCloseIcon } from '@chakra-ui/icons';
 import { BarrierContext } from '../context/BarrierContext';
-import { initialData } from '../data/initialData';
+import { initialConfigData } from '../data/initialConfigData';
 import AnnotationList from './AnnotationList';
 import { useForm, useFieldArray } from 'react-hook-form';
 import _ from 'lodash';
@@ -34,7 +34,6 @@ const DiagramForm = forwardRef((props, printRef) => {
     setMultipleElements,
     update,
     setUpdate,
-    setShowCdft,
     setColor,
     setCurrentConfig,
   } = useContext(BarrierContext);
@@ -124,8 +123,7 @@ const DiagramForm = forwardRef((props, printRef) => {
             aria-label='Close diagram'
             icon={<SmallCloseIcon />}
             onClick={() => {
-              setConfigData(initialData);
-              setShowCdft(false);
+              setConfigData(initialConfigData);
               setComponent(null);
               setCurrentConfig(null);
             }}
@@ -223,8 +221,9 @@ const DiagramForm = forwardRef((props, printRef) => {
                       )
                     }
                   >
-                    <div className='bg-slate-100 w-[100px] text-[10px] p-2 -ml-[1px] -mt-[7px]'>
-                      <RadioGroup onChange={closePopup}>
+                    {/* onChange={closePopup} */}
+                    <div className='bg-slate-100 w-[100px] text-[10px] p-2 -ml-[1px] -mt-[7px] '>
+                      <RadioGroup>
                         <Stack direction='column' spacing='1'>
                           <Radio
                             value='primary'
@@ -232,7 +231,7 @@ const DiagramForm = forwardRef((props, printRef) => {
                             size='sm'
                             {...register(`barrierElements.${index}.barrier`)}
                           >
-                            <Text fontSize='10px'>Primary</Text>
+                            <Text fontSize='xs'>Primary</Text>
                           </Radio>
 
                           <Radio
@@ -241,7 +240,7 @@ const DiagramForm = forwardRef((props, printRef) => {
                             size='sm'
                             {...register(`barrierElements.${index}.barrier`)}
                           >
-                            <Text fontSize='10px'>Secondary</Text>
+                            <Text fontSize='xs'>Secondary</Text>
                           </Radio>
                           <Radio
                             value='none'
@@ -261,7 +260,7 @@ const DiagramForm = forwardRef((props, printRef) => {
                               }
                             }}
                           >
-                            <Text fontSize='10px'>None</Text>
+                            <Text fontSize='xs'>None</Text>
                           </Radio>
                         </Stack>
                       </RadioGroup>

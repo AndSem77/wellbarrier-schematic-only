@@ -9,7 +9,6 @@ export default function Rectangle({ item }) {
   const moveableRef = useRef(null);
 
   // console.log('c', isCurrentAnno);
-
   return (
     <>
       {item.id === isCurrentAnno?.id ? (

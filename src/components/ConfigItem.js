@@ -1,4 +1,4 @@
-import { useContext, useRef } from 'react';
+import { useContext, useRef, useState, useEffect } from 'react';
 import Popup from 'reactjs-popup';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { EditIcon, DeleteIcon, CopyIcon } from '@chakra-ui/icons';
@@ -16,6 +16,55 @@ export default function ConfigItem({ item }) {
     setComponent,
   } = useContext(BarrierContext);
 
+  const [multipleElements, setMultipleElements] = useState({
+    packerQty: 1,
+    glmQty: 0,
+    ssdQty: 0,
+  });
+
+  const updateMultipleElements = () => {
+    const packer = item?.barrierElements.find(
+      (item) => item.name === 'production packer'
+    );
+    const glm = item?.barrierElements.find(
+      (item) => item.name === 'gas lift mandrel'
+    );
+    const ssd = item?.barrierElements.find(
+      (item) => item.name === 'sliding side door'
+    );
+
+    setMultipleElements((prev) => ({
+      ...prev,
+      packerQty: packer?.quantity,
+      glmQty: glm?.quantity,
+      ssdQty: ssd?.quantity,
+    }));
+  };
+
+  const setColor = (name) => {
+    if (item) {
+      let el = item?.barrierElements?.find((item) => item?.name === name);
+
+      if (el) {
+        if (el.quantity === 0) {
+          return 'none';
+        } else if (el.barrier === 'primary') {
+          return 'blue';
+        } else if (el.barrier === 'secondary') {
+          return 'red';
+        } else if (el.barrier === 'none') {
+          return 'black';
+        } else {
+          return 'none';
+        }
+      }
+    }
+  };
+
+  useEffect(() => {
+    updateMultipleElements();
+  }, [item]);
+
   return (
     <div
       className='relative w-full h-24 border rounded flex justify-between p-1 space-x-1 my-1 hover:border-sky-600'
@@ -28,7 +77,10 @@ export default function ConfigItem({ item }) {
     >
       <div className='w-full h-full text-xs'>{item.configName}</div>
       <div className='w-full h-full  flex justify-center'>
-        <DiagramSVGSmall />
+        <DiagramSVGSmall
+          setColor={setColor}
+          multipleElements={multipleElements}
+        />
       </div>
 
       {item?.id === configData?.id ? (

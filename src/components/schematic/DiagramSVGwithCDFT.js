@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { BarrierContext } from '../../context/BarrierContext';
 
 export default function DiagramSVGwithCDFT({ setColor }) {
-  const { showCdft, setFill, setStroke, currentConfig } =
+  const { cdft, setFill, setStroke, currentConfig } =
     useContext(BarrierContext);
 
   const [multipleElements, setMultipleElements] = useState({
@@ -173,7 +173,6 @@ export default function DiagramSVGwithCDFT({ setColor }) {
         return null;
     }
   };
-
   const renderGLM = (glmQty) => {
     switch (glmQty) {
       case 1:
@@ -284,7 +283,6 @@ export default function DiagramSVGwithCDFT({ setColor }) {
         return null;
     }
   };
-
   const renderSSD = (ssdQty) => {
     switch (ssdQty) {
       case 1:
@@ -506,7 +504,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
               rx='13.9798'
               ry='13.901'
               transform='matrix(0.714257 -0.699883 0.714257 0.699883 120.109 31.4146)'
-              fill='none'
+              fill={cdft ? 'green' : 'none'}
               stroke={setColor('crown valve')}
             />
             <path
@@ -727,29 +725,23 @@ export default function DiagramSVGwithCDFT({ setColor }) {
               rx='6.98991'
               ry='6.95051'
               transform='matrix(0.714257 -0.699883 0.714257 0.699883 18.8995 151.783)'
-              fill={showCdft ? setFill('tubing hanger') : 'none'}
+              fill={cdft ? setFill('tubing hanger') : 'none'}
               stroke={
-                showCdft
-                  ? setStroke('tubing hanger')
-                  : setColor('tubing hanger')
+                cdft ? setStroke('tubing hanger') : setColor('tubing hanger')
               }
             />
             <path
               id='Vector 6_6'
               d='M23.9722 146.97L33.8773 156.675'
               stroke={
-                showCdft
-                  ? setStroke('tubing hanger')
-                  : setColor('tubing hanger')
+                cdft ? setStroke('tubing hanger') : setColor('tubing hanger')
               }
             />
             <path
               id='Vector 7_6'
               d='M23.944 156.726L33.8487 147.021'
               stroke={
-                showCdft
-                  ? setStroke('tubing hanger')
-                  : setColor('tubing hanger')
+                cdft ? setStroke('tubing hanger') : setColor('tubing hanger')
               }
             />
           </g>
@@ -761,29 +753,23 @@ export default function DiagramSVGwithCDFT({ setColor }) {
               rx='6.98991'
               ry='6.95051'
               transform='matrix(0.714257 -0.699883 0.714257 0.699883 242.338 151.783)'
-              fill={showCdft ? setFill('tubing hanger') : 'none'}
+              fill={cdft ? setFill('tubing hanger') : 'none'}
               stroke={
-                showCdft
-                  ? setStroke('tubing hanger')
-                  : setColor('tubing hanger')
+                cdft ? setStroke('tubing hanger') : setColor('tubing hanger')
               }
             />
             <path
               id='Vector 6_7'
               d='M247.411 146.97L257.316 156.675'
               stroke={
-                showCdft
-                  ? setStroke('tubing hanger')
-                  : setColor('tubing hanger')
+                cdft ? setStroke('tubing hanger') : setColor('tubing hanger')
               }
             />
             <path
               id='Vector 7_7'
               d='M247.383 156.726L257.287 147.021'
               stroke={
-                showCdft
-                  ? setStroke('tubing hanger')
-                  : setColor('tubing hanger')
+                cdft ? setStroke('tubing hanger') : setColor('tubing hanger')
               }
             />
           </g>
@@ -791,18 +777,17 @@ export default function DiagramSVGwithCDFT({ setColor }) {
             id='Vector 41'
             d='M154.364 152.07H245.452'
             stroke={
-              showCdft ? setStroke('tubing hanger') : setColor('tubing hanger')
+              cdft ? setStroke('tubing hanger') : setColor('tubing hanger')
             }
           />
           <path
             id='Vector 42'
             d='M36.0272 152.07H125.558'
             stroke={
-              showCdft ? setStroke('tubing hanger') : setColor('tubing hanger')
+              cdft ? setStroke('tubing hanger') : setColor('tubing hanger')
             }
           />
         </g>
-
         <g id='production-tubing'>
           <path
             id='production-tubing-lower'
@@ -815,7 +800,6 @@ export default function DiagramSVGwithCDFT({ setColor }) {
             stroke={setColor('production tubing ( above DHSV )')}
           />
         </g>
-
         <g id='production-casing'>
           <g id='production-casing-cement-left'>
             <g id='production-casing-cement'>
@@ -826,7 +810,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 93.6386 540.205)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -838,7 +822,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 93.6386 557.249)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -850,7 +834,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 92.0815 575.842)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -862,7 +846,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 94.4171 590.562)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -874,7 +858,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 95.3521 606.675)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -886,7 +870,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 95.9742 623.1)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -898,7 +882,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 96.7527 639.369)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -910,7 +894,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 95.9742 657.188)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -919,7 +903,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 id='Line 135'
                 d='M98.8131 670.859L110.491 659.238'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -928,7 +912,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 id='Line 136'
                 d='M95.6989 692.05L103.095 684.69L110.491 677.33'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -937,7 +921,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 id='Line 137'
                 d='M98.8131 706.77L110.491 695.149'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -946,7 +930,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 id='Line 138'
                 d='M100.095 724.862L110.491 714.517'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -955,7 +939,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 id='Line 139'
                 d='M101.927 740.083L110.491 731.561'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -964,7 +948,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 id='Line 140'
                 d='M103.484 754.802L110.491 747.83'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -974,7 +958,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
               id='production-casing-cement-curve'
               d='M88.5781 536.331L92.8601 539.818V545.241L90.9137 551.051L92.8601 554.15V559.96V568.87L90.9137 575.067L95.1956 580.878L92.8601 586.688L95.1956 593.273L92.8601 598.696L95.1956 604.507L92.8601 610.317L95.1956 615.74V623.487L98.699 630.072L95.1956 637.045L98.699 643.243V650.602L95.1956 656.025V662.223L98.699 668.421V678.492L95.1956 691.275L98.699 698.635V707.544L101.813 712.58L98.699 722.264L101.813 731.173V735.822V740.47V746.28V752.865L104.538 757.126L107.652 759.451'
               stroke={
-                showCdft
+                cdft
                   ? setStroke('cement ( production casing )')
                   : setColor('cement ( production casing )')
               }
@@ -989,7 +973,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 186.284 540.205)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -1001,7 +985,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 186.284 557.249)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -1013,7 +997,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 187.841 575.842)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -1025,7 +1009,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 185.506 590.562)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -1037,7 +1021,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 184.571 606.675)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -1049,7 +1033,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 183.949 623.1)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -1061,7 +1045,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 183.17 639.369)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -1073,7 +1057,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 183.949 657.188)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -1082,7 +1066,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 id='Line 135_2'
                 d='M181.11 670.859L169.432 659.238'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -1091,7 +1075,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 id='Line 136_2'
                 d='M184.224 692.05L176.828 684.69L169.432 677.33'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -1100,7 +1084,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 id='Line 137_2'
                 d='M181.11 706.77L169.432 695.149'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -1109,7 +1093,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 id='Line 138_2'
                 d='M179.828 724.862L169.432 714.517'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -1118,7 +1102,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 id='Line 139_2'
                 d='M177.996 740.083L169.432 731.561'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -1127,7 +1111,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 id='Line 140_2'
                 d='M176.438 754.802L169.432 747.83'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( production casing )')
                     : setColor('cement ( production casing )')
                 }
@@ -1137,7 +1121,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
               id='production-casing-cement-curve_2'
               d='M191.345 536.331L187.063 539.818V545.241L189.009 551.051L187.063 554.15V559.96V568.87L189.009 575.067L184.727 580.878L187.063 586.688L184.727 593.273L187.063 598.696L184.727 604.507L187.063 610.317L184.727 615.74V623.487L181.224 630.072L184.727 637.045L181.224 643.243V650.602L184.727 656.025V662.223L181.224 668.421V678.492L184.727 691.275L181.224 698.635V707.544L178.11 712.58L181.224 722.264L178.11 731.173V735.822V740.47V746.28V752.865L175.385 757.126L172.271 759.451'
               stroke={
-                showCdft
+                cdft
                   ? setStroke('cement ( production casing )')
                   : setColor('cement ( production casing )')
               }
@@ -1157,7 +1141,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
               id='production-casing-lower-left'
               d='M109.965 580.5L109.965 760'
               stroke={
-                showCdft
+                cdft
                   ? setStroke('production casing ( below packer )')
                   : setColor('production casing ( below packer )')
               }
@@ -1166,7 +1150,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
               id='production-casing-lower-right'
               d='M169 580L169 761'
               stroke={
-                showCdft
+                cdft
                   ? setStroke('production casing ( below packer )')
                   : setColor('production casing ( below packer )')
               }
@@ -1199,7 +1183,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                   id='production-casing-upper_2'
                   d='M218.593 181.51L169 200V581'
                   stroke={
-                    showCdft
+                    cdft
                       ? setStroke('production casing ( above packer )')
                       : setColor('production casing ( above packer )')
                   }
@@ -1212,7 +1196,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                   id='production-casing-upper_3'
                   d='M110 580.5L111.5 201.226L62.7192 181.51H30.9668'
                   stroke={
-                    showCdft
+                    cdft
                       ? setStroke('production casing ( above packer )')
                       : setColor('production casing ( above packer )')
                   }
@@ -1221,7 +1205,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                   id='Vector 67'
                   d='M49.2623 166.015H30.5775'
                   stroke={
-                    showCdft
+                    cdft
                       ? setStroke('production casing ( above packer )')
                       : setColor('production casing ( above packer )')
                   }
@@ -1237,9 +1221,9 @@ export default function DiagramSVGwithCDFT({ setColor }) {
               rx='10.8732'
               ry='10.8119'
               transform='matrix(0.714257 -0.699883 0.714257 0.699883 8.00008 173.488)'
-              fill={showCdft ? setFill('production casing valves') : 'none'}
+              fill={cdft ? setFill('production casing valves') : 'none'}
               stroke={
-                showCdft
+                cdft
                   ? setStroke('production casing valves')
                   : setColor('production casing valves')
               }
@@ -1248,7 +1232,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
               id='Vector 6_8'
               d='M15.8908 166L31.2987 181.098'
               stroke={
-                showCdft
+                cdft
                   ? setStroke('production casing valves')
                   : setColor('production casing valves')
               }
@@ -1257,7 +1241,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
               id='Vector 7_8'
               d='M15.847 181.177L31.2543 166.08'
               stroke={
-                showCdft
+                cdft
                   ? setStroke('production casing valves')
                   : setColor('production casing valves')
               }
@@ -1272,9 +1256,9 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                   y='152.07'
                   width='13.235'
                   height='13.945'
-                  fill={showCdft ? setFill('production casing valves') : 'none'}
+                  fill={cdft ? setFill('production casing valves') : 'none'}
                   stroke={
-                    showCdft
+                    cdft
                       ? setStroke('production casing valves')
                       : setColor('production casing valves')
                   }
@@ -1283,7 +1267,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                   id='Line 95'
                   d='M49.7002 165.764L62.546 152.07'
                   stroke={
-                    showCdft
+                    cdft
                       ? setStroke('production casing valves')
                       : setColor('production casing valves')
                   }
@@ -1292,7 +1276,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                   id='Line 96'
                   d='M62.1567 165.628L49.5375 152.523'
                   stroke={
-                    showCdft
+                    cdft
                       ? setStroke('production casing valves')
                       : setColor('production casing valves')
                   }
@@ -1306,9 +1290,9 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                   width='13.235'
                   height='13.945'
                   transform='matrix(-1 0 0 1 230.612 152.07)'
-                  fill={showCdft ? setFill('production casing valves') : 'none'}
+                  fill={cdft ? setFill('production casing valves') : 'none'}
                   stroke={
-                    showCdft
+                    cdft
                       ? setStroke('production casing valves')
                       : setColor('production casing valves')
                   }
@@ -1317,7 +1301,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                   id='Line 95_2'
                   d='M230.223 165.764L217.377 152.07'
                   stroke={
-                    showCdft
+                    cdft
                       ? setStroke('production casing valves')
                       : setColor('production casing valves')
                   }
@@ -1326,7 +1310,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                   id='Line 96_2'
                   d='M217.766 165.628L230.385 152.523'
                   stroke={
-                    showCdft
+                    cdft
                       ? setStroke('production casing valves')
                       : setColor('production casing valves')
                   }
@@ -1345,7 +1329,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 80.4035 416.869)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( intermediate casing )')
                     : setColor('cement ( intermediate casing )')
                 }
@@ -1357,7 +1341,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 80.4035 433.913)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( intermediate casing )')
                     : setColor('cement ( intermediate casing )')
                 }
@@ -1369,7 +1353,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 80.4035 450.956)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( intermediate casing )')
                     : setColor('cement ( intermediate casing )')
                 }
@@ -1381,7 +1365,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 80.4035 468)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( intermediate casing )')
                     : setColor('cement ( intermediate casing )')
                 }
@@ -1393,7 +1377,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 80.4035 485.044)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( intermediate casing )')
                     : setColor('cement ( intermediate casing )')
                 }
@@ -1405,7 +1389,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 81.8041 500.694)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( intermediate casing )')
                     : setColor('cement ( intermediate casing )')
                 }
@@ -1417,7 +1401,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 84.9183 514.639)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( intermediate casing )')
                     : setColor('cement ( intermediate casing )')
                 }
@@ -1429,7 +1413,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.73539 -0.677644 0.681235 0.732065 87.4103 528.584)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( intermediate casing )')
                     : setColor('cement ( intermediate casing )')
                 }
@@ -1440,7 +1424,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 id='Vector 53'
                 d='M49.2623 195.455L31.356 195.455'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('intermediate casing')
                     : setColor('intermediate casing')
                 }
@@ -1451,7 +1435,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                     id='Vector 53_2'
                     d='M95.5849 535.557V224.119L62.4114 210.949H30.5775'
                     stroke={
-                      showCdft
+                      cdft
                         ? setStroke('intermediate casing')
                         : setColor('intermediate casing')
                     }
@@ -1468,7 +1452,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
               id='intermediate-casing-cement-curve'
               d='M90.1352 537.881L87.4103 535.557L84.6855 525.873L81.9606 520.45L84.6855 514.639L81.9606 506.117V498.37L78.4572 494.496L80.0143 486.362L77.6787 478.227L82.3499 472.804L77.6787 464.282L80.0143 458.859L79.2358 453.049V450.725L74.9538 447.626'
               stroke={
-                showCdft
+                cdft
                   ? setStroke('cement ( intermediate casing )')
                   : setColor('cement ( intermediate casing )')
               }
@@ -1483,7 +1467,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 200.141 416.869)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( intermediate casing )')
                     : setColor('cement ( intermediate casing )')
                 }
@@ -1495,7 +1479,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 200.141 433.913)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( intermediate casing )')
                     : setColor('cement ( intermediate casing )')
                 }
@@ -1507,7 +1491,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 200.141 450.956)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( intermediate casing )')
                     : setColor('cement ( intermediate casing )')
                 }
@@ -1519,7 +1503,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 200.141 468)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( intermediate casing )')
                     : setColor('cement ( intermediate casing )')
                 }
@@ -1531,7 +1515,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 200.141 485.044)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( intermediate casing )')
                     : setColor('cement ( intermediate casing )')
                 }
@@ -1543,7 +1527,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 198.74 500.694)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( intermediate casing )')
                     : setColor('cement ( intermediate casing )')
                 }
@@ -1555,7 +1539,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 195.626 514.639)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( intermediate casing )')
                     : setColor('cement ( intermediate casing )')
                 }
@@ -1567,7 +1551,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.73539 -0.677644 -0.681235 0.732065 193.134 528.584)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( intermediate casing )')
                     : setColor('cement ( intermediate casing )')
                 }
@@ -1580,7 +1564,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                     id='Vector 53_3'
                     d='M218.133 210.949L184.96 224.119V535.557'
                     stroke={
-                      showCdft
+                      cdft
                         ? setStroke('intermediate casing')
                         : setColor('intermediate casing')
                     }
@@ -1597,7 +1581,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
               id='intermediate-casing-cement-curve_2'
               d='M190.409 537.881L193.134 535.557L195.859 525.873L198.584 520.45L195.859 514.639L198.584 506.117V498.37L202.087 494.496L200.53 486.362L202.866 478.227L198.195 472.804L202.866 464.282L200.53 458.859L201.309 453.049V450.725L205.591 447.626'
               stroke={
-                showCdft
+                cdft
                   ? setStroke('cement ( intermediate casing )')
                   : setColor('cement ( intermediate casing )')
               }
@@ -1622,11 +1606,9 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                   rx='10.8732'
                   ry='10.8119'
                   transform='matrix(0.714257 -0.699883 0.714257 0.699883 8.00008 202.927)'
-                  fill={
-                    showCdft ? setFill('intermediate casing valves') : 'none'
-                  }
+                  fill={cdft ? setFill('intermediate casing valves') : 'none'}
                   stroke={
-                    showCdft
+                    cdft
                       ? setStroke('intermediate casing valves')
                       : setColor('intermediate casing valves')
                   }
@@ -1635,7 +1617,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                   id='Vector 6_9'
                   d='M15.8908 195.439L31.2987 210.537'
                   stroke={
-                    showCdft
+                    cdft
                       ? setStroke('intermediate casing valves')
                       : setColor('intermediate casing valves')
                   }
@@ -1644,7 +1626,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                   id='Vector 7_9'
                   d='M15.847 210.617L31.2543 195.519'
                   stroke={
-                    showCdft
+                    cdft
                       ? setStroke('intermediate casing valves')
                       : setColor('intermediate casing valves')
                   }
@@ -1660,11 +1642,9 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                   width='13.235'
                   height='13.945'
                   transform='matrix(-1 0 0 1 231.234 181.51)'
-                  fill={
-                    showCdft ? setFill('intermediate casing valves') : 'none'
-                  }
+                  fill={cdft ? setFill('intermediate casing valves') : 'none'}
                   stroke={
-                    showCdft
+                    cdft
                       ? setStroke('intermediate casing valves')
                       : setColor('intermediate casing valves')
                   }
@@ -1673,7 +1653,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                   id='Line 95_3'
                   d='M230.844 195.203L217.999 181.51'
                   stroke={
-                    showCdft
+                    cdft
                       ? setStroke('intermediate casing valves')
                       : setColor('intermediate casing valves')
                   }
@@ -1682,7 +1662,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                   id='Line 96_3'
                   d='M218.388 195.067L231.007 181.962'
                   stroke={
-                    showCdft
+                    cdft
                       ? setStroke('intermediate casing valves')
                       : setColor('intermediate casing valves')
                   }
@@ -1697,11 +1677,9 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                   y='181.51'
                   width='13.235'
                   height='13.945'
-                  fill={
-                    showCdft ? setFill('intermediate casing valves') : 'none'
-                  }
+                  fill={cdft ? setFill('intermediate casing valves') : 'none'}
                   stroke={
-                    showCdft
+                    cdft
                       ? setStroke('intermediate casing valves')
                       : setColor('intermediate casing valves')
                   }
@@ -1710,7 +1688,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                   id='Line 95_4'
                   d='M49.7002 195.203L62.546 181.51'
                   stroke={
-                    showCdft
+                    cdft
                       ? setStroke('intermediate casing valves')
                       : setColor('intermediate casing valves')
                   }
@@ -1719,7 +1697,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                   id='Line 96_4'
                   d='M62.1567 195.067L49.5375 181.962'
                   stroke={
-                    showCdft
+                    cdft
                       ? setStroke('intermediate casing valves')
                       : setColor('intermediate casing valves')
                   }
@@ -1735,7 +1713,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 id='Vector 57'
                 d='M49.2623 224.894H31.356'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('surface casing')
                     : setColor('surface casing')
                 }
@@ -1744,7 +1722,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 id='line'
                 d='M80.0143 442.59L80.0143 240.388H31.356'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('surface casing')
                     : setColor('surface casing')
                 }
@@ -1763,7 +1741,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 64.8329 262.699)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( surface casing )')
                     : setColor('cement ( surface casing )')
                 }
@@ -1775,7 +1753,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 64.8329 279.743)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( surface casing )')
                     : setColor('cement ( surface casing )')
                 }
@@ -1787,7 +1765,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 64.8329 296.787)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( surface casing )')
                     : setColor('cement ( surface casing )')
                 }
@@ -1799,7 +1777,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 64.8329 313.831)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( surface casing )')
                     : setColor('cement ( surface casing )')
                 }
@@ -1811,7 +1789,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 64.8329 330.875)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( surface casing )')
                     : setColor('cement ( surface casing )')
                 }
@@ -1823,7 +1801,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 64.8329 347.919)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( surface casing )')
                     : setColor('cement ( surface casing )')
                 }
@@ -1835,7 +1813,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 64.8329 364.962)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( surface casing )')
                     : setColor('cement ( surface casing )')
                 }
@@ -1847,7 +1825,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 66.2335 380.613)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( surface casing )')
                     : setColor('cement ( surface casing )')
                 }
@@ -1859,7 +1837,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 69.3476 394.558)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( surface casing )')
                     : setColor('cement ( surface casing )')
                 }
@@ -1871,7 +1849,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(0.70884 -0.705369 0.70884 0.705369 69.3476 411.601)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( surface casing )')
                     : setColor('cement ( surface casing )')
                 }
@@ -1880,7 +1858,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 id='Line 135_3'
                 d='M69.5757 427.87L79.9718 417.525'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( surface casing )')
                     : setColor('cement ( surface casing )')
                 }
@@ -1890,7 +1868,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
               id='surface-casing-cement-curve'
               d='M64.8329 375.964L66.0006 379.838L67.5577 384.486L67.5577 387.585L68.7255 391.459L68.7255 394.558L68.7255 398.431L67.5577 402.305L68.7255 406.178L68.7255 410.439L67.947 415.088L69.1147 418.186L67.947 420.511L69.1147 425.546L69.8933 427.87L69.1147 430.195L69.8933 433.681L69.1147 436.392L70.2825 439.879L70.2825 442.59L72.6181 444.914L75.343 447.626'
               stroke={
-                showCdft
+                cdft
                   ? setStroke('cement ( surface casing )')
                   : setColor('cement ( surface casing )')
               }
@@ -1902,7 +1880,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 id='line_2'
                 d='M200.53 442.59L200.53 240.388L231.5 240.388'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( surface casing )')
                     : setColor('cement ( surface casing )')
                 }
@@ -1921,7 +1899,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 215.712 262.7)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( surface casing )')
                     : setColor('cement ( surface casing )')
                 }
@@ -1933,7 +1911,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 215.712 279.743)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( surface casing )')
                     : setColor('cement ( surface casing )')
                 }
@@ -1945,7 +1923,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 215.712 296.787)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( surface casing )')
                     : setColor('cement ( surface casing )')
                 }
@@ -1957,7 +1935,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 215.712 313.831)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( surface casing )')
                     : setColor('cement ( surface casing )')
                 }
@@ -1969,7 +1947,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 215.712 330.875)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( surface casing )')
                     : setColor('cement ( surface casing )')
                 }
@@ -1981,7 +1959,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 215.712 347.919)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( surface casing )')
                     : setColor('cement ( surface casing )')
                 }
@@ -1993,7 +1971,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 215.712 364.963)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( surface casing )')
                     : setColor('cement ( surface casing )')
                 }
@@ -2005,7 +1983,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 214.311 380.613)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( surface casing )')
                     : setColor('cement ( surface casing )')
                 }
@@ -2017,7 +1995,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 211.197 394.558)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( surface casing )')
                     : setColor('cement ( surface casing )')
                 }
@@ -2029,7 +2007,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 y2='-0.5'
                 transform='matrix(-0.70884 -0.705369 -0.70884 0.705369 211.197 411.601)'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( surface casing )')
                     : setColor('cement ( surface casing )')
                 }
@@ -2038,7 +2016,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                 id='Line 135_4'
                 d='M210.969 427.871L200.573 417.525'
                 stroke={
-                  showCdft
+                  cdft
                     ? setStroke('cement ( surface casing )')
                     : setColor('cement ( surface casing )')
                 }
@@ -2048,7 +2026,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
               id='surface-casing-cement-curve_2'
               d='M215.712 375.964L214.544 379.838L212.987 384.486L212.987 387.585L211.819 391.459L211.819 394.558L211.819 398.431L212.987 402.305L211.819 406.178L211.819 410.439L212.598 415.088L211.43 418.187L212.598 420.511L211.43 425.546L210.651 427.871L211.43 430.195L210.651 433.681L211.43 436.392L210.262 439.879L210.262 442.59L207.926 444.914L205.201 447.626'
               stroke={
-                showCdft
+                cdft
                   ? setStroke('cement ( surface casing )')
                   : setColor('cement ( surface casing )')
               }
@@ -2071,9 +2049,9 @@ export default function DiagramSVGwithCDFT({ setColor }) {
               rx='10.8732'
               ry='10.8119'
               transform='matrix(0.714257 -0.699883 0.714257 0.699883 8.00008 232.367)'
-              fill={showCdft ? setFill('surface casing valves') : 'none'}
+              fill={cdft ? setFill('surface casing valves') : 'none'}
               stroke={
-                showCdft
+                cdft
                   ? setStroke('surface casing valves')
                   : setColor('surface casing valves')
               }
@@ -2082,7 +2060,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
               id='Vector 6_10'
               d='M15.8907 224.879L31.2987 239.977'
               stroke={
-                showCdft
+                cdft
                   ? setStroke('surface casing valves')
                   : setColor('surface casing valves')
               }
@@ -2091,7 +2069,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
               id='Vector 7_10'
               d='M15.847 240.056L31.2543 224.959'
               stroke={
-                showCdft
+                cdft
                   ? setStroke('surface casing valves')
                   : setColor('surface casing valves')
               }
@@ -2106,9 +2084,9 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                   y='210.949'
                   width='13.235'
                   height='13.945'
-                  fill={showCdft ? setFill('surface casing valves') : 'none'}
+                  fill={cdft ? setFill('surface casing valves') : 'none'}
                   stroke={
-                    showCdft
+                    cdft
                       ? setStroke('surface casing valves')
                       : setColor('surface casing valves')
                   }
@@ -2117,7 +2095,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                   id='Line 95_5'
                   d='M49.7002 224.643L62.546 210.949'
                   stroke={
-                    showCdft
+                    cdft
                       ? setStroke('surface casing valves')
                       : setColor('surface casing valves')
                   }
@@ -2126,7 +2104,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                   id='Line 96_5'
                   d='M62.1567 224.507L49.5375 211.401'
                   stroke={
-                    showCdft
+                    cdft
                       ? setStroke('surface casing valves')
                       : setColor('surface casing valves')
                   }
@@ -2140,9 +2118,9 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                   width='13.235'
                   height='13.945'
                   transform='matrix(-1 0 0 1 231.234 210.949)'
-                  fill={showCdft ? setFill('surface casing valves') : 'none'}
+                  fill={cdft ? setFill('surface casing valves') : 'none'}
                   stroke={
-                    showCdft
+                    cdft
                       ? setStroke('surface casing valves')
                       : setColor('surface casing valves')
                   }
@@ -2151,7 +2129,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                   id='Line 95_6'
                   d='M230.844 224.643L217.999 210.949'
                   stroke={
-                    showCdft
+                    cdft
                       ? setStroke('surface casing valves')
                       : setColor('surface casing valves')
                   }
@@ -2160,7 +2138,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
                   id='Line 96_6'
                   d='M218.388 224.507L231.007 211.401'
                   stroke={
-                    showCdft
+                    cdft
                       ? setStroke('surface casing valves')
                       : setColor('surface casing valves')
                   }
@@ -2187,7 +2165,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
               id='conductor-casing_2'
               d='M50.0408 255.883H64.0544V376.352'
               stroke={
-                showCdft
+                cdft
                   ? setStroke('conductor casing')
                   : setColor('conductor casing')
               }
@@ -2214,7 +2192,7 @@ export default function DiagramSVGwithCDFT({ setColor }) {
               id='conductor-casing_3'
               d='M231.439 255.883H216.647V375.964'
               stroke={
-                showCdft
+                cdft
                   ? setStroke('conductor casing')
                   : setColor('conductor casing')
               }

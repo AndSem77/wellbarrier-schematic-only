@@ -16,6 +16,9 @@ import {
   RadioGroup,
   Stack,
   Text,
+  useRadio,
+  useRadioGroup,
+  Box,
 } from '@chakra-ui/react';
 import { ChevronLeftIcon, SmallCloseIcon } from '@chakra-ui/icons';
 import { BarrierContext } from '../context/BarrierContext';
@@ -38,6 +41,10 @@ const DiagramForm = forwardRef((props, printRef) => {
     setColor,
     setCurrentConfig,
   } = useContext(BarrierContext);
+
+  const { getInputProps, getCheckboxProps } = useRadio(props);
+  const input = getInputProps();
+  const checkbox = getCheckboxProps();
 
   const { register, handleSubmit, control, watch, setValue } = useForm({
     defaultValues: {
@@ -232,7 +239,7 @@ const DiagramForm = forwardRef((props, printRef) => {
                             size='sm'
                             {...register(`barrierElements.${index}.barrier`)}
                           >
-                            <Text fontSize='10px'>Primary</Text>
+                            <Text fontSize='xs'>Primary</Text>
                           </Radio>
 
                           <Radio
@@ -241,7 +248,7 @@ const DiagramForm = forwardRef((props, printRef) => {
                             size='sm'
                             {...register(`barrierElements.${index}.barrier`)}
                           >
-                            <Text fontSize='10px'>Secondary</Text>
+                            <Text fontSize='xs'>Secondary</Text>
                           </Radio>
                           <Radio
                             value='none'
@@ -261,7 +268,7 @@ const DiagramForm = forwardRef((props, printRef) => {
                               }
                             }}
                           >
-                            <Text fontSize='10px'>None</Text>
+                            <Text fontSize='xs'>None</Text>
                           </Radio>
                         </Stack>
                       </RadioGroup>
