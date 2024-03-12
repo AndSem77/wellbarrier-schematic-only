@@ -34,7 +34,6 @@ const ConfigHistory = forwardRef((props, printRef) => {
     currentConfig,
     setCurrentConfig,
     handleSaveCdft,
-    setColor,
   } = useContext(BarrierContext);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -78,6 +77,28 @@ const ConfigHistory = forwardRef((props, printRef) => {
   };
 
   // const handleSaveCdft = (data) => console.log('form', data);
+
+  const setColor = (name) => {
+    if (currentConfig) {
+      let el = currentConfig?.barrierElements?.find(
+        (item) => item?.name === name
+      );
+
+      if (el) {
+        if (el.quantity === 0) {
+          return 'none';
+        } else if (el.barrier === 'primary') {
+          return 'blue';
+        } else if (el.barrier === 'secondary') {
+          return 'red';
+        } else if (el.barrier === 'none') {
+          return 'black';
+        } else {
+          return 'none';
+        }
+      }
+    }
+  };
 
   return (
     <form
