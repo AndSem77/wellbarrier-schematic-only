@@ -505,250 +505,250 @@
       ]
     },
     {
-      "id": 1710236099082,
-      "configId": 1710236099082,
+      "id": 1710241497256,
+      "configId": 1710241497256,
       "configName": "SSD",
       "barrierElements": [
         {
-          "id": "dunN4tdFZz_WnFLNG7vC7",
+          "id": "_LMq6S-KmuETuoa9uZUwj",
           "name": "crown valve",
           "barrier": "secondary",
           "quantity": 1,
           "status": null
         },
         {
-          "id": "PSWIGnAVfZoVQOObHY4a4",
+          "id": "gwcf0BuAj327lOhQh-Gu9",
           "name": "surface safety valve",
           "barrier": "secondary",
           "quantity": 1,
           "status": null
         },
         {
-          "id": "xCshPRPbE5qR0YQv6PC7I",
+          "id": "UbysvsHMa7JfqM-da58IP",
           "name": "safety valve control line",
           "barrier": "secondary",
           "quantity": 1,
           "status": null
         },
         {
-          "id": "3Z2w_Xjblsci4DXdFsuMJ",
+          "id": "jqaZhlXaW0ZXd41yhbhIj",
           "name": "wing valve",
           "barrier": "secondary",
           "quantity": 1,
           "status": null
         },
         {
-          "id": "OstAIX6u_VWWqIHkXk2KK",
+          "id": "sfLLmLDInOu3cthTq-jMG",
           "name": "lower master valve",
           "barrier": "secondary",
           "quantity": 1,
           "status": null
         },
         {
-          "id": "KpyOf6Q_5pxMbFud_NuLB",
+          "id": "5ph5CDNNsbVy8Aa12E3tq",
           "name": "kill wing valve",
           "barrier": "secondary",
           "quantity": 1,
           "status": null
         },
         {
-          "id": "mR0igpWHLES0_Cw5glJZB",
+          "id": "rNe_KwiYbdgbe2S_V5bTa",
           "name": "production casing valves",
           "barrier": "secondary",
           "quantity": 2,
           "status": null
         },
         {
-          "id": "gAmm4T3Hq2usiP8iqCDtO",
+          "id": "O_IZL8oOYplR0YMgeDj1x",
           "name": "intermediate casing",
           "barrier": "secondary",
           "quantity": 1,
           "status": null
         },
         {
-          "id": "JH173DhLI7N7sz6QYOJ2J",
+          "id": "Qe_pmDphjoBywate_yhHy",
           "name": "intermediate casing valves",
           "barrier": "secondary",
           "quantity": 2,
           "status": null
         },
         {
-          "id": "tkbheQkiDWbFXZi5q5RPE",
+          "id": "RyxyH1jIM8wV0z3tqp5R8",
           "name": "cement ( intermediate casing )",
           "barrier": "secondary",
           "quantity": 1,
           "status": null
         },
         {
-          "id": "VIJnOiOA1l1gwAHFnZcMa",
+          "id": "PGLbxkSEeRuDrRP3wwkQD",
           "name": "surface casing",
           "barrier": "secondary",
           "quantity": 1,
           "status": null
         },
         {
-          "id": "7xrGj9Add8Kl_qZcVXUJV",
+          "id": "4tiGC6SjwVofHVmoYpPCj",
           "name": "surface casing valves",
           "barrier": "secondary",
           "quantity": 2,
           "status": null
         },
         {
-          "id": "RpGa7IXsJXIx0tGqmmewl",
+          "id": "PSI-NKIX4u9zCa6y6_Yom",
           "name": "cement ( surface casing )",
           "barrier": "secondary",
           "quantity": 1,
           "status": null
         },
         {
-          "id": "wtP0CW6WchwXqVp5uNYTx",
+          "id": "lDw-G_KRAklUWch-PSBQb",
           "name": "conductor casing",
           "barrier": "secondary",
           "quantity": 1,
           "status": null
         },
         {
-          "id": "gC6W9DXkaSqoZNFnBrBEC",
+          "id": "bKvkmeel1O3W3uKsweLtv",
           "name": "cement ( conductor casing )",
           "barrier": "secondary",
           "quantity": 1,
           "status": null
         },
         {
-          "id": "RGTW0l0V5gI7qFXLiOewZ",
+          "id": "gF2SiM2iFrOYP9deUGJwZ",
           "name": "conductor casing valves",
           "barrier": "none",
           "quantity": 0,
           "status": null
         },
         {
-          "id": "B1JRkYJ4l_KmXVpafkNot",
+          "id": "u2_PBxdmyB-FPCkaMEUJz",
           "name": "casing hanger",
           "barrier": "secondary",
           "quantity": 1,
           "status": null
         },
         {
-          "id": "yQeIpebhRrL0WcrZmrRYq",
+          "id": "5Mi5ezWdJj6XCfcf2yOwL",
           "name": "tubing hanger",
           "barrier": "secondary",
           "quantity": 1,
           "status": null
         },
         {
-          "id": "erIBwAyU5g7lw5IX4wsiJ",
+          "id": "QrjbVSUWQE6slYvspJvqD",
           "name": "caprock",
           "barrier": "secondary",
           "quantity": 1,
           "status": null
         },
         {
-          "id": "lV2MFWJxJxm5CD-4Gf9FI",
+          "id": "wMZBeSiDAfH5yO1Vfc3yi",
           "name": "void area",
           "barrier": "secondary",
           "quantity": 1,
           "status": null
         },
         {
-          "id": "amIu62cQ5fSNB127M3vEm",
+          "id": "ZZclPPiJ23P5fOzOIkx6W",
           "name": "VR plug",
           "barrier": "none",
           "quantity": 0,
           "status": null
         },
         {
-          "id": "NIqRuGwhx0B5joTeCO0MP",
+          "id": "k8gXNZlnvUMDTBWyAW7A1",
           "name": "BPV / TWCV",
           "barrier": "none",
           "quantity": 0,
           "status": null
         },
         {
-          "id": "3e8HmYbP2eA1qxqDaOez3",
+          "id": "-zBxS_aDkNe2PLOnv1kwN",
           "name": "production casing ( above packer )",
           "barrier": "secondary",
           "quantity": 1,
           "status": null
         },
         {
-          "id": "DuclpY8oaqCa4F1xAaK38",
+          "id": "hJbfY4WKY6XKZ5pXA19Ri",
           "name": "production casing ( below packer )",
           "barrier": "primary",
           "quantity": 1,
           "status": null
         },
         {
-          "id": "kbjbodJVvcDZHHUN5hbHQ",
+          "id": "mrIX_x8J30pl2fO8G0FvZ",
           "name": "production tubing ( above DHSV )",
           "barrier": "secondary",
           "quantity": 1,
           "status": null
         },
         {
-          "id": "7aNh1N_2KxxD7XWwgYqUh",
+          "id": "rwno1Yjed6vFCfpi4m3R4",
           "name": "production tubing ( below DHSV )",
           "barrier": "primary",
           "quantity": 1,
           "status": null
         },
         {
-          "id": "JvRIgBnwxfLf8y722Iepc",
+          "id": "ckj841HNTnFRU6S5P1-uW",
           "name": "cement ( production casing )",
           "barrier": "primary",
           "quantity": 1,
           "status": null
         },
         {
-          "id": "oAPl83QjBNOTgY1cwiUdA",
+          "id": "yXTVM2b5_lUGuruyl8TKe",
           "name": "downhole safety valve",
           "barrier": "primary",
           "quantity": 1,
           "status": null
         },
         {
-          "id": "apbhoGQ_PiTekH1-QsBTA",
+          "id": "SyFemEy3PdDKD4BWNN8GI",
           "name": "downhole safety valve control line",
           "barrier": "primary",
           "quantity": 1,
           "status": null
         },
         {
-          "id": "e8aH74L6UIhrnnkswqeXE",
+          "id": "3tU2MzlNUuA2Udl6ZEC3d",
           "name": "downhole safety valve landing nipple",
           "barrier": "primary",
           "quantity": 1,
           "status": null
         },
         {
-          "id": "VfCLCpR818dpC93gjEmwr",
+          "id": "gUdB9yhy_WSyJTk7v9jfM",
           "name": "gas lift mandrel",
           "barrier": "none",
           "quantity": 0,
           "status": null
         },
         {
-          "id": "qVtmc1Tb7_-EnMMsO5Yyl",
+          "id": "Ro81rWYECybF3IFZ6WzMR",
           "name": "sliding side door",
           "barrier": "primary",
           "quantity": 3,
           "status": null
         },
         {
-          "id": "YDOT8AjaeSb-nIcPFgL84",
+          "id": "VKEHgz2mzIlrPjvEewYRO",
           "name": "production packer",
           "barrier": "primary",
           "quantity": 1,
           "status": null
         },
         {
-          "id": "Z-CRMQ2nwlW8VOwHMJPUX",
+          "id": "fKS7bcrNAZXqpewuBVPyx",
           "name": "tubing plug",
           "barrier": "none",
           "quantity": 0,
           "status": null
         },
         {
-          "id": "p4k2CYi5Vqelf1sa0I-uB",
+          "id": "JZ8mQVlgCtOwd6z2RlL8z",
           "name": "in-situ formation",
           "barrier": "primary",
           "quantity": 1,
@@ -759,64 +759,62 @@
   ],
   "wells": [
     {
-      "id": 1710241284449,
-      "wellName": "Resak A1U",
       "configs": [
         {
           "cdftDate": null,
           "preventiveMaintenanceId": null,
           "configId": 1709718224354,
           "configName": "PLUG",
-          "updatedAt": 1710241284449,
+          "updatedAt": 1710248931012,
           "barrierElements": [
             {
               "id": "dunN4tdFZz_WnFLNG7vC7",
               "name": "crown valve",
-              "barrier": "secondary",
+              "barrier": "primary",
               "quantity": 1,
-              "status": null
+              "status": "pass"
             },
             {
               "id": "PSWIGnAVfZoVQOObHY4a4",
               "name": "surface safety valve",
               "barrier": "secondary",
               "quantity": 1,
-              "status": null
+              "status": "pass"
             },
             {
               "id": "xCshPRPbE5qR0YQv6PC7I",
               "name": "safety valve control line",
               "barrier": "secondary",
               "quantity": 1,
-              "status": null
+              "status": "pass"
             },
             {
               "id": "3Z2w_Xjblsci4DXdFsuMJ",
               "name": "wing valve",
               "barrier": "secondary",
               "quantity": 1,
-              "status": null
+              "status": "fail"
             },
             {
               "id": "OstAIX6u_VWWqIHkXk2KK",
               "name": "lower master valve",
               "barrier": "secondary",
               "quantity": 1,
-              "status": null
+              "status": "pass"
             },
             {
               "id": "KpyOf6Q_5pxMbFud_NuLB",
               "name": "kill wing valve",
               "barrier": "secondary",
               "quantity": 1,
-              "status": null
+              "status": "degraded"
             },
             {
               "id": "mR0igpWHLES0_Cw5glJZB",
               "name": "production casing valves",
               "barrier": "secondary",
               "quantity": 2,
-              "status": null
+              "status": "pass"
             },
             {
               "id": "gAmm4T3Hq2usiP8iqCDtO",
@@ -830,7 +828,7 @@
               "name": "intermediate casing valves",
               "barrier": "secondary",
               "quantity": 2,
-              "status": null
+              "status": "pass"
             },
             {
               "id": "tkbheQkiDWbFXZi5q5RPE",
@@ -851,7 +849,7 @@
               "name": "surface casing valves",
               "barrier": "secondary",
               "quantity": 2,
-              "status": null
+              "status": "pass"
             },
             {
               "id": "RpGa7IXsJXIx0tGqmmewl",
@@ -879,7 +877,7 @@
               "name": "conductor casing valves",
               "barrier": "none",
               "quantity": 0,
-              "status": null
+              "status": "pass"
             },
             {
               "id": "B1JRkYJ4l_KmXVpafkNot",
@@ -893,7 +891,7 @@
               "name": "tubing hanger",
               "barrier": "secondary",
               "quantity": 1,
-              "status": null
+              "status": "pass"
             },
             {
               "id": "erIBwAyU5g7lw5IX4wsiJ",
@@ -1005,516 +1003,6 @@
               "name": "tubing plug",
               "barrier": "primary",
               "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "p4k2CYi5Vqelf1sa0I-uB",
-              "name": "in-situ formation",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            }
-          ]
-        },
-        {
-          "cdftDate": null,
-          "preventiveMaintenanceId": null,
-          "updatedAt": 1710241295065,
-          "id": 1710236059091,
-          "configId": 1710236059091,
-          "configName": "GLM",
-          "barrierElements": [
-            {
-              "id": "dunN4tdFZz_WnFLNG7vC7",
-              "name": "crown valve",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "PSWIGnAVfZoVQOObHY4a4",
-              "name": "surface safety valve",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "xCshPRPbE5qR0YQv6PC7I",
-              "name": "safety valve control line",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "3Z2w_Xjblsci4DXdFsuMJ",
-              "name": "wing valve",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "OstAIX6u_VWWqIHkXk2KK",
-              "name": "lower master valve",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "KpyOf6Q_5pxMbFud_NuLB",
-              "name": "kill wing valve",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "mR0igpWHLES0_Cw5glJZB",
-              "name": "production casing valves",
-              "barrier": "secondary",
-              "quantity": 2,
-              "status": null
-            },
-            {
-              "id": "gAmm4T3Hq2usiP8iqCDtO",
-              "name": "intermediate casing",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "JH173DhLI7N7sz6QYOJ2J",
-              "name": "intermediate casing valves",
-              "barrier": "secondary",
-              "quantity": 2,
-              "status": null
-            },
-            {
-              "id": "tkbheQkiDWbFXZi5q5RPE",
-              "name": "cement ( intermediate casing )",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "VIJnOiOA1l1gwAHFnZcMa",
-              "name": "surface casing",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "7xrGj9Add8Kl_qZcVXUJV",
-              "name": "surface casing valves",
-              "barrier": "secondary",
-              "quantity": 2,
-              "status": null
-            },
-            {
-              "id": "RpGa7IXsJXIx0tGqmmewl",
-              "name": "cement ( surface casing )",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "wtP0CW6WchwXqVp5uNYTx",
-              "name": "conductor casing",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "gC6W9DXkaSqoZNFnBrBEC",
-              "name": "cement ( conductor casing )",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "RGTW0l0V5gI7qFXLiOewZ",
-              "name": "conductor casing valves",
-              "barrier": "none",
-              "quantity": 0,
-              "status": null
-            },
-            {
-              "id": "B1JRkYJ4l_KmXVpafkNot",
-              "name": "casing hanger",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "yQeIpebhRrL0WcrZmrRYq",
-              "name": "tubing hanger",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "erIBwAyU5g7lw5IX4wsiJ",
-              "name": "caprock",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "lV2MFWJxJxm5CD-4Gf9FI",
-              "name": "void area",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "amIu62cQ5fSNB127M3vEm",
-              "name": "VR plug",
-              "barrier": "none",
-              "quantity": 0,
-              "status": null
-            },
-            {
-              "id": "NIqRuGwhx0B5joTeCO0MP",
-              "name": "BPV / TWCV",
-              "barrier": "none",
-              "quantity": 0,
-              "status": null
-            },
-            {
-              "id": "3e8HmYbP2eA1qxqDaOez3",
-              "name": "production casing ( above packer )",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "DuclpY8oaqCa4F1xAaK38",
-              "name": "production casing ( below packer )",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "kbjbodJVvcDZHHUN5hbHQ",
-              "name": "production tubing ( above DHSV )",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "7aNh1N_2KxxD7XWwgYqUh",
-              "name": "production tubing ( below DHSV )",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "JvRIgBnwxfLf8y722Iepc",
-              "name": "cement ( production casing )",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "oAPl83QjBNOTgY1cwiUdA",
-              "name": "downhole safety valve",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "apbhoGQ_PiTekH1-QsBTA",
-              "name": "downhole safety valve control line",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "e8aH74L6UIhrnnkswqeXE",
-              "name": "downhole safety valve landing nipple",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "VfCLCpR818dpC93gjEmwr",
-              "name": "gas lift mandrel",
-              "barrier": "primary",
-              "quantity": 5,
-              "status": null
-            },
-            {
-              "id": "qVtmc1Tb7_-EnMMsO5Yyl",
-              "name": "sliding side door",
-              "barrier": "none",
-              "quantity": 0,
-              "status": null
-            },
-            {
-              "id": "YDOT8AjaeSb-nIcPFgL84",
-              "name": "production packer",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "Z-CRMQ2nwlW8VOwHMJPUX",
-              "name": "tubing plug",
-              "barrier": "none",
-              "quantity": 0,
-              "status": null
-            },
-            {
-              "id": "p4k2CYi5Vqelf1sa0I-uB",
-              "name": "in-situ formation",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            }
-          ]
-        },
-        {
-          "cdftDate": null,
-          "preventiveMaintenanceId": null,
-          "updatedAt": 1710241312137,
-          "id": 1710236099082,
-          "configId": 1710236099082,
-          "configName": "SSD",
-          "barrierElements": [
-            {
-              "id": "dunN4tdFZz_WnFLNG7vC7",
-              "name": "crown valve",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "PSWIGnAVfZoVQOObHY4a4",
-              "name": "surface safety valve",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "xCshPRPbE5qR0YQv6PC7I",
-              "name": "safety valve control line",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "3Z2w_Xjblsci4DXdFsuMJ",
-              "name": "wing valve",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "OstAIX6u_VWWqIHkXk2KK",
-              "name": "lower master valve",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "KpyOf6Q_5pxMbFud_NuLB",
-              "name": "kill wing valve",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "mR0igpWHLES0_Cw5glJZB",
-              "name": "production casing valves",
-              "barrier": "secondary",
-              "quantity": 2,
-              "status": null
-            },
-            {
-              "id": "gAmm4T3Hq2usiP8iqCDtO",
-              "name": "intermediate casing",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "JH173DhLI7N7sz6QYOJ2J",
-              "name": "intermediate casing valves",
-              "barrier": "secondary",
-              "quantity": 2,
-              "status": null
-            },
-            {
-              "id": "tkbheQkiDWbFXZi5q5RPE",
-              "name": "cement ( intermediate casing )",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "VIJnOiOA1l1gwAHFnZcMa",
-              "name": "surface casing",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "7xrGj9Add8Kl_qZcVXUJV",
-              "name": "surface casing valves",
-              "barrier": "secondary",
-              "quantity": 2,
-              "status": null
-            },
-            {
-              "id": "RpGa7IXsJXIx0tGqmmewl",
-              "name": "cement ( surface casing )",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "wtP0CW6WchwXqVp5uNYTx",
-              "name": "conductor casing",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "gC6W9DXkaSqoZNFnBrBEC",
-              "name": "cement ( conductor casing )",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "RGTW0l0V5gI7qFXLiOewZ",
-              "name": "conductor casing valves",
-              "barrier": "none",
-              "quantity": 0,
-              "status": null
-            },
-            {
-              "id": "B1JRkYJ4l_KmXVpafkNot",
-              "name": "casing hanger",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "yQeIpebhRrL0WcrZmrRYq",
-              "name": "tubing hanger",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "erIBwAyU5g7lw5IX4wsiJ",
-              "name": "caprock",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "lV2MFWJxJxm5CD-4Gf9FI",
-              "name": "void area",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "amIu62cQ5fSNB127M3vEm",
-              "name": "VR plug",
-              "barrier": "none",
-              "quantity": 0,
-              "status": null
-            },
-            {
-              "id": "NIqRuGwhx0B5joTeCO0MP",
-              "name": "BPV / TWCV",
-              "barrier": "none",
-              "quantity": 0,
-              "status": null
-            },
-            {
-              "id": "3e8HmYbP2eA1qxqDaOez3",
-              "name": "production casing ( above packer )",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "DuclpY8oaqCa4F1xAaK38",
-              "name": "production casing ( below packer )",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "kbjbodJVvcDZHHUN5hbHQ",
-              "name": "production tubing ( above DHSV )",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "7aNh1N_2KxxD7XWwgYqUh",
-              "name": "production tubing ( below DHSV )",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "JvRIgBnwxfLf8y722Iepc",
-              "name": "cement ( production casing )",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "oAPl83QjBNOTgY1cwiUdA",
-              "name": "downhole safety valve",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "apbhoGQ_PiTekH1-QsBTA",
-              "name": "downhole safety valve control line",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "e8aH74L6UIhrnnkswqeXE",
-              "name": "downhole safety valve landing nipple",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "VfCLCpR818dpC93gjEmwr",
-              "name": "gas lift mandrel",
-              "barrier": "none",
-              "quantity": 0,
-              "status": null
-            },
-            {
-              "id": "qVtmc1Tb7_-EnMMsO5Yyl",
-              "name": "sliding side door",
-              "barrier": "primary",
-              "quantity": 3,
-              "status": null
-            },
-            {
-              "id": "YDOT8AjaeSb-nIcPFgL84",
-              "name": "production packer",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "Z-CRMQ2nwlW8VOwHMJPUX",
-              "name": "tubing plug",
-              "barrier": "none",
-              "quantity": 0,
               "status": null
             },
             {
@@ -1526,782 +1014,9 @@
             }
           ]
         }
-      ]
-    },
-    {
-      "id": 1710241337266,
-      "wellName": "Resak A2U",
-      "configs": [
-        {
-          "cdftDate": null,
-          "preventiveMaintenanceId": null,
-          "configId": 1709718224354,
-          "configName": "GLM",
-          "updatedAt": 1710241337266,
-          "barrierElements": [
-            {
-              "id": "dunN4tdFZz_WnFLNG7vC7",
-              "name": "crown valve",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "PSWIGnAVfZoVQOObHY4a4",
-              "name": "surface safety valve",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "xCshPRPbE5qR0YQv6PC7I",
-              "name": "safety valve control line",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "3Z2w_Xjblsci4DXdFsuMJ",
-              "name": "wing valve",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "OstAIX6u_VWWqIHkXk2KK",
-              "name": "lower master valve",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "KpyOf6Q_5pxMbFud_NuLB",
-              "name": "kill wing valve",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "mR0igpWHLES0_Cw5glJZB",
-              "name": "production casing valves",
-              "barrier": "secondary",
-              "quantity": 2,
-              "status": null
-            },
-            {
-              "id": "gAmm4T3Hq2usiP8iqCDtO",
-              "name": "intermediate casing",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "JH173DhLI7N7sz6QYOJ2J",
-              "name": "intermediate casing valves",
-              "barrier": "secondary",
-              "quantity": 2,
-              "status": null
-            },
-            {
-              "id": "tkbheQkiDWbFXZi5q5RPE",
-              "name": "cement ( intermediate casing )",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "VIJnOiOA1l1gwAHFnZcMa",
-              "name": "surface casing",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "7xrGj9Add8Kl_qZcVXUJV",
-              "name": "surface casing valves",
-              "barrier": "secondary",
-              "quantity": 2,
-              "status": null
-            },
-            {
-              "id": "RpGa7IXsJXIx0tGqmmewl",
-              "name": "cement ( surface casing )",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "wtP0CW6WchwXqVp5uNYTx",
-              "name": "conductor casing",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "gC6W9DXkaSqoZNFnBrBEC",
-              "name": "cement ( conductor casing )",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "RGTW0l0V5gI7qFXLiOewZ",
-              "name": "conductor casing valves",
-              "barrier": "none",
-              "quantity": 0,
-              "status": null
-            },
-            {
-              "id": "B1JRkYJ4l_KmXVpafkNot",
-              "name": "casing hanger",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "yQeIpebhRrL0WcrZmrRYq",
-              "name": "tubing hanger",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "erIBwAyU5g7lw5IX4wsiJ",
-              "name": "caprock",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "lV2MFWJxJxm5CD-4Gf9FI",
-              "name": "void area",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "amIu62cQ5fSNB127M3vEm",
-              "name": "VR plug",
-              "barrier": "none",
-              "quantity": 0,
-              "status": null
-            },
-            {
-              "id": "NIqRuGwhx0B5joTeCO0MP",
-              "name": "BPV / TWCV",
-              "barrier": "none",
-              "quantity": 0,
-              "status": null
-            },
-            {
-              "id": "3e8HmYbP2eA1qxqDaOez3",
-              "name": "production casing ( above packer )",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "DuclpY8oaqCa4F1xAaK38",
-              "name": "production casing ( below packer )",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "kbjbodJVvcDZHHUN5hbHQ",
-              "name": "production tubing ( above DHSV )",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "7aNh1N_2KxxD7XWwgYqUh",
-              "name": "production tubing ( below DHSV )",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "JvRIgBnwxfLf8y722Iepc",
-              "name": "cement ( production casing )",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "oAPl83QjBNOTgY1cwiUdA",
-              "name": "downhole safety valve",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "apbhoGQ_PiTekH1-QsBTA",
-              "name": "downhole safety valve control line",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "e8aH74L6UIhrnnkswqeXE",
-              "name": "downhole safety valve landing nipple",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "VfCLCpR818dpC93gjEmwr",
-              "name": "gas lift mandrel",
-              "barrier": "primary",
-              "quantity": 5,
-              "status": null
-            },
-            {
-              "id": "qVtmc1Tb7_-EnMMsO5Yyl",
-              "name": "sliding side door",
-              "barrier": "none",
-              "quantity": 0,
-              "status": null
-            },
-            {
-              "id": "YDOT8AjaeSb-nIcPFgL84",
-              "name": "production packer",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "Z-CRMQ2nwlW8VOwHMJPUX",
-              "name": "tubing plug",
-              "barrier": "none",
-              "quantity": 0,
-              "status": null
-            },
-            {
-              "id": "p4k2CYi5Vqelf1sa0I-uB",
-              "name": "in-situ formation",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 1710241350787,
-      "wellName": "Resak A3U",
-      "configs": [
-        {
-          "cdftDate": null,
-          "preventiveMaintenanceId": null,
-          "configId": 1709718224354,
-          "configName": "PLUG",
-          "updatedAt": 1710241350787,
-          "barrierElements": [
-            {
-              "id": "dunN4tdFZz_WnFLNG7vC7",
-              "name": "crown valve",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "PSWIGnAVfZoVQOObHY4a4",
-              "name": "surface safety valve",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "xCshPRPbE5qR0YQv6PC7I",
-              "name": "safety valve control line",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "3Z2w_Xjblsci4DXdFsuMJ",
-              "name": "wing valve",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "OstAIX6u_VWWqIHkXk2KK",
-              "name": "lower master valve",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "KpyOf6Q_5pxMbFud_NuLB",
-              "name": "kill wing valve",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "mR0igpWHLES0_Cw5glJZB",
-              "name": "production casing valves",
-              "barrier": "secondary",
-              "quantity": 2,
-              "status": null
-            },
-            {
-              "id": "gAmm4T3Hq2usiP8iqCDtO",
-              "name": "intermediate casing",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "JH173DhLI7N7sz6QYOJ2J",
-              "name": "intermediate casing valves",
-              "barrier": "secondary",
-              "quantity": 2,
-              "status": null
-            },
-            {
-              "id": "tkbheQkiDWbFXZi5q5RPE",
-              "name": "cement ( intermediate casing )",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "VIJnOiOA1l1gwAHFnZcMa",
-              "name": "surface casing",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "7xrGj9Add8Kl_qZcVXUJV",
-              "name": "surface casing valves",
-              "barrier": "secondary",
-              "quantity": 2,
-              "status": null
-            },
-            {
-              "id": "RpGa7IXsJXIx0tGqmmewl",
-              "name": "cement ( surface casing )",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "wtP0CW6WchwXqVp5uNYTx",
-              "name": "conductor casing",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "gC6W9DXkaSqoZNFnBrBEC",
-              "name": "cement ( conductor casing )",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "RGTW0l0V5gI7qFXLiOewZ",
-              "name": "conductor casing valves",
-              "barrier": "none",
-              "quantity": 0,
-              "status": null
-            },
-            {
-              "id": "B1JRkYJ4l_KmXVpafkNot",
-              "name": "casing hanger",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "yQeIpebhRrL0WcrZmrRYq",
-              "name": "tubing hanger",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "erIBwAyU5g7lw5IX4wsiJ",
-              "name": "caprock",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "lV2MFWJxJxm5CD-4Gf9FI",
-              "name": "void area",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "amIu62cQ5fSNB127M3vEm",
-              "name": "VR plug",
-              "barrier": "none",
-              "quantity": 0,
-              "status": null
-            },
-            {
-              "id": "NIqRuGwhx0B5joTeCO0MP",
-              "name": "BPV / TWCV",
-              "barrier": "none",
-              "quantity": 0,
-              "status": null
-            },
-            {
-              "id": "3e8HmYbP2eA1qxqDaOez3",
-              "name": "production casing ( above packer )",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "DuclpY8oaqCa4F1xAaK38",
-              "name": "production casing ( below packer )",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "kbjbodJVvcDZHHUN5hbHQ",
-              "name": "production tubing ( above DHSV )",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "7aNh1N_2KxxD7XWwgYqUh",
-              "name": "production tubing ( below DHSV )",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "JvRIgBnwxfLf8y722Iepc",
-              "name": "cement ( production casing )",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "oAPl83QjBNOTgY1cwiUdA",
-              "name": "downhole safety valve",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "apbhoGQ_PiTekH1-QsBTA",
-              "name": "downhole safety valve control line",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "e8aH74L6UIhrnnkswqeXE",
-              "name": "downhole safety valve landing nipple",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "VfCLCpR818dpC93gjEmwr",
-              "name": "gas lift mandrel",
-              "barrier": "none",
-              "quantity": 0,
-              "status": null
-            },
-            {
-              "id": "qVtmc1Tb7_-EnMMsO5Yyl",
-              "name": "sliding side door",
-              "barrier": "none",
-              "quantity": 0,
-              "status": null
-            },
-            {
-              "id": "YDOT8AjaeSb-nIcPFgL84",
-              "name": "production packer",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "Z-CRMQ2nwlW8VOwHMJPUX",
-              "name": "tubing plug",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "p4k2CYi5Vqelf1sa0I-uB",
-              "name": "in-situ formation",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            }
-          ]
-        },
-        {
-          "cdftDate": null,
-          "preventiveMaintenanceId": null,
-          "updatedAt": 1710241355374,
-          "id": 1710236099082,
-          "configId": 1710236099082,
-          "configName": "SSD",
-          "barrierElements": [
-            {
-              "id": "dunN4tdFZz_WnFLNG7vC7",
-              "name": "crown valve",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "PSWIGnAVfZoVQOObHY4a4",
-              "name": "surface safety valve",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "xCshPRPbE5qR0YQv6PC7I",
-              "name": "safety valve control line",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "3Z2w_Xjblsci4DXdFsuMJ",
-              "name": "wing valve",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "OstAIX6u_VWWqIHkXk2KK",
-              "name": "lower master valve",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "KpyOf6Q_5pxMbFud_NuLB",
-              "name": "kill wing valve",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "mR0igpWHLES0_Cw5glJZB",
-              "name": "production casing valves",
-              "barrier": "secondary",
-              "quantity": 2,
-              "status": null
-            },
-            {
-              "id": "gAmm4T3Hq2usiP8iqCDtO",
-              "name": "intermediate casing",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "JH173DhLI7N7sz6QYOJ2J",
-              "name": "intermediate casing valves",
-              "barrier": "secondary",
-              "quantity": 2,
-              "status": null
-            },
-            {
-              "id": "tkbheQkiDWbFXZi5q5RPE",
-              "name": "cement ( intermediate casing )",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "VIJnOiOA1l1gwAHFnZcMa",
-              "name": "surface casing",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "7xrGj9Add8Kl_qZcVXUJV",
-              "name": "surface casing valves",
-              "barrier": "secondary",
-              "quantity": 2,
-              "status": null
-            },
-            {
-              "id": "RpGa7IXsJXIx0tGqmmewl",
-              "name": "cement ( surface casing )",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "wtP0CW6WchwXqVp5uNYTx",
-              "name": "conductor casing",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "gC6W9DXkaSqoZNFnBrBEC",
-              "name": "cement ( conductor casing )",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "RGTW0l0V5gI7qFXLiOewZ",
-              "name": "conductor casing valves",
-              "barrier": "none",
-              "quantity": 0,
-              "status": null
-            },
-            {
-              "id": "B1JRkYJ4l_KmXVpafkNot",
-              "name": "casing hanger",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "yQeIpebhRrL0WcrZmrRYq",
-              "name": "tubing hanger",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "erIBwAyU5g7lw5IX4wsiJ",
-              "name": "caprock",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "lV2MFWJxJxm5CD-4Gf9FI",
-              "name": "void area",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "amIu62cQ5fSNB127M3vEm",
-              "name": "VR plug",
-              "barrier": "none",
-              "quantity": 0,
-              "status": null
-            },
-            {
-              "id": "NIqRuGwhx0B5joTeCO0MP",
-              "name": "BPV / TWCV",
-              "barrier": "none",
-              "quantity": 0,
-              "status": null
-            },
-            {
-              "id": "3e8HmYbP2eA1qxqDaOez3",
-              "name": "production casing ( above packer )",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "DuclpY8oaqCa4F1xAaK38",
-              "name": "production casing ( below packer )",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "kbjbodJVvcDZHHUN5hbHQ",
-              "name": "production tubing ( above DHSV )",
-              "barrier": "secondary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "7aNh1N_2KxxD7XWwgYqUh",
-              "name": "production tubing ( below DHSV )",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "JvRIgBnwxfLf8y722Iepc",
-              "name": "cement ( production casing )",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "oAPl83QjBNOTgY1cwiUdA",
-              "name": "downhole safety valve",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "apbhoGQ_PiTekH1-QsBTA",
-              "name": "downhole safety valve control line",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "e8aH74L6UIhrnnkswqeXE",
-              "name": "downhole safety valve landing nipple",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "VfCLCpR818dpC93gjEmwr",
-              "name": "gas lift mandrel",
-              "barrier": "none",
-              "quantity": 0,
-              "status": null
-            },
-            {
-              "id": "qVtmc1Tb7_-EnMMsO5Yyl",
-              "name": "sliding side door",
-              "barrier": "primary",
-              "quantity": 3,
-              "status": null
-            },
-            {
-              "id": "YDOT8AjaeSb-nIcPFgL84",
-              "name": "production packer",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            },
-            {
-              "id": "Z-CRMQ2nwlW8VOwHMJPUX",
-              "name": "tubing plug",
-              "barrier": "none",
-              "quantity": 0,
-              "status": null
-            },
-            {
-              "id": "p4k2CYi5Vqelf1sa0I-uB",
-              "name": "in-situ formation",
-              "barrier": "primary",
-              "quantity": 1,
-              "status": null
-            }
-          ]
-        }
-      ]
+      ],
+      "id": 1710248931012,
+      "wellName": "Resak A1U"
     }
   ]
 }

@@ -272,6 +272,16 @@ export const BarrierProvider = ({ children }) => {
       setConfigData({ ...configData, barrierElements: updated });
       setUpdate(true);
     }
+
+    if (currentConfig) {
+      const updated = currentConfig?.barrierElements?.map((item) => ({
+        ...item,
+        barrier: 'none',
+        status: null,
+      }));
+      setCurrentConfig({ ...currentConfig, barrierElements: updated });
+      setUpdate(true);
+    }
   };
 
   const getConfigHistory = async () => {
@@ -306,33 +316,41 @@ export const BarrierProvider = ({ children }) => {
   };
 
   const setFill = (name) => {
-    let el = configData?.barrierElements?.find((item) => item?.name === name);
+    let el = currentConfig?.barrierElements?.find(
+      (item) => item?.name === name
+    );
 
-    const setColor = (name) => {
-      if (el?.status) {
-        if (el.status === 'pass') {
-          return 'green';
-        } else if (el.status === 'fail') {
-          return 'red';
-        } else if (el.status === 'degraded') {
-          return 'yellow';
-        } else {
-          return 'none';
-        }
+    if (el.status) {
+      if (el.status === 'pass') {
+        return 'green';
+      } else if (el.status === 'degraded') {
+        return 'yellow';
+      } else if (el.status === 'fail') {
+        return 'red';
+      } else {
+        return 'none';
       }
-    };
-
-    if (!el?.status) {
-      return 'none';
-    }
-
-    if (el?.status) {
-      return setColor(name);
     }
   };
 
   const setStroke = (name) => {
-    let el = configData?.barrierElements?.find((item) => item?.name === name);
+    let el = currentConfig?.barrierElements?.find(
+      (item) => item?.name === name
+    );
+
+    if (!el.status) {
+      if (el.quantity === 0) {
+        return 'none';
+      } else if (el.barrier === 'primary') {
+        return 'blue';
+      } else if (el.barrier === 'secondary') {
+        return 'red';
+      } else if (el.barrier === 'none') {
+        return 'black';
+      } else {
+        return 'none';
+      }
+    }
 
     const setColor = (name) => {
       if (el?.status) {
@@ -465,6 +483,7 @@ export const BarrierProvider = ({ children }) => {
 
   const handleSaveCdft = async () => {
     try {
+      // 'http://localhost:3000' + var'
       await fetch(`${wellsURL}/${wellData?.id}`, {
         method: 'PUT',
         headers: {

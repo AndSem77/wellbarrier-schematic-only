@@ -37,7 +37,7 @@ const ConfigHistory = forwardRef((props, printRef) => {
   } = useContext(BarrierContext);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  console.log('config', currentConfig);
+  // console.log('config', currentConfig);
 
   useEffect(() => {
     setCurrentConfig(wellData?.configs[currentIndex]);
@@ -100,6 +100,10 @@ const ConfigHistory = forwardRef((props, printRef) => {
     }
   };
 
+  useEffect(() => {
+    setColor();
+  }, [currentConfig]);
+
   return (
     <form
       id='diagramForm'
@@ -148,7 +152,9 @@ const ConfigHistory = forwardRef((props, printRef) => {
         >
           <div className='p-2 border-b flex flex-col items-center'>
             <Text fontWeight='bold'>{wellData?.wellName}</Text>
-            <Text fontSize='xs'>{currentConfig?.configName}</Text>
+            <Text fontSize='xs'>
+              Configuration: {currentConfig?.configName}
+            </Text>
             <Text fontSize='xs'>
               Date: {moment(currentConfig?.updatedAt).format('DD/MM/YYYY')}
             </Text>

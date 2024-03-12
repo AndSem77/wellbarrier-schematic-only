@@ -33,10 +33,14 @@ export const dummyCdftData = [
   },
   {
     name: 'production casing valves',
-    status: 'fail',
+    status: 'pass',
   },
   {
     name: 'intermediate casing valves',
+    status: 'pass',
+  },
+  {
+    name: 'tubing hanger',
     status: 'pass',
   },
   {

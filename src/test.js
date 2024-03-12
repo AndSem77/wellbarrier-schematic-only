@@ -10,7 +10,7 @@ const currentConfig = {
       name: 'crown valve',
       barrier: 'secondary',
       quantity: 1,
-      status: 'pass',
+      status: null,
     },
     {
       id: 'PSWIGnAVfZoVQOObHY4a4',
@@ -253,7 +253,31 @@ const currentConfig = {
   ],
 };
 
-const setCdftColor = () => {
-  if (currentConfig) {
+const setFill = (name) => {
+  let el = currentConfig?.barrierElements?.find((item) => item?.name === name);
+  if (el) {
+    if (el.quantity === 0) {
+      return 'none';
+    } else if (el.barrier === 'primary') {
+      return 'blue';
+    } else if (el.barrier === 'secondary') {
+      return 'red';
+    } else if (el.barrier === 'none') {
+      return 'black';
+    } else {
+      return 'none';
+    }
   }
 };
+
+setFill('crown valve');
+
+const obj = {
+  name: 'vlad',
+  age: 15,
+};
+console.table(obj);
+
+const name = 'Andrey';
+
+console.log('Hello, name');

@@ -504,18 +504,18 @@ export default function DiagramSVGwithCDFT({ setColor }) {
               rx='13.9798'
               ry='13.901'
               transform='matrix(0.714257 -0.699883 0.714257 0.699883 120.109 31.4146)'
-              fill={cdft ? 'green' : 'none'}
-              stroke={setColor('crown valve')}
+              fill={cdft ? setFill('crown valve') : 'none'}
+              stroke={cdft ? setStroke('crown valve') : setColor('crown valve')}
             />
             <path
               id='Vector 6'
               d='M130.254 21.7872L150.064 41.1988'
-              stroke={setColor('crown valve')}
+              stroke={cdft ? setStroke('crown valve') : setColor('crown valve')}
             />
             <path
               id='Vector 7'
               d='M130.198 41.3005L150.007 21.8899'
-              stroke={setColor('crown valve')}
+              stroke={cdft ? setStroke('crown valve') : setColor('crown valve')}
             />
           </g>
           <g id='ssv'>
@@ -526,18 +526,30 @@ export default function DiagramSVGwithCDFT({ setColor }) {
               rx='13.9798'
               ry='13.9436'
               transform='matrix(0.714257 -0.699883 0.714257 0.699883 120.109 94.1669)'
-              fill='none'
-              stroke={setColor('surface safety valve')}
+              fill={cdft ? setFill('surface safety valve') : 'none'}
+              stroke={
+                cdft
+                  ? setStroke('surface safety valve')
+                  : setColor('surface safety valve')
+              }
             />
             <path
               id='Vector 6_2'
               d='M130.254 84.54L149.812 104.198'
-              stroke={setColor('surface safety valve')}
+              stroke={
+                cdft
+                  ? setStroke('surface safety valve')
+                  : setColor('surface safety valve')
+              }
             />
             <path
               id='Vector 7_2'
               d='M130.229 104.083L150.038 84.6724'
-              stroke={setColor('surface safety valve')}
+              stroke={
+                cdft
+                  ? setStroke('surface safety valve')
+                  : setColor('surface safety valve')
+              }
             />
           </g>
           <g id='lmv'>
@@ -548,18 +560,30 @@ export default function DiagramSVGwithCDFT({ setColor }) {
               rx='13.9798'
               ry='13.9798'
               transform='matrix(0.714257 -0.699883 0.714257 0.699883 120.109 132.128)'
-              fill='none'
-              stroke={setColor('lower master valve')}
+              fill={cdft ? setFill('lower master valve') : 'none'}
+              stroke={
+                cdft
+                  ? setStroke('lower master valve')
+                  : setColor('lower master valve')
+              }
             />
             <path
               id='Vector 6_3'
               d='M130.255 122.502L149.869 141.721'
-              stroke={setColor('lower master valve')}
+              stroke={
+                cdft
+                  ? setStroke('lower master valve')
+                  : setColor('lower master valve')
+              }
             />
             <path
               id='Vector 7_3'
               d='M130.255 142.07L150.064 122.66'
-              stroke={setColor('lower master valve')}
+              stroke={
+                cdft
+                  ? setStroke('lower master valve')
+                  : setColor('lower master valve')
+              }
             />
           </g>
           <g id='wv'>
@@ -569,18 +593,18 @@ export default function DiagramSVGwithCDFT({ setColor }) {
               cy='13.9798'
               r='13.9798'
               transform='matrix(-0.714257 -0.699883 -0.714257 0.699883 131.244 60.8539)'
-              fill='none'
-              stroke={setColor('wing valve')}
+              fill={cdft ? setFill('wing valve') : 'none'}
+              stroke={cdft ? setStroke('wing valve') : setColor('wing valve')}
             />
             <path
               id='Vector 6_4'
               d='M121.097 51.2274L101.484 70.4464'
-              stroke={setColor('wing valve')}
+              stroke={cdft ? setStroke('wing valve') : setColor('wing valve')}
             />
             <path
               id='Vector 7_4'
               d='M121.097 70.7959L101.288 51.3852'
-              stroke={setColor('wing valve')}
+              stroke={cdft ? setStroke('wing valve') : setColor('wing valve')}
             />
           </g>
           <g id='kwv'>
@@ -590,18 +614,30 @@ export default function DiagramSVGwithCDFT({ setColor }) {
               cy='13.9798'
               r='13.9798'
               transform='matrix(-0.714257 -0.699883 -0.714257 0.699883 188.077 60.8539)'
-              fill='none'
-              stroke={setColor('kill wing valve')}
+              fill={cdft ? setFill('kill wing valve') : 'none'}
+              stroke={
+                cdft
+                  ? setStroke('kill wing valve')
+                  : setColor('kill wing valve')
+              }
             />
             <path
               id='Vector 6_5'
               d='M177.93 51.2274L158.316 70.4464'
-              stroke={setColor('kill wing valve')}
+              stroke={
+                cdft
+                  ? setStroke('kill wing valve')
+                  : setColor('kill wing valve')
+              }
             />
             <path
               id='Vector 7_5'
               d='M177.93 70.7959L158.121 51.3852'
-              stroke={setColor('kill wing valve')}
+              stroke={
+                cdft
+                  ? setStroke('kill wing valve')
+                  : setColor('kill wing valve')
+              }
             />
           </g>
           <g id='wv-arrows'>
