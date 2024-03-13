@@ -20,7 +20,6 @@ import {
 import { ChevronLeftIcon, SmallCloseIcon } from '@chakra-ui/icons';
 import { BarrierContext } from '../context/BarrierContext';
 import { initialConfigData } from '../data/initialConfigData';
-import AnnotationList from './AnnotationList';
 import { useForm, useFieldArray } from 'react-hook-form';
 import _ from 'lodash';
 import DiagramSVG from './schematic/DiagramSVG';

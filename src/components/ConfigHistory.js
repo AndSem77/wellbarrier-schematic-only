@@ -19,8 +19,6 @@ import {
 } from '@chakra-ui/react';
 import { ChevronLeftIcon, SmallCloseIcon } from '@chakra-ui/icons';
 import { BarrierContext } from '../context/BarrierContext';
-
-import AnnotationList from './AnnotationList';
 import { useForm, useFieldArray } from 'react-hook-form';
 import _ from 'lodash';
 import DiagramSVGwithCDFT from './schematic/DiagramSVGwithCDFT';
