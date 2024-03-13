@@ -20,14 +20,6 @@ export const BarrierProvider = ({ children }) => {
       id: 1,
       name: 'Resak A1U',
     },
-    {
-      id: 2,
-      name: 'Resak A2U',
-    },
-    {
-      id: 3,
-      name: 'Resak A3U',
-    },
   ]);
 
   const [update, setUpdate] = useState(false);
@@ -483,7 +475,6 @@ export const BarrierProvider = ({ children }) => {
 
   const handleSaveCdft = async () => {
     try {
-      // 'http://localhost:3000' + var'
       await fetch(`${wellsURL}/${wellData?.id}`, {
         method: 'PUT',
         headers: {
